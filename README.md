@@ -1,4 +1,4 @@
-# B4~M4L — 0.13-rc.1
+# B4~M4L — 0.13
 
 Standalone static documentation website. Open `index.html` for a local preview, or serve this folder with any static HTTP server. No install, build tool or online library is required by the site. Keep the complete assets tree and font licences.
 
