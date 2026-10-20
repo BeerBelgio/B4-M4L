@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>INDEX HTML BRIDGE — B4~M4L</title>
+<meta content="INDEX HTML BRIDGE: device documentation, compatibility, release notes and support by BeerBelgio." name="description"/>
+<link href="../assets/brand/favicon-tilde.svg" rel="icon" type="image/svg+xml"/>
+<link href="../assets/fonts/barlow-condensed/font.css?v=1fdd6c9837" rel="stylesheet"/>
+<link href="../assets/fonts/m-plus-rounded-1c/font.css?v=44ba9e7308" rel="stylesheet"/>
+<link href="../assets/css/site.css?v=0f21d0e35e" rel="stylesheet"/>
+<style>
+
+
+    :root {
+      --ink: #000000;
+      --paper: #f1f1ee;
+      --paper-2: #f4f4f0;
+      --panel: #fafaf7;
+      --accent: #ec6b2d;
+      --accent-deep: #c94b2e;
+      --green: #6a9e5d;
+      --muted: rgba(0, 0, 0, 0.64);
+      --hair: rgba(0, 0, 0, 0.11);
+      --hair-strong: rgba(0, 0, 0, 0.22);
+      --radius: 14px;
+      --shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+      --content: 1120px;
+      --font-body: "M PLUS Rounded 1c", ui-rounded, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      --sticky-offset: 78px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.52;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    button, summary { font: inherit; }
+    .hero-brand,
+    h1,
+    .quick-header h2,
+    .quick-step h3,
+    .section-title,
+    .card h3,
+    .nav-link {
+      font-family: var(--font-display);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--hair-strong);
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .topbar-inner {
+      width: min(calc(100% - 20px), var(--content));
+      margin: 0 auto;
+      min-height: 62px;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 12px;
+      padding: 7px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+      flex: 0 0 auto;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .mini-logo-wrap {
+      position: relative;
+      width: 34px;
+      height: 34px;
+      display: block;
+      flex: 0 0 auto;
+      transition: transform .15s ease;
+    }
+    .mini-logo {
+      position: absolute;
+      inset: 0;
+      width: 34px;
+      height: 34px;
+      display: block;
+      object-fit: contain;
+      transition: opacity .15s ease;
+    }
+    .mini-logo.orange { opacity: 0; }
+    .brand:hover .mini-logo.black,
+    .brand:focus-visible .mini-logo.black { opacity: 0; }
+    .brand:hover .mini-logo.orange,
+    .brand:focus-visible .mini-logo.orange { opacity: 1; }
+    .brand:active .mini-logo-wrap { transform: scale(.94); }
+
+    .sticky-nav {
+      display: none;
+      min-width: 0;
+      width: 100%;
+      padding: 2px 0;
+      gap: 6px;
+    }
+    body.nav-docked .sticky-nav {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr)) minmax(110px, 1.7fr) repeat(3, minmax(0, 1fr));
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 7px;
+      flex-wrap: nowrap;
+      justify-self: end;
+      white-space: nowrap;
+    }
+
+
+    .chip, .mini-button, .nav-link {
+      min-height: 30px;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 5px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+
+    .mini-button {
+      cursor: pointer;
+      transition: background .15s ease, color .15s ease, transform .15s ease;
+    }
+    .mini-button:hover { background: var(--ink); color: var(--paper); }
+    .mini-button:active { transform: translateY(1px); }
+    .mini-button.is-negative {
+      background: var(--ink);
+      color: var(--paper);
+    }
+    .mini-button.is-negative:hover {
+      background: transparent;
+      color: var(--ink);
+    }
+main {
+      width: min(calc(100% - 28px), var(--content));
+      margin: 0 auto;
+      padding: 52px 0 90px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(340px, .88fr);
+      gap: 38px;
+      align-items: stretch;
+      margin-bottom: 32px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-deep);
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(78px, 10.4vw, 136px);
+      line-height: .9;
+      letter-spacing: .025em;
+      font-weight: 900;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .hero-lede {
+      max-width: 720px;
+      margin: 0;
+      font-size: clamp(17px, 1.9vw, 22px);
+      line-height: 1.34;
+      letter-spacing: -0.01em;
+      font-weight: 400;
+    }
+
+    .hero-copy {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .hero-brand {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(18px, 2.2vw, 28px);
+      line-height: 1;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .hero-menu {
+      align-self: stretch;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: 1fr;
+      gap: 10px;
+      padding: 0;
+    }
+
+    .hero-menu .nav-link {
+      min-height: 48px;
+      justify-content: flex-start;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .sticky-nav .nav-link {
+      width: 100%;
+      min-height: 32px;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .045em;
+    }
+
+    .nav-link {
+      border-color: var(--hair-strong);
+      transition: border-color .15s ease, background .15s ease, color .15s ease;
+    }
+    .nav-link:hover { border-color: var(--ink); background: rgba(255,255,255,.18); }
+    .nav-link.active { border-color: var(--accent); background: var(--accent); color: var(--ink); }
+
+
+
+    .quick-start {
+      scroll-margin-top: var(--sticky-offset);
+      border: 2px solid var(--ink);
+      border-radius: var(--radius);
+      background: var(--accent);
+      color: var(--ink);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
+
+    .quick-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px 20px 14px;
+      border-bottom: 1px solid rgba(28, 23, 19, .28);
+    }
+    .quick-header h2 {
+      margin: 0;
+      font-size: 25px;
+      font-weight: 600;
+      letter-spacing: .02em;
+    }
+    .quick-header p {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      opacity: .72;
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+
+    .quick-step {
+      min-height: 238px;
+      padding: 18px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+      border-right: 1px solid rgba(28, 23, 19, .28);
+      border-bottom: 1px solid rgba(28, 23, 19, .28);
+      grid-column: span 2;
+    }
+    .quick-step:nth-child(3) { border-right: 0; }
+    .quick-step:nth-child(4),
+    .quick-step:nth-child(5) {
+      grid-column: span 3;
+      border-bottom: 0;
+    }
+    .quick-step:nth-child(5) { border-right: 0; }
+    .quick-step.no-media { min-height: 168px; }
+    .quick-copy { min-width: 0; }
+    .quick-media {
+      margin: auto 0 0;
+      border: 1px solid rgba(28, 23, 19, .38);
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(255,255,255,.26);
+      min-height: 118px;
+      display: grid;
+      place-items: center;
+    }
+    .quick-media img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 210px;
+      object-fit: contain;
+    }
+    .step-no {
+      display: block;
+      width: 28px;
+      height: 28px;
+      border: 1.5px solid var(--ink);
+      border-radius: 50%;
+      line-height: 25px;
+      text-align: center;
+      font-weight: 800;
+      font-size: 12px;
+      margin-bottom: 26px;
+    }
+    .quick-step h3 {
+      margin: 0 0 6px;
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: .035em;
+    }
+    .quick-step p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.46;
+    }
+
+    .manual {
+      display: grid;
+      gap: 10px;
+    }
+
+    details.manual-section,
+    section.manual-section.support-section {
+      border: 1px solid var(--hair-strong);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.18);
+      overflow: hidden;
+      scroll-margin-top: var(--sticky-offset);
+      transition: background .15s ease, border-color .15s ease;
+    }
+    details.manual-section[open] {
+      background: var(--panel);
+      border-color: var(--ink);
+    }
+    details.manual-section[open] .section-title { color: var(--accent); }
+
+    details.manual-section > summary,
+    .support-section > .support-heading {
+      list-style: none;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: minmax(150px, .55fr) minmax(0, 1.45fr) auto;
+      gap: 24px;
+      align-items: center;
+      min-height: 74px;
+      padding: 14px 18px;
+      user-select: none;
+    }
+    details.manual-section > summary::-webkit-details-marker { display: none; }
+    .support-section {
+      background: var(--panel) !important;
+      border-color: var(--ink) !important;
+    }
+    .support-section .section-title { color: var(--accent); }
+    .support-section > .support-heading { cursor: default; }
+
+    /* Only the Support email control: 125% size and high-contrast interaction. */
+    #support-email {
+      min-height: 38px;
+      padding: 7px 13px;
+      font-size: 15px;
+      background: transparent;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      touch-action: manipulation;
+    }
+    #support-email:hover,
+    #support-email:active,
+    #support-email:focus-visible {
+      background: var(--accent);
+      color: var(--ink);
+    }
+    #support-email:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: .035em;
+      text-transform: uppercase;
+    }
+    .section-summary {
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .section-toggle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid var(--ink);
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      line-height: 1;
+      transition: transform .18s ease, background .18s ease, color .18s ease;
+    }
+    details[open] .section-toggle {
+      transform: rotate(45deg);
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .section-body {
+      border-top: 1px solid var(--hair);
+      padding: 22px 18px 24px;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .section-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card {
+      border-top: 1px solid var(--ink);
+      padding: 11px 0 2px;
+    }
+    .card h3 {
+      margin: 0 0 7px;
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .055em;
+    }
+    .card p, .card li {
+      font-size: 15px;
+      color: var(--muted);
+    }
+    .card p { margin: 0; }
+    .card ul, .card ol { margin: 8px 0 0; padding-left: 18px; }
+    .card li + li { margin-top: 5px; }
+
+    .control-table {
+      display: grid;
+      grid-template-columns: minmax(120px, .58fr) minmax(0, 1.42fr);
+      border-top: 1px solid var(--ink);
+      margin-top: 4px;
+    }
+    .control-table > div {
+      padding: 9px 0;
+      border-bottom: 1px solid var(--hair);
+      font-size: 15px;
+    }
+    .control-table .label {
+      padding-right: 16px;
+      font-weight: 750;
+      letter-spacing: .02em;
+    }
+    .control-table .value { color: var(--muted); }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 9px;
+    }
+    .pill {
+      border: 1px solid var(--hair-strong);
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: .025em;
+    }
+
+    .callout {
+      border: 1px solid var(--ink);
+      border-left-width: 7px;
+      border-radius: 10px;
+      padding: 13px 14px;
+      margin-top: 14px;
+      background: rgba(255,255,255,.18);
+    }
+    .callout.warning { border-left-color: var(--accent-deep); }
+    .callout.ok { border-left-color: var(--green); }
+    .callout strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+    .callout p { margin: 0; font-size: 15px; color: var(--muted); }
+
+    .status-line {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .state-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--hair-strong);
+    }
+    .state-dot.ok { background: var(--green); }
+    .state-dot.progress { background: var(--accent); }
+    .state-dot.planned { background: var(--accent-deep); }
+    .status-copy { font-size: 13.5px; color: var(--muted); }
+
+    code {
+      font-family: var(--mono);
+      font-size: .92em;
+      background: rgba(28,23,19,.07);
+      border-radius: 5px;
+      padding: 1px 4px;
+    }
+
+    .help-media {
+      margin-top: 16px;
+      border: 1px solid var(--hair-strong);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--panel);
+    }
+    .help-media img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .help-media figcaption {
+      padding: 9px 11px;
+      border-top: 1px solid var(--hair);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      gap: 16px;
+      margin-top: 48px;
+      padding-top: 16px;
+      border-top: 2px solid var(--ink);
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .footer-left { justify-self: start; min-width: 0; }
+    .footer-center { justify-self: center; color: var(--ink); font-weight: 700; }
+    .footer-right { justify-self: end; }
+    .footer a { color: inherit; text-decoration: none; }
+    .footer a:hover, .footer a:focus-visible { color: var(--accent-deep); }
+    .footer-wordmark {
+      display: block;
+      width: 96px;
+      height: auto;
+    }
+
+    .manifest-error {
+      display: none;
+      margin: 18px 0;
+      border: 2px solid var(--accent-deep);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: rgba(201,75,46,.07);
+      font-size: 14px;
+    }
+    .manifest-error.visible { display: block; }
+
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; align-items: start; }
+      .hero-menu { min-height: 260px; }
+      body.nav-docked .topbar-inner { grid-template-columns: auto minmax(0,1fr) auto; }
+      body.nav-docked .sticky-nav {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      }
+      body.nav-docked .sticky-nav .nav-link {
+        min-height: 34px;
+        padding: 6px 10px;
+        font-size: 15px;
+        letter-spacing: .045em;
+      }
+      .quick-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .quick-step,
+      .quick-step:nth-child(4),
+      .quick-step:nth-child(5) {
+        grid-column: auto;
+        border-right: 1px solid rgba(28, 23, 19, .28);
+        border-bottom: 1px solid rgba(28, 23, 19, .28);
+      }
+      .quick-step:nth-child(2n) { border-right: 0; }
+      .quick-step:last-child { grid-column: 1 / -1; border-right: 0; border-bottom: 0; }
+      .quick-media { min-height: 110px; }
+      details.manual-section > summary, .support-section > .support-heading { grid-template-columns: minmax(130px,.6fr) 1fr auto; gap: 16px; }
+      .section-grid.three { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      :root { --sticky-offset: 128px; }
+      .topbar-inner { padding: 7px 0; gap: 7px; }
+      .top-actions { justify-self: end; gap: 5px; }
+      .chip, .mini-button { min-height: 28px; padding: 4px 8px; font-size: 10.5px; }
+      #support-email { min-height: 35px; padding: 5px 10px; font-size: 13.125px; }
+      .mini-logo { width: 32px; height: 32px; }
+      body.nav-docked .sticky-nav {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 5px;
+        width: 100%;
+      }
+      .sticky-nav .nav-link {
+        min-height: 34px;
+        padding: 6px 6px;
+        font-size: 15px;
+        letter-spacing: .025em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .hero-menu { grid-template-columns: 1fr 1fr; min-height: 300px; }
+      .hero-menu .nav-link { font-size: 15px; min-height: 50px; }
+      main { padding-top: 34px; }
+      h1 { font-size: clamp(66px, 20vw, 96px); line-height: .92; letter-spacing: .02em; }
+      .quick-grid { grid-template-columns: 1fr; }
+      .quick-step,
+      .quick-step:nth-child(4),
+      .quick-step:nth-child(5),
+      .quick-step:nth-child(2n) {
+        grid-column: auto;
+        border-right: 0;
+        border-bottom: 1px solid rgba(28, 23, 19, .28);
+        padding: 18px;
+      }
+      .quick-step:last-child { border-bottom: 0; }
+      details.manual-section > summary, .support-section > .support-heading { grid-template-columns: 1fr auto; gap: 10px; }
+      .section-summary { grid-column: 1 / -1; grid-row: 2; }
+      .section-grid, .section-grid.three { grid-template-columns: 1fr; }
+      .control-table { grid-template-columns: 1fr; }
+      .control-table .label { padding-bottom: 1px; border-bottom: 0; }
+      .control-table .value { padding-top: 1px; }
+      .footer {
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        gap: 6px;
+        font-size: clamp(8.5px, 2.45vw, 10.5px);
+      }
+      .footer-wordmark { width: clamp(62px, 18vw, 82px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+  
+
+    .mini-logo.single { position: static; width: 20px; height: 20px; }
+    .sticky-nav { display:flex; align-items:center; gap:6px; flex-wrap:wrap; min-width:0; width:100%; padding:2px 0; }
+    .sticky-nav .section-link { display:none; }
+    .sticky-nav .nav-help-link { display:inline-flex; }
+    body.nav-docked .sticky-nav .nav-help-link { display:none; }
+    body.nav-docked .sticky-nav .section-link { display:inline-flex; }
+    body.nav-docked .sticky-nav { display:flex; }
+    .topbar-inner { grid-template-columns:auto minmax(0,1fr) auto; }
+    .top-actions { gap:7px; }
+    .device-actions a .link-arrow, .site-home-footer .link-arrow, .topbar .link-arrow { width:14px; height:14px; }
+    .hero-device-wordmark { display:block; width:min(100%,540px); height:auto; }
+    .hero-copy { justify-content:center; }
+    .support-button { min-height:38px; padding:11px 20px; font:700 14px/1 var(--font-display); letter-spacing:.06em; text-transform:uppercase; border:1px solid var(--ink); border-radius:999px; background:transparent; color:var(--ink); display:inline-flex; align-items:center; justify-content:center; text-decoration:none; transition:background .15s ease,color .15s ease,transform .15s ease; }
+    .support-button:hover, .support-button:focus-visible { background:var(--accent); color:var(--ink); }
+    .support-button:active { transform:translateY(1px); }
+    .site-device-footer { margin-top:32px; border-top:1px solid #888; padding:23px 0 45px; }
+    .site-device-footer .site-shell { width:min(calc(100% - 28px), var(--content)); margin:0 auto; display:flex; justify-content:space-between; gap:20px; align-items:center; flex-wrap:wrap; }
+    .link-arrow { display:inline-flex; width:14px; height:14px; flex:0 0 auto; }
+    .link-arrow svg { width:100%; height:100%; display:block; stroke:currentColor; }
+    .device-card:hover .link-arrow, .device-card:focus-visible .link-arrow { color: var(--accent); }
+
+    .site-device-footer nav { display:flex; gap:20px; flex-wrap:wrap; }
+    .site-device-footer a { color:inherit; text-decoration:none; font:700 14px var(--font-display); }
+    .site-footer-brand { display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+    .site-footer-beerbelgio { display:inline-flex; align-items:center; gap:10px; text-decoration:none; font:700 14px var(--font-display); }
+    .site-footer-beerbelgio img { width:24px; height:24px; display:block; }
+    .site-footer-meta { font:700 13px var(--font-display); letter-spacing:.06em; }
+    .site-home-footer a:hover, .site-home-footer a:focus-visible, .device-actions a:hover, .device-actions a:focus-visible { color: var(--accent-deep); }
+    .device-actions a, .site-home-footer a { display:inline-flex; align-items:center; gap:8px; }
+    .device-cover-copy h2 { margin-bottom:24px; }
+    .section-title { font-family: var(--font-display); }
+    .chip { flex:0 0 auto; }
+    @media(max-width:900px){ .sticky-nav .nav-link{white-space:normal; min-width:0;} }
+    @media(max-width:700px){ .topbar-inner { grid-template-columns:auto minmax(0,1fr) auto; } .sticky-nav { justify-content:flex-start; } }
+    @media(max-width:620px){ .hero-menu { grid-template-columns:repeat(2,minmax(0,1fr)); } .hero-menu .nav-link{white-space:normal; overflow-wrap:anywhere;} .site-device-footer .site-shell, .site-footer-brand { align-items:flex-start; } .site-footer-brand{gap:10px; flex-direction:column;} }
+
+  
+    /* v0.3: consistent device overview, landscape device screenshot area. */
+    .device-cover {display:flex;flex-direction:column;gap:26px;min-height:0;margin-bottom:58px;}
+    .device-cover-copy {display:flex;flex-direction:column;align-items:flex-start;min-width:0;max-width:100%;}
+    .device-cover-copy > p {max-width:90ch;}
+    .device-cover-art {width:100%;aspect-ratio:2.6/1;min-height:235px;max-height:470px;padding:35px;}
+    .device-cover-art img {max-height:300px;width:100%;max-width:850px;object-fit:contain;}
+    .device-cover-copy h2 {font-size:clamp(57px,8.2vw,110px);line-height:.83;}
+    .topbar-inner {display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:12px;min-height:62px;}
+    .top-actions {grid-column:3;grid-row:1;display:flex;align-items:center;justify-self:end;gap:7px;flex-wrap:nowrap;white-space:nowrap;}
+    .nav-help-button {display:inline-flex;min-width:0;flex:0 0 auto;}
+    .sticky-nav,.sticky-nav .section-link {display:none;}
+    body.nav-docked .nav-help-button {display:none;}
+    body.nav-docked .sticky-nav {display:grid;grid-column:2;grid-row:1;grid-template-columns:repeat(12,minmax(0,1fr));align-items:stretch;gap:5px;width:100%;min-width:0;}
+    body.nav-docked .sticky-nav .section-link {display:flex;width:100%;min-width:0;min-height:32px;padding:5px 4px;white-space:normal;overflow-wrap:anywhere;text-overflow:clip;text-align:center;font-size:clamp(10px,.9vw,13px);line-height:1.1;}
+    .hero-copy {justify-content:center;}
+    .hero-device-wordmark {max-width:560px;width:min(100%,560px);max-height:200px;object-fit:contain;object-position:left center;}
+    .site-home-footer .site-shell {width:min(calc(100% - 28px),var(--content));}
+    @media (max-width:1020px) {
+      body.nav-docked .topbar-inner {grid-template-columns:auto minmax(0,1fr) auto;}
+      body.nav-docked .sticky-nav {grid-column:1/-1;grid-row:2;grid-template-columns:repeat(auto-fit,minmax(82px,1fr));}
+      body.nav-docked .sticky-nav .section-link {min-height:33px;font-size:12px;padding:6px 7px;}
+    }
+    @media (max-width:620px) {
+      .device-cover-art {aspect-ratio:2/1;min-height:180px;padding:22px;}
+      .device-cover-copy h2 {font-size:clamp(46px,12vw,73px);}
+      .topbar-inner {gap:7px;}
+      body.nav-docked .sticky-nav {grid-template-columns:repeat(auto-fit,minmax(82px,1fr));gap:5px;}
+      body.nav-docked .sticky-nav .section-link {min-height:34px;line-height:1.15;font-size:13px;padding:6px 5px;}
+      .hero-device-wordmark{max-height:145px;}
+    }
+
+  
+    /* V0.4: centre the tilde optically within its 34px header slot. */
+    .topbar .brand { display:inline-flex; align-items:center; justify-content:center; min-height:34px; }
+    .topbar .mini-logo-wrap { display:grid; place-items:center; width:34px; height:34px; }
+    .topbar .mini-logo.single { display:block; position:static; width:20px; height:20px; margin:0; }
+
+  
+/* B4~M4L v0.6: documentation locale control and rectangular action system. */
+.art-bridge{aspect-ratio:auto;height:clamp(130px,14vw,190px);min-height:0;}
+.device-release-row .preview-state,.device-release-row .device-actions a{border-radius:0;min-height:41px;display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;margin:0;line-height:1.2;font-family:var(--font-display);font-size:14px;}
+.device-release-row{gap:8px;margin-bottom:23px;}
+.device-release-row .device-actions{gap:8px;}
+.device-cover-art{width:100%;aspect-ratio:2.6;min-height:0;padding:24px;border-color:rgba(0,0,0,.28);}
+.device-cover-art img{max-height:100%;width:100%;height:100%;object-fit:contain;}
+.help-entry{display:flex;flex-wrap:wrap;gap:14px;}
+.help-entry-left{display:inline-flex;flex-wrap:wrap;align-items:center;gap:12px;min-width:0;}
+.help-locale-arrow{width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;color:var(--accent-deep);}
+.help-locale-arrow svg{width:100%;height:100%;}
+.help-language-control{position:relative;display:inline-flex;align-items:center;line-height:1;}
+.help-language-control select{font:800 15px/1.1 var(--font-display);letter-spacing:.05em;text-transform:uppercase;color:var(--ink);background:transparent;border:0;border-radius:0;appearance:none;-webkit-appearance:none;cursor:pointer;padding:4px 20px 4px 0;width:auto;min-width:4.6em;field-sizing:content;}
+.help-language-control select:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+.help-language-control .select-chevron{position:absolute;right:2px;top:50%;transform:translateY(-55%);pointer-events:none;font:800 18px/1 var(--font-display);}
+.help-entry-right{margin-left:auto;}
+.help-figure{display:block;width:100%;margin:0 0 22px;padding:16px;border:1px solid var(--hair-strong);background:var(--panel);}
+.help-figure img{display:block;width:100%;max-height:600px;object-fit:contain;}
+.b4-translation-dialog{max-width:min(490px,calc(100vw - 28px));padding:0;border:1px solid #000;border-radius:0;background:var(--paper);color:var(--ink);box-shadow:0 18px 60px rgba(0,0,0,.22);}
+.b4-translation-dialog::backdrop{background:rgba(0,0,0,.48);}
+.translation-dialog-inner{padding:25px;}
+.translation-dialog-inner h2{font:800 30px/1 var(--font-display);margin:0 0 18px;}
+.translation-dialog-inner p{font:400 14px/1.55 var(--font-body);margin:0 0 12px;}
+.translation-dialog-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-top:22px;}
+.translation-dialog-actions a,.translation-dialog-actions button{padding:9px 13px;border:1px solid #000;background:transparent;color:var(--ink);text-decoration:none;cursor:pointer;font:800 14px var(--font-display);}
+.translation-dialog-actions a:hover,.translation-dialog-actions button:hover,.translation-dialog-actions a:focus-visible,.translation-dialog-actions button:focus-visible{background:var(--accent);color:#000;}
+@media(max-width:600px){.help-entry{gap:9px}.help-entry-left{gap:8px}.help-language-control select{font-size:13px}.help-figure{padding:8px}.device-release-row .preview-state,.device-release-row .device-actions a{font-size:12px;min-height:36px}}
+
+
+/* V0.7: locale dropdown consistent with paper-style documentation heading. */
+.help-language-control{display:inline-flex;align-items:center;position:relative;max-width:100%;}
+.help-language-control select{appearance:none;-webkit-appearance:none;field-sizing:content;width:auto!important;max-width:100%;border:none!important;border-radius:0!important;background:transparent;padding:3px 21px 3px 0!important;margin:0;font:800 15px/1.2 var(--font-display);letter-spacing:.02em;cursor:pointer;}
+.help-language-control .select-chevron{display:flex;position:absolute;right:0;top:50%;transform:translateY(-50%);width:14px;height:14px;pointer-events:none;font-size:0;}
+.help-language-control .locale-chevron{display:block;width:14px;height:14px;}
+.help-language-control select:focus-visible{outline:2px solid var(--accent)!important;outline-offset:3px;}
+
+/* Integrated vector illustrations: copy left, consistent-height visual right. */
+.manual-section:not(.support-section) .help-visual-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(210px,38%);align-items:start;gap:clamp(16px,2.4vw,30px);margin:0 0 20px;}
+.manual-section .help-copy-column{min-width:0;}
+.manual-section .help-visual{display:flex;align-items:flex-start;justify-content:flex-end;margin:0;padding:0;border:0;background:none;min-width:0;max-width:100%;}
+.manual-section .help-visual img{display:block;width:100%;height:210px;max-height:210px;object-fit:contain;object-position:center top;}
+.manual-section .help-visual-layout .section-grid{display:grid;grid-template-columns:1fr;gap:10px;margin:0;}
+.manual-section .help-visual-layout .section-grid .card{padding:12px 14px;}
+.manual-section .help-core-layout .control-table{width:100%;border-top:none;margin-top:0;}
+.manual-section .help-core-layout{align-items:start;}
+#library .library-status-intro{margin:0 0 12px;font-size:13px;}
+#library .pill-list{display:flex;flex-direction:column;align-items:stretch;gap:9px;}
+#library .library-status-definition{display:grid;grid-template-columns:83px minmax(0,1fr);align-items:baseline;gap:8px;}
+#library .library-status-definition p{margin:0;font-size:12px;line-height:1.4;}
+#library .library-status-definition .pill{justify-self:start;}
+/* Panoramic complete interface gets full width of viewport with no decorative frame. */
+.device-cover-art.art-bridge{border:0!important;background:transparent!important;min-height:0!important;padding:0!important;margin-left:calc((min(100vw, 1440px) - 100%) / -2);margin-right:calc((min(100vw, 1440px) - 100%) / -2);overflow:visible!important;}
+.device-cover-art.art-bridge img{display:block;width:100%;max-width:100%!important;max-height:none!important;height:auto!important;object-fit:contain;}
+@media(max-width:800px){.manual-section:not(.support-section) .help-visual-layout{grid-template-columns:minmax(0,1fr) 38%;gap:14px}.manual-section .help-visual img{height:170px;max-height:170px;}}
+@media(max-width:620px){.manual-section:not(.support-section) .help-visual-layout{grid-template-columns:1fr}.manual-section .help-visual{justify-content:center;order:2}.manual-section .help-visual img{height:190px;max-height:190px}.device-cover-art.art-bridge{margin-left:0;margin-right:0;}#library .library-status-definition{grid-template-columns:83px minmax(0,1fr);}}
+
+
+/* v0.7: no chopped words in sticky navigation; use rows at narrow widths. */
+body.nav-docked .sticky-nav{display:flex!important;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:5px;grid-template-columns:none!important;}
+body.nav-docked .sticky-nav .nav-link{flex:0 0 auto!important;width:auto!important;min-width:0!important;white-space:nowrap!important;overflow-wrap:normal!important;word-break:normal!important;font-size:12px!important;line-height:1.05!important;padding:6px 9px!important;min-height:30px!important;}
+@media(max-width:700px){body.nav-docked .sticky-nav{gap:4px}body.nav-docked .sticky-nav .nav-link{font-size:11px!important;padding:5px 7px!important;}}
+
+.device-cover-art.art-bridge{display:block!important;position:relative;left:50%;transform:translateX(-50%);width:min(100vw,1440px)!important;max-width:none!important;height:auto!important;aspect-ratio:auto!important;max-height:none!important;min-height:0!important;margin:0!important;padding:0!important;overflow:hidden!important;}
+.device-cover-art.art-bridge img{display:block;width:100%!important;height:auto!important;max-width:none!important;max-height:none!important;object-fit:contain!important;}
+
+
+
+/* v0.8 — consistent native SVG documentation: no framing and vertically centered. */
+.manual-section .help-figure{
+  padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;
+  box-shadow:none!important;margin:0 0 22px!important;
+}
+.manual-section .help-figure img{display:block;width:100%;height:auto;max-height:600px;object-fit:contain;}
+.manual-section:not(.support-section) .help-visual-layout{
+  align-items:center;gap:clamp(18px,2.4vw,30px);
+}
+.manual-section .help-visual{
+  align-items:center;justify-content:center;align-self:center;
+  border:0;background:transparent;padding:0;min-width:0;
+}
+.manual-section .help-visual img{
+  width:100%;height:210px;max-height:210px;object-fit:contain;object-position:center center;
+}
+.manual-section .help-copy-column{align-self:stretch;display:flex;flex-direction:column;justify-content:center;}
+.manual-section .help-core-layout .control-table{margin:0;width:100%;border:0;}
+.manual-section .help-core-layout .control-table .label{font-size:13px;}
+.manual-section .help-core-layout .control-table .value{font-size:13px;line-height:1.4;}
+.manual-section .help-visual-export .control-table{margin-top:0;}
+.manual-section .help-visual-export .control-table .label{font-size:13px;}
+.manual-section .help-visual-export .control-table .value{font-size:13px;line-height:1.4;}
+@media(max-width:800px){
+  .manual-section .help-visual img{height:180px;max-height:180px;}
+}
+@media(max-width:620px){
+  .manual-section:not(.support-section) .help-visual-layout{grid-template-columns:1fr;}
+  .manual-section .help-copy-column{order:1;}
+  .manual-section .help-visual{order:2;width:100%;justify-content:center;}
+  .manual-section .help-visual img{height:auto;max-height:190px;max-width:100%;}
+  .manual-section .help-core-layout .control-table,.manual-section .help-visual-export .control-table{grid-template-columns:1fr;}
+}
+</style>
+<link href="../assets/css/i18n.css?v=8f5609008d" rel="stylesheet"/><style>
+/* V0.5 horizontal overview title: outranks the legacy inline device page rules. */
+.device-cover-copy h2.device-one-line {font-size:clamp(22px,5.8vw,92px)!important;line-height:1!important;letter-spacing:-.006em!important;white-space:nowrap!important;}
+@media(max-width:400px) { .device-cover-copy h2.device-one-line {font-size:clamp(19px,5vw,27px)!important;} }
+</style><link rel="stylesheet" href="../assets/css/max-components.css?v=dbfc8ded10"/>
+<link rel="stylesheet" href="../assets/css/max-style.css?v=45e7fad548"/><script defer src="../assets/js/max-cords.js?v=e87f58e393"></script><script defer src="../assets/js/max-home.js?v=7aad1e80af"></script></head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a aria-label="B4M4L home" class="brand" href="../index.html">
+<span aria-hidden="true" class="mini-logo-wrap">
+<img alt="" class="mini-logo single" src="../assets/brand/favicon-tilde.svg"/>
+</span>
+</a>
+<nav aria-label="Documentation navigation" class="sticky-nav">
+<a class="nav-link section-link max-message" href="#quick-start">Quick</a>
+<a class="nav-link section-link max-message" href="#layers">Layers</a>
+<a class="nav-link section-link max-message" href="#params">Params</a>
+<a class="nav-link section-link max-message" href="#color">Color</a>
+<a class="nav-link section-link max-message" href="#midi">MIDI</a>
+<a class="nav-link section-link max-message" href="#library">Library</a>
+<a class="nav-link section-link max-message" href="#render">Render</a>
+<a aria-label="Live Render Performance" class="nav-link section-link max-message" href="#performance">PERFORMANCE</a>
+
+
+<a class="nav-link section-link max-message" href="#troubleshooting">Trouble</a>
+<a class="nav-link section-link max-message" href="#support">Support</a>
+</nav>
+<div class="top-actions">
+<a class="mini-button nav-help-button" href="#help">HELP</a>
+<button aria-pressed="false" class="mini-button" id="info-toggle" type="button">INFO +</button>
+<span class="chip" id="build-chip">DEV2 · 18 OCT 2026</span>
+</div>
+</div>
+</header>
+<main>
+<!-- Public documentation starts at #help, NOT at the product overview. -->
+<div class="site-breadcrumb"><a href="../index.html">← ALL DEVICES</a><span> / INDEX HTML BRIDGE</span></div>
+<div class="max-device-overview" data-patch-graph><section aria-label="INDEX HTML BRIDGE overview" class="device-cover">
+<div class="device-cover-copy">
+
+<div class="max-newobj max-device-title"><h2 data-device-title="" aria-label="INDEX HTML BRIDGE" class="device-one-line"><span>INDEX HTML</span> <em>BRIDGE</em></h2><span class="max-port outlet" data-port="title-state" aria-hidden="true" style="--port-x:45%"></span><span class="max-port outlet" data-port="title-actions" aria-hidden="true" style="--port-x:75%"></span><span class="max-port outlet" data-port="title-sections" aria-hidden="true" style="--port-x:18px"></span></div><div class="device-release-row"><div class="device-states" aria-label="Development status"><span class="preview-state max-message"><span class="max-port inlet" data-port="state-in" aria-hidden="true"></span><span class="max-port outlet" data-port="state-out" aria-hidden="true"></span>TESTING</span><span class="preview-state max-message"><span class="max-port inlet" data-port="staging-in" aria-hidden="true"></span>STAGING</span><span class="preview-state max-message"><span class="max-port inlet" data-port="distribution-in" aria-hidden="true"></span>NOT DISTRIBUTED</span></div><div class="device-actions"><a class="max-message" href="https://ko-fi.com/beerbelgio" rel="noopener noreferrer" target="_blank"><span class="max-port inlet" data-port="action-1" aria-hidden="true"></span>SHOP <span aria-hidden="true" class="link-arrow"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg></span></a><a class="max-message" href="https://maxforlive.com/profile/user/BeerBelgio" rel="noopener noreferrer" target="_blank"><span class="max-port inlet" data-port="action-2" aria-hidden="true"></span>MAXFORLIVE.COM <span aria-hidden="true" class="link-arrow"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg></span></a></div><a class="max-message max-quick-guide nav-link" href="#quick-start"><span class="max-port inlet" data-port="quick-guide-in" aria-hidden="true"></span>QUICK GUIDE<span class="max-port outlet" data-port="quick-guide-out" aria-hidden="true"></span></a></div><p>Turn browser-native HTML sketches into visuals controlled from Ableton Live. Compose five layers, shape native parameters and colors, add MIDI modulation and perform through a dedicated live render window.</p>
+</div>
+<div class="max-render"><span class="max-port inlet" data-port="render-in" aria-hidden="true"></span><div class="max-window-title">RENDER <span>DEVICE VIEW</span></div><div aria-label="INDEX HTML BRIDGE — full device interface" class="device-cover-art max-render-content art-bridge">
+<img width="2242" height="171" alt="INDEX HTML BRIDGE — full device interface" src="../assets/device-illustrations/bridge-total.svg"/>
+</div></div>
+</section>
+<section aria-labelledby="compatibility-heading" class="public-section">
+<div class="public-section-header"><span class="site-kicker max-message"><span class="max-port inlet" data-port="compat-number" aria-hidden="true"></span>01 / REQUIREMENTS<span class="max-port outlet" data-port="requirements-out" aria-hidden="true"></span></span><h2 class="max-newobj" id="compatibility-heading"><span class="max-port inlet" data-port="compat-in" aria-hidden="true"></span>COMPATIBILITY<span class="max-port outlet" data-port="compat-out" aria-hidden="true"></span></h2></div>
+<div class="compat-grid">
+<div class="max-compat-card"><span class="max-port inlet" data-port="compat-1" aria-hidden="true"></span><span>DAW</span><strong>Ableton Live 12 + Max for Live</strong><small>Established development target; exact minimum release version is not certified.</small></div>
+<div class="max-compat-card"><span class="max-port inlet" data-port="compat-2" aria-hidden="true"></span><span>PLATFORM</span><strong>macOS</strong><small>DEV2 has scoped native evidence on Apple M5. DEV2 Intel and Windows tests and user acceptance remain pending. The accepted 0.23.8-rc.2 baseline is historical evidence for its own build.</small></div>
+<div class="max-compat-card"><span class="max-port inlet" data-port="compat-3" aria-hidden="true"></span><span>RUNTIME</span><strong>Node for Max / Chromium</strong><small>Requires the complete device runtime, Node for Max and a supported installed Chromium browser. A self-contained AMXD or zero-setup customer installation is not certified.</small></div>
+</div>
+</section>
+<section aria-labelledby="changes-heading" class="public-section">
+<div class="public-section-header"><h2 class="max-newobj" id="changes-heading"><span class="max-port inlet" data-port="changes-in" aria-hidden="true"></span>CHANGELOG<span class="max-port outlet" data-port="changes-out" aria-hidden="true"></span></h2></div>
+<details class="public-accordion max-release-window"><span class="max-port inlet" data-port="releases-in" aria-hidden="true"></span><summary><span>PUBLIC RELEASE NOTES</span><span aria-hidden="true" class="public-toggle">+</span></summary><div class="public-accordion-body"><p>No publicly distributed release has been verified for this documentation snapshot. The manual below references the <strong>DEV2-2026-10-18 testing candidate</strong>; release candidate notes are not published as commercial release history.</p></div></details>
+</section>
+<div class="help-entry" id="help" data-patch-graph><span class="help-entry-left"><span class="site-kicker max-message"><span class="max-port inlet" data-flow-port="in" data-port="help-number-in" aria-hidden="true"></span>03 / DOCUMENTATION<span class="max-port outlet" data-flow-port="out" data-port="help-number-out" aria-hidden="true"></span></span><span class="help-locale-arrow" hidden><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12 H20"></path><path d="M14 6 L20 12 L14 18"></path></svg></span><label class="help-language-control max-message"><span class="max-port inlet" data-flow-port="in" data-port="language-in" aria-hidden="true"></span><select aria-label="Manual language" data-b4-language=""><option value="en">English</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="es">Español</option><option value="fr">Français</option></select><span aria-hidden="true" class="select-chevron"><svg aria-hidden="true" class="locale-chevron" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m5 9 7 7 7-7"></path></svg></span></label></span><h2 class="max-newobj max-help-title"><span class="max-port inlet" data-port="help-title-in" aria-hidden="true"></span>HELP<span class="max-port outlet" data-flow-port="out" data-port="help-title-out" aria-hidden="true"></span></h2><i hidden data-cable data-from="help-title-out" data-to="help-number-in" data-kind="normal" data-route="flow"></i><i hidden data-cable data-from="help-number-out" data-to="language-in" data-kind="jitter" data-route="flow"></i></div><i hidden data-cable data-from="title-state" data-to="state-in" data-kind="normal" data-route=""></i><i hidden data-cable data-from="title-state" data-to="staging-in" data-kind="normal" data-route=""></i><i hidden data-cable data-from="title-state" data-to="distribution-in" data-kind="normal" data-route=""></i><i hidden data-cable data-from="state-out" data-to="render-in" data-kind="normal" data-route="render"></i><i hidden data-cable data-from="title-actions" data-to="action-1" data-kind="normal" data-route=""></i><i hidden data-cable data-from="title-actions" data-to="action-2" data-kind="normal" data-route=""></i><i hidden data-cable data-from="title-sections" data-to="compat-in" data-kind="jitter" data-route="section"></i><i hidden data-cable data-from="title-sections" data-to="changes-in" data-kind="jitter" data-route="section"></i><i hidden data-cable data-from="title-sections" data-to="help-title-in" data-kind="jitter" data-route="section"></i><i hidden data-cable data-from="compat-out" data-to="compat-number" data-kind="normal" data-route=""></i><i hidden data-cable data-from="requirements-out" data-to="compat-1" data-kind="normal" data-route=""></i><i hidden data-cable data-from="requirements-out" data-to="compat-2" data-kind="normal" data-route=""></i><i hidden data-cable data-from="requirements-out" data-to="compat-3" data-kind="normal" data-route=""></i><i hidden data-cable data-from="changes-out" data-to="releases-in" data-kind="jitter" data-route=""></i>
+<i hidden data-cable data-from="title-actions" data-to="quick-guide-in" data-kind="jitter" data-route=""></i><i hidden data-cable data-from="quick-guide-out" data-to="quick-start-in" data-kind="jitter" data-route="guide"></i><section class="hero">
+<div class="hero-copy">
+<img alt="INDEX HTML BRIDGE" class="hero-device-wordmark" src="../assets/brand/bridge-wordmark.svg"/>
+</div>
+<nav aria-label="Help sections" class="hero-menu">
+<a class="nav-link max-message" href="#quick-start">Quick start</a>
+<a class="nav-link max-message" href="#layers">Layers</a>
+<a class="nav-link max-message" href="#params">Params</a>
+<a class="nav-link max-message" href="#color">Color</a>
+<a class="nav-link max-message" href="#midi">MIDI</a>
+<a class="nav-link max-message" href="#library">Library</a>
+<a class="nav-link max-message" href="#render">Render</a>
+<a class="nav-link max-message" href="#performance">Performance</a>
+
+
+<a class="nav-link max-message" href="#troubleshooting">Troubleshooting</a>
+<a class="nav-link max-message" href="#support">Support</a>
+</nav>
+</section>
+<div class="manifest-error" id="manifest-error">
+<strong>Help manifest unavailable.</strong><br/>
+      Open this page through the B4~M4L local server or check that the documentation manifest is present.
+    </div>
+<section class="quick-start" id="quick-start"><span class="max-port inlet" data-port="quick-start-in" aria-hidden="true" style="--port-x:calc(100% - 24px)"></span>
+<div class="quick-header">
+<h2>Quick start</h2>
+</div>
+<div class="quick-grid">
+<article class="quick-step">
+<div class="quick-copy">
+<span class="step-no">1</span>
+<h3>Pick a layer</h3>
+<p>Open L1–L5. Only one Layer editor is open at a time.</p>
+</div>
+</article>
+<article class="quick-step">
+<div class="quick-copy">
+<span class="step-no">2</span>
+<h3>Choose a tool</h3>
+<p>Select it from the library, check its status, then LOAD / UPDATE / DOWNLOAD explicitly.</p>
+</div>
+</article>
+<article class="quick-step">
+<div class="quick-copy">
+<span class="step-no">3</span>
+<h3>Shape it</h3>
+<p>Open PARAMETERS, COLORS &amp; BLEND and MIDI MAPPING in any combination.</p>
+</div>
+</article>
+<article class="quick-step">
+<div class="quick-copy">
+<span class="step-no">4</span>
+<h3>Render live</h3>
+<p>RENDER opens the external Chromium compositor. Your five Layers are combined there.</p>
+</div>
+</article>
+<article class="quick-step">
+<div class="quick-copy">
+<span class="step-no">5</span>
+<h3>Perform live</h3>
+<p lang="en" data-no-translate>Use RENDER, choose FPS/RES for your workload and save the Live Set to retain tools and controls.</p>
+</div>
+</article>
+</div>
+</section>
+</div><section aria-label="INDEX-HTML Bridge manual" class="manual"><p class="doc-sync-notice" data-no-translate><span lang="it">Le note aggiornate per le candidate attuali sono in inglese, in attesa di revisione delle traduzioni tecniche. Le altre sezioni conservano le traduzioni precedenti.</span><span lang="de">Die aktualisierten Hinweise zu den aktuellen Testversionen bleiben bis zur technischen Übersetzungsprüfung auf Englisch. Andere Abschnitte behalten ihre bisherigen Übersetzungen.</span><span lang="es">Las notas actualizadas de las candidatas actuales están en inglés, pendientes de revisión de la traducción técnica. Las demás secciones conservan sus traducciones anteriores.</span><span lang="fr">Les notes mises à jour pour les versions candidates actuelles restent en anglais, en attente de révision de la traduction technique. Les autres sections conservent leurs traductions précédentes.</span></p><p lang="en" data-no-translate class="doc-version-note">Guide: LIVE DEV2-2026-10-18, an isolated testing candidate, not a new numbered release. Historical accepted baseline: 0.23.8-rc.2. M5 scoped live-render, Note/CC, Macro, recall and browser-lifecycle evidence is available. DEV2 user acceptance, Intel/Windows and Max 8.6.5 validation remain pending. No public release is offered.</p>
+<details class="manual-section" id="core">
+<summary>
+<span class="section-title">Core</span>
+<span class="section-summary">The permanent strip: project, HELP, live output and five Layers.</span>
+<span aria-hidden="true" class="section-toggle">+</span>
+</summary>
+<div class="section-body">
+<div class="help-visual-layout help-core-layout"><div class="help-copy-column"><div class="control-table" id="core-controls"><div class="label">INDEX HTML</div><div class="value">Open the INDEX HTML project website.</div><div class="label">HELP (?)</div><div class="value">Open the package-local development manual through the ready Node host. The public product guide is still a release gate.</div><div class="label">RENDER</div><div class="value">Toggle one dedicated Chromium output owned by this Bridge instance.</div><div class="label">Layer visibility</div><div class="value">Include or exclude each Layer independently from editor visibility.</div><div class="label">Layer editor</div><div class="value">Open one Layer editor; click its control again to close it.</div></div></div><figure aria-label="Core controls" class="help-visual device-figure"><img width="243" height="172" alt="INDEX HTML BRIDGE CORE controls" loading="lazy" src="../assets/device-illustrations/bridge-core.svg"></figure></div></div>
+</details>
+<details class="manual-section" id="layers">
+<summary>
+<span class="section-title">Layers</span>
+<span class="section-summary">Five independent visual slots, composed from L1 upward. Effects process only what sits below them.</span>
+<span aria-hidden="true" class="section-toggle">+</span>
+</summary>
+<div class="section-body"><div class="help-visual-layout help-visual-layers"><div class="help-copy-column"><div class="section-grid three">
+<div class="card">
+<h3>One editor, five layers</h3>
+<p>Open one Layer editor at a time. Layer visibility is independent from whether its editor is open.</p>
+</div>
+<div class="card">
+<h3>Tool loading</h3>
+<p>Choosing a tool in the dropdown only selects it. Press LOAD to use the selection. A new LOAD restores manifest defaults. Keep tools/ and the complete device folder together; local INDEX_TOOL RC2 and legacy SKETCH_TOOL files work offline.</p>
+</div>
+<div class="card">
+<h3>Generator vs effect</h3>
+<p>Generators draw their own canvas. Effects receive the composite of the Layers beneath them and process that result.</p>
+</div>
+</div></div><figure class="help-visual device-figure"><img width="236" height="173" alt="Layer panel of INDEX HTML BRIDGE" loading="lazy" src="../assets/device-illustrations/bridge-layer.svg"/></figure></div>
+<div class="callout">
+<strong>Remembered per layer</strong>
+<p>Each Layer remembers its section visibility. Saving a Live Set also stores the loaded tools, native values, HEX, mappings and device settings. Changing a tool resets its values: there is no separate preset memory for every tool. Keep the local tool files available when reopening a Set.</p>
+</div>
+</div>
+</details>
+<details class="manual-section" id="params">
+<summary>
+<span class="section-title">Parameters</span>
+<span class="section-summary">Twelve numeric slots per Layer, mapped to each tool’s own manifest labels and ranges.</span>
+<span aria-hidden="true" class="section-toggle">+</span>
+</summary>
+<div class="section-body"><figure class="help-figure device-figure"><img width="512" height="172" alt="Parameter controls of INDEX HTML BRIDGE" loading="lazy" src="../assets/device-illustrations/bridge-params.svg"></figure>
+<div class="section-grid">
+<div class="card">
+<h3>Native Live parameters</h3>
+<p id="parameter-count-copy">The device exposes a stable Live parameter registry for automation and external modulation.</p>
+</div>
+<div class="card">
+<h3>Reset &amp; defaults</h3>
+<p>Use the single reset beside a parameter for that control only. DEFAULT restores the loaded tool’s manifest defaults.</p>
+</div>
+<div class="card" lang="en" data-no-translate=""><h3>Effective values</h3><p>With internal Note/CC assigned, the dial uses a grey effective arc and needle, an updating final numerical readout and a separate reference to the native Live input. That input can already include Macro modulation. Mouse editing is disabled for the assigned slot; no cosmetic values are written back to Live. Unassigned slots retain native drawing.</p></div>
+<div class="card" lang="en" data-no-translate=""><h3>Automation stays yours</h3><p>The established Live parameter remains the automation and external modulation target. DEV2 tests covered native Macro modulation and internal Note36/CC1. External LFO and MAP ABS/% variants were not represented by that fixture and are not declared fixed or universally supported.</p></div>
+</div>
+</div>
+</details>
+<details class="manual-section" id="color">
+<summary>
+<span class="section-title">Colors &amp; Blend</span>
+<span class="section-summary">Up to four tool-defined colors, independent opacity and per-Layer blend mode.</span>
+<span aria-hidden="true" class="section-toggle">+</span>
+</summary>
+<div class="section-body"><div class="help-visual-layout help-visual-color max-help-layout"><figure class="help-visual device-figure"><img width="299" height="171" alt="Color panel of INDEX HTML BRIDGE" loading="lazy" src="../assets/device-illustrations/bridge-colors.svg"/></figure><div class="card">
+<h3>Colors</h3>
+<p id="color-copy">Each active color can be edited with the picker or six-digit HEX input. Unused manifest slots stay clearly marked.</p>
+</div><div class="card">
+<h3>Opacity</h3>
+<p>Color opacity is a native host control and does not consume P01–P12. Missing host opacity keeps the standalone tool behaviour unchanged.</p>
+</div><div class="card">
+<h3>Blend</h3>
+<div class="pill-list" id="blend-pills"><span class="pill">Normal</span><span class="pill">Add</span><span class="pill">Multiply</span><span class="pill">Screen</span></div>
+</div><div class="card">
+<h3>Effects</h3>
+<p>Effect Layers do not use generator blend in the same way: their shader processes the lower composite directly.</p>
+</div></div>
+</div>
+</details>
+<details class="manual-section" id="midi">
+<summary>
+<span class="section-title">MIDI Mapping</span>
+<span class="section-summary">Map NOTE or CC directly onto P01–P12 with amount and envelope/smoothing controls.</span>
+<span aria-hidden="true" class="section-toggle">+</span>
+</summary>
+<div class="section-body"><figure class="help-figure device-figure"><img width="754" height="172" alt="MIDI mapping of INDEX HTML BRIDGE" loading="lazy" src="../assets/device-illustrations/bridge-midi.svg"></figure>
+<div class="section-grid three">
+<div class="card">
+<h3>Source</h3>
+<div class="pill-list" id="midi-source-pills"></div>
+<p style="margin-top:9px">Mappings start unassigned. Choose the MIDI input and channel, then a slot source and NOTE/CC ID. NONE unassigns a slot. Amount sets the contribution; attack/release shape its response. Assignments are Layer-specific and saved with the Set; the functional Live controls keep their automation identities.</p>
+</div>
+<div class="card">
+<h3>NOTE</h3>
+<p>Velocity becomes the modulation peak. Attack rises to that peak, then release returns automatically to zero.</p>
+</div>
+<div class="card">
+<h3>CC</h3>
+<p>The incoming 0–127 value becomes the target. Attack smooths upward movement; release smooths downward movement.</p>
+</div>
+</div>
+<div class="callout"><strong>Assigned slots</strong><p lang="en" data-no-translate>Choose NONE to return an internally mapped slot to native editing. Check its final value and target response after changing assignment. Native M5 evidence covers Note36/CC1, attack/release, unmap and recall within the documented fixture.</p></div>
+</div>
+</details>
+<details class="manual-section" id="library">
+<summary>
+<span class="section-title">Library</span>
+<span class="section-summary">CHECK INDEX compares your local HTML tools with the INDEX catalogue. Nothing updates by itself.</span>
+<span aria-hidden="true" class="section-toggle">+</span>
+</summary>
+<div class="section-body">
+<div class="section-grid">
+<div class="card">
+<h3>Status</h3>
+<p class="library-status-intro">The library compares the files installed locally with the INDEX catalogue. These labels explain each possible result:</p><div class="pill-list" id="library-status-pills"></div>
+</div>
+<div class="card">
+<h3>CHECK INDEX</h3>
+<p>Refreshes the remote catalogue and compares it with the flat local <code>tools/</code> library. It does not download tools automatically.</p>
+</div>
+<div class="card">
+<h3>Selected tool</h3>
+<p>Depending on state, the action becomes LOAD, UPDATE or DOWNLOAD. A dropdown selection alone never changes the running Layer.</p>
+</div>
+<div class="card">
+<h3>UPDATE ALL</h3>
+<p>Queues only MISSING and OUTDATED catalogue tools. CURRENT entries are left untouched; local-only fixtures remain local.</p>
+</div>
+</div>
+</div>
+</details>
+<details class="manual-section" id="render">
+<summary>
+<span class="section-title">Render</span>
+<span class="section-summary">One dedicated live Chromium output for each Bridge instance.</span>
+<span aria-hidden="true" class="section-toggle">+</span>
+</summary>
+<div class="section-body">
+<div class="section-grid">
+<div class="card">
+<h3>Live output</h3>
+<p>RENDER launches the localhost compositor in an external Chromium app window. Live state reaches one compositor SSE connection, then the five tool iframes through <code>postMessage</code>.</p>
+</div>
+<div class="card">
+<h3>Requirements</h3>
+<p>A ready local Node host, a supported installed Chromium browser and compatible Canvas/WebGL support are required.</p>
+</div>
+</div>
+<div class="callout ok"><strong>Session ownership</strong><p lang="en" data-no-translate>RENDER uses a private browser session per instance. Closing the output, toggling RENDER, switching Sets and quitting Live were tested on M5. Uncertain ownership or shutdown is reported rather than closing an unrelated browser. Other platforms and failure paths remain separate tests.</p></div>
+</div>
+</details>
+<details class="manual-section" id="performance">
+<summary>
+<span class="section-title">Live Render Performance</span>
+<span class="section-summary">Monitor completed live frames and choose the rendering workload.</span>
+<span aria-hidden="true" class="section-toggle">+</span>
+</summary>
+<div class="section-body"><div class="help-visual-layout help-visual-performance max-help-layout"><figure class="help-visual device-figure"><img width="200" height="172" alt="Performance controls of INDEX HTML BRIDGE" loading="lazy" src="../assets/device-illustrations/bridge-performance.svg"></figure><div class="card" lang="en" data-no-translate=""><h3>Automatic panel</h3><p>PERFORMANCE appears between CORE and LAYER when external RENDER opens, and hides when that window closes.</p></div><div class="card">
+<h3>Read the monitor</h3>
+<p>Actual / target FPS shows completed visual frames. The display-only dial fills up to the target and cannot be edited. FRAME CADENCE reports the observed interval between completed frames in milliseconds, not GPU execution time. PREVIEW shows the effective buffer dimensions.</p>
+</div><div class="card">
+<h3>FPS · AUTO / 30 / 60</h3>
+<p>AUTO follows browser / display-driven cadence; its target is estimated (~). Fixed settings request a maximum of 30 or 60 FPS across the hosted tools and compositor. Actual FPS can be lower with heavier tools.</p>
+</div><div class="card">
+<h3>RES · AUTO / 720p / 1080p / 1440p / 4K UHD</h3>
+<p>AUTO keeps window-dependent rendering. Fixed presets control pixel workload: 1280 × 720, 1920 × 1080, 2560 × 1440 or 3840 × 2160 in a 16:9 window. Other window shapes keep their framing and fill the window, using a buffer that fits within the preset dimensions. PREVIEW reports the actual size; Retina does not multiply a fixed preset.</p>
+</div></div>
+<div class="callout">
+<strong>Same view, different quality</strong>
+<p>The full composition scales to the RENDER window without zooming or cropping when RES changes. Settings survive closing and reopening RENDER and are saved with the Live Set. A new unconfigured device starts from AUTO / AUTO. If a buffer is unsupported, INDEX reports the error and restores the preceding selection.</p>
+</div>
+<div class="callout ok"><strong>Measured on M5</strong><p lang="en" data-no-translate>A five-layer composite sustained 1080p30 for 120 seconds at 29.994 FPS average. The same tested load reached about 33.19 FPS when 60 was requested; 60 FPS was not sustained. Brief 1440p30 and 4K30 tests are separate evidence. AUTO/AUTO remains the device default; no universal performance guarantee is implied.</p></div>
+</div>
+</details>
+
+
+<details class="manual-section" id="troubleshooting">
+<summary>
+<span class="section-title">Troubleshooting</span>
+<span class="section-summary">The useful failure boundaries, current limitations and what not to expect from this build.</span>
+<span aria-hidden="true" class="section-toggle">+</span>
+</summary>
+<div class="section-body">
+<div class="section-grid">
+<div class="card"><h3>Browser or missing resources</h3><p>Keep the complete folder together, load a local tool, and confirm Chromium is installed. RENDER opens an isolated app-style Chromium window; HELP uses the normal browser. Missing tool/module/font errors need the exact Console message and package version. CHECK refreshes metadata without replacing HTML; UPDATE explicitly downloads a selected tool.</p></div>
+<div class="card" lang="en" data-no-translate><h3>Output will not open</h3><p>Check the complete runtime folder, the ready Node host and a supported installed Chromium browser. Capture the first exact Console error and package/build version; missing UI or READY errors are separate from initial startup warnings.</p></div><div class="card" lang="en" data-no-translate><h3>Output stops or is slow</h3><p>Check whether a loaded Layer is visible, whether the selected tool was actually loaded, and the actual/target FPS readout. Reduce FPS or resolution for a heavy composition; a requested cap is not an achieved-rate guarantee.</p></div><div class="card" lang="en" data-no-translate><h3>MIDI and Macro checks</h3><p>Start with one clearly identified target and input. DEV2 M5 tests covered Note36/CC1 and two Macro-controlled parameters. External LFO and MAP ABS/% remain unvalidated for this candidate.</p></div><div class="card" lang="en" data-no-translate><h3>Browser session remains open</h3><p>Report the exact build and closure path. A session with uncertain ownership may be retained intentionally; do not close unrelated personal browser processes as a workaround.</p></div></div>
+<div class="section-grid" id="issues-grid" style="margin-top:18px"></div>
+<div class="card" style="margin-top:18px">
+<h3>Current limitations</h3>
+<ul id="limitations-list"></ul>
+</div>
+</div>
+</details>
+<details class="manual-section" id="architecture">
+<summary>
+<span class="section-title">Under the hood</span>
+<span class="section-summary">Only if you care: how Max, Node and Chromium divide the work.</span>
+<span aria-hidden="true" class="section-toggle">+</span>
+</summary>
+<div class="section-body">
+<div class="section-grid three">
+<div class="card" lang="en" data-no-translate=""><h3>Max / Live</h3><p>Owns the native UI, Live parameter identities, MIDI mapping and the per-Set state contract.</p></div>
+<div class="card" lang="en" data-no-translate=""><h3>Node</h3><p>Hosts the local bridge and library metadata, forwards live controls and owns the dedicated Chromium session lifecycle.</p></div>
+<div class="card" lang="en" data-no-translate=""><h3>Chromium</h3><p>Draws Canvas/WebGL tools, composes the five Layers and processes effects through the existing renderer.</p></div>
+</div>
+<div class="callout">
+<strong>No Jitter renderer</strong>
+<p>INDEX HTML stays browser-native. The fundamental split is simple: Max decides what happens; the browser decides how to draw it.</p>
+</div>
+</div>
+</details>
+<section aria-labelledby="support-heading" class="manual-section support-section" id="support">
+<div class="support-heading">
+<span class="section-title" id="support-heading">Support</span>
+<span class="section-summary">Report an issue or get in touch.</span>
+</div>
+<div class="section-body"><div class="card">
+<h3>REPORT AN ISSUE</h3>
+<p>Having trouble with INDEX HTML BRIDGE? Get in touch.</p>
+<p style="margin-top:12px"><a class="support-button" href="mailto:matteo.sonodgtl@gmail.com" id="support-email">REPORT AN ISSUE</a></p>
+</div></div>
+</section>
+</section></main>
+<footer class="site-home-footer"><div class="site-shell">
+<div class="footer-signature"><span class="footer-signature-left">© 2026 BeerBelgio</span><span aria-hidden="true" class="footer-signature-dot">·</span><span class="footer-signature-right">FUN IS A SERIOUS THING</span></div>
+<nav aria-label="B4M4L links" class="footer-links">
+<a class="privacy-link" href="../privacy/index.html">PRIVACY</a>
+<a href="https://ko-fi.com/beerbelgio" rel="noopener noreferrer" target="_blank">SHOP <span aria-hidden="true" class="link-arrow"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg></span></a>
+<a href="https://maxforlive.com/profile/user/BeerBelgio" rel="noopener noreferrer" target="_blank">MAXFORLIVE.COM <span aria-hidden="true" class="link-arrow"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg></span></a>
+<a class="hub-link" href="https://beerbelgio.github.io/" rel="noopener noreferrer" target="_blank"><span>BEERBELGIO</span><img alt="" aria-hidden="true" src="../assets/brand/beerbelgio-button.svg"/></a>
+</nav>
+</div></footer>
+<dialog aria-describedby="translation-dialog-message" aria-labelledby="translation-dialog-title" class="b4-translation-dialog" id="b4-translation-dialog"><div class="translation-dialog-inner"><h2 id="translation-dialog-title">TRANSLATION NOTICE</h2><p id="translation-dialog-message">Please note that this is an automatically generated translation and has not been manually verified. If something looks wrong, please report it.</p><p>Want a new language? Let me know ♥</p><div class="translation-dialog-actions"><a href="mailto:matteo.sonodgtl@gmail.com?subject=B4M4L%20translation%20feedback">REPORT / REQUEST LANGUAGE <span aria-hidden="true" class="link-arrow"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg></span></a><button data-close-translation-dialog="" type="button">GOT IT</button></div></div></dialog><script src="help/help-manifest.js?v=16262c3766"></script>
+<script>
+    (() => {
+      const $ = (sel, root = document) => root.querySelector(sel);
+      const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+      const manifestUrl = 'help/help-manifest.json';
+      let manifest = null;
+      const fallbackManifest = window.INDEX_HELP_MANIFEST || null;
+
+      const friendlyStatus = (value) => String(value || '')
+        .replaceAll('_', ' ')
+        .replace(/\b\w/g, c => c.toUpperCase());
+
+      const pill = (text) => {
+        const span = document.createElement('span');
+        span.className = 'pill';
+        span.textContent = text;
+        return span;
+      };
+
+      const addRow = (root, label, value) => {
+        const l = document.createElement('div');
+        l.className = 'label';
+        l.textContent = label;
+        const v = document.createElement('div');
+        v.className = 'value';
+        v.textContent = value;
+        root.append(l, v);
+      };
+
+      const coreControlMap = {
+        'project-link': ['INDEX HTML', 'Open the INDEX HTML project website.'],
+        'repository-link': ['?', 'Open the local HELP in this testing build; public releases will open the online B4~M4L manual.'],
+        'live-render': ['RENDER', 'Open the live external Chromium compositor.'],
+        'layer-visible': ['Layer visibility', 'Include or exclude L1–L5 from the composition independently from editor state.'],
+        'layer-editor': ['Layer editor', 'Open one Layer editor at a time; click the same control again to close it.']
+      };
+
+      function renderCore(d) {
+        const table = $('#core-controls');
+        table.innerHTML = '';
+        const controls = d.ui?.controls || [];
+        Object.entries(coreControlMap).forEach(([id, fallback]) => {
+          const found = controls.find(c => c.id === id);
+          addRow(table, fallback[0], id === 'repository-link' ? fallback[1] : (found?.action || fallback[1]));
+        });
+      }
+
+      function renderMeta(d) {
+        const build = d.device?.build || d.generatedForBuild || '—';
+        $('#build-chip').textContent = String(build);
+        if ($('#footer-build')) $('#footer-build').textContent = String(build);
+        const email = $('#support-email');
+        if (email) {
+          const body = ["Hello,","","I'm contacting you about an issue with INDEX HTML BRIDGE.","","Bridge version: " + build,"","Ableton Live version:","","Max version:","","Operating system:","","Description of the issue:","","Steps to reproduce:","","Expected behavior:","","Actual behavior:","","You may attach relevant Max Console messages, screenshots, diagnostic reports or any other files that could help investigate the issue.","","Please review attachments before sending: diagnostic files may include local file paths, project information or personal data."].join('\n');
+          email.href = 'mailto:matteo.sonodgtl@gmail.com?subject=' + encodeURIComponent('INDEX HTML BRIDGE — Support Request') + '&body=' + encodeURIComponent(body);
+        }
+
+        const project = d.ui?.controls?.find(c => c.id === 'project-link');
+        const repo = d.library?.remote?.repository;
+        if (project?.url && $('#project-link')) $('#project-link').href = project.url;
+        if (repo && $('#repo-link')) $('#repo-link').href = `https://github.com/${repo}`;
+      }
+
+      function renderParameters(d) {
+        const count = d.parameters?.liveParameterCount ?? d.device?.liveParameterCount;
+        const bank = d.parameters?.bankStructure || {};
+        if (count != null) {
+          $('#parameter-count-copy').textContent = `87 functional Live controls keep their identities, with one separate hidden performance gauge (${count} numeric identities total). Functional controls stay identity-sensitive for automation and external modulation. The five Layers expose up to ${bank.numericSlotsPerLayer ?? 12} numeric slots each, plus host controls such as color opacity and visibility.`;
+        }
+      }
+
+      function renderColor(d) {
+        const c = d.colorsAndBlend || {};
+        $('#color-copy').textContent = `Up to ${c.maximumColorSlotsPerLayer ?? 4} manifest-defined colors per Layer. Edit them with the native picker or ${c.hexFormat || '#RRGGBB'} text; unused slots display UNUSED.`;
+        const root = $('#blend-pills');
+        root.innerHTML = '';
+        (c.blend?.visibleOptions || ['Normal', 'Add', 'Multiply', 'Screen']).forEach(x => root.appendChild(pill(x)));
+      }
+
+      function renderMidi(d) {
+        const root = $('#midi-source-pills');
+        root.innerHTML = '';
+        (d.midi?.sources || ['NONE', 'MIDI NOTE', 'MIDI CC']).forEach(x => root.appendChild(pill(x)));
+      }
+
+      function renderLibrary(d) {
+        const statusRoot = $('#library-status-pills');
+        statusRoot.innerHTML = '';
+        (d.library?.statuses || []).forEach(s => {
+          const row = document.createElement('div');
+          row.className = 'library-status-definition';
+          row.appendChild(pill(s.id));
+          const explanation = document.createElement('p');
+          explanation.textContent = s.meaning || '';
+          row.appendChild(explanation);
+          statusRoot.appendChild(row);
+        });
+      }
+
+      function renderIssues(d) {
+        const grid = $('#issues-grid');
+        grid.innerHTML = '';
+        (d.knownIssues || []).forEach(issue => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          if (issue.id.startsWith('rc3-')) { card.lang='en'; card.setAttribute('data-no-translate',''); }
+          const h = document.createElement('h3');
+          h.textContent = friendlyStatus(issue.id);
+          const p = document.createElement('p');
+          p.textContent = issue.fact;
+          const status = document.createElement('div');
+          status.className = 'status-line';
+          const dot = document.createElement('span');
+          dot.className = 'state-dot progress';
+          const copy = document.createElement('span');
+          copy.className = 'status-copy';
+          copy.textContent = `${friendlyStatus(issue.implementationStatus)} · ${friendlyStatus(issue.runtimeValidation)}`;
+          status.append(dot, copy);
+          card.append(h, p, status);
+          grid.appendChild(card);
+        });
+
+        const list = $('#limitations-list');
+        list.innerHTML = '';
+        (d.limitations || []).forEach(lim => {
+          const li = document.createElement('li');
+          li.textContent = lim.fact;
+          list.appendChild(li);
+        });
+      }
+
+      function render(d) {
+        if(d?.schemaVersion!==1 || d.device?.build!=='DEV2-2026-10-18')throw new Error('Unsupported LIVE documentation metadata.');
+        manifest = d;
+        document.body.dataset.docBuild=d.device.build;
+        renderMeta(d);
+        renderCore(d);
+        renderParameters(d);
+        renderColor(d);
+        renderMidi(d);
+        renderLibrary(d);
+        renderIssues(d);
+      }
+
+      async function loadManifest() {
+        if (location.protocol === 'file:' && fallbackManifest) { try { render(fallbackManifest); document.body.dataset.docManifest='mirror'; } catch(error) { document.body.dataset.docManifest='static'; $('#manifest-error').classList.add('visible'); } return; }
+        try {
+          const response = await fetch(manifestUrl, { cache: 'no-store' });
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          const data = await response.json();
+          render(data);
+          document.body.dataset.docManifest="loaded";
+        } catch (err) {
+          if (fallbackManifest) {
+            console.warn('INDEX HELP live manifest unavailable; using local JS mirror:', err);
+            try { render(fallbackManifest); document.body.dataset.docManifest="mirror"; } catch(error) { document.body.dataset.docManifest="static"; $("#manifest-error").classList.add("visible"); }
+          } else {
+            console.warn('INDEX HELP manifest unavailable:', err);
+            document.body.dataset.docManifest='static';
+            $('#manifest-error').classList.add('visible');
+          }
+        }
+      }
+
+      const manualSections = () => $$('details.manual-section');
+
+      function updateInfoToggle() {
+        const sections = manualSections();
+        const anyOpen = sections.some(d => d.open);
+        const button = $('#info-toggle');
+        button.textContent = anyOpen ? 'INFO −' : 'INFO +';
+        button.classList.toggle('is-negative', anyOpen);
+        button.setAttribute('aria-pressed', anyOpen ? 'true' : 'false');
+        button.setAttribute('aria-label', anyOpen ? 'Collapse all information' : 'Expand all information');
+      }
+
+      $('#info-toggle').addEventListener('click', () => {
+        const sections = manualSections();
+        const anyOpen = sections.some(d => d.open);
+        sections.forEach(d => d.open = !anyOpen);
+        clearTargetState();
+        updateInfoToggle();
+      });
+
+
+      function updateStickyOffset() {
+        const bar = $('.topbar');
+        const h = bar ? Math.ceil(bar.getBoundingClientRect().height) : 58;
+        document.documentElement.style.setProperty('--sticky-offset', `${h + 14}px`);
+      }
+
+      function clearTargetState() {
+        $$('.nav-link').forEach(a => a.classList.remove('active'));
+      }
+
+      function scrollTargetIntoView(target) {
+        const bar = $('.topbar');
+        const offset = (bar ? Math.ceil(bar.getBoundingClientRect().height) : 62) + 14;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: Math.max(0, top), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      }
+
+      function goToSection(id, updateHash = true) {
+        const target = document.getElementById(id);
+        if (!target) return;
+        clearTargetState();
+
+        const sections = manualSections();
+        if (target.matches('details.manual-section')) {
+          sections.forEach(section => { section.open = section === target; });
+          $$(`.nav-link[href="#${id}"]`).forEach(link => link.classList.add('active'));
+        } else if (id === 'quick-start') {
+          sections.forEach(section => { section.open = false; });
+          $$(`.nav-link[href="#${id}"]`).forEach(link => link.classList.add('active'));
+        } else if (id === 'support') {
+          $$(`.nav-link[href="#${id}"]`).forEach(link => link.classList.add('active'));
+        }
+
+        updateInfoToggle();
+        requestAnimationFrame(() => {
+          updateStickyOffset();
+          scrollTargetIntoView(target);
+          if (updateHash) history.replaceState(null, '', `#${id}`);
+          setTimeout(() => scrollTargetIntoView(target), 220);
+        });
+      }
+
+      $$('.nav-link').forEach(link => {
+        link.addEventListener('click', (event) => {
+          const id = link.getAttribute('href')?.replace(/^#/, '');
+          if (!id) return;
+          event.preventDefault();
+          goToSection(id);
+        });
+      });
+
+      $$('details.manual-section').forEach(section => {
+        section.addEventListener('toggle', () => {
+          const id = section.id;
+          if (!section.open) {
+            $$(`.nav-link[href="#${id}"]`).forEach(link => link.classList.remove('active'));
+          }
+          updateInfoToggle();
+        });
+      });
+
+      function updateDockedNavigation() {
+        const hero = $('.hero');
+        const bar = $('.topbar');
+        if (!hero || !bar) return;
+        const docked = hero.getBoundingClientRect().bottom <= Math.ceil(bar.getBoundingClientRect().height) + 4;
+        document.body.classList.toggle('nav-docked', docked);
+        updateStickyOffset();
+      }
+
+      window.addEventListener('scroll', updateDockedNavigation, { passive: true });
+      window.addEventListener('resize', () => { updateStickyOffset(); updateDockedNavigation(); }, { passive: true });
+      updateStickyOffset();
+      updateDockedNavigation();
+      updateInfoToggle();
+
+      if (location.hash) {
+        window.addEventListener('load', () => {
+          const id = location.hash.slice(1);
+          setTimeout(() => goToSection(id, false), 60);
+        }, { once: true });
+      }
+
+      renderMeta({device:{build:'DEV2-2026-10-18'}}); // Static support remains complete if metadata cannot load.
+      loadManifest();
+    })();
+  </script>
+<script src="../assets/js/i18n.js?v=4d15a9dc46"></script></body>
+</html>

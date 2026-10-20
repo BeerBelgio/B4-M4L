@@ -1,0 +1,26 @@
+/* B4~M4L language selector; shared UI in all pages. */
+.language-control{display:inline-flex;align-items:center;gap:6px;flex:0 0 auto;position:relative;color:#000}
+.language-control select{appearance:none;-webkit-appearance:none;background:transparent;color:inherit;border:1px solid rgba(0,0,0,.45);border-radius:999px;padding:5px 25px 5px 10px;font:700 13px/1.25 "Barlow Condensed",sans-serif;min-height:30px;cursor:pointer}
+.language-control:after{content:"⌄";pointer-events:none;position:absolute;right:10px;top:50%;transform:translateY(-58%);font:700 16px "Barlow Condensed",sans-serif}
+.language-control select:hover,.language-control select:focus-visible{border-color:#ec6b2d;outline-offset:3px}
+.top-actions .language-control{order:0}
+.top-actions .nav-help-button{order:1}
+.top-actions #info-toggle{order:2}
+.top-actions .chip{order:3}
+.translation-status{padding:10px 14px;border-left:3px solid #ec6b2d;background:#fff6ee;font:500 13px/1.45 "M PLUS Rounded 1c",sans-serif;margin:14px 0 18px;color:#232323;}
+.translation-status[hidden]{display:none}
+@media(max-width:650px){.language-control select{font-size:12px}.top-actions{gap:5px}}
+
+/* Locale is now chosen from the Documentation section, not the global header. */
+.help-language-control select{field-sizing:content;}
+
+/* V0.7 — typography-first dropdown; icon is aligned to the text baseline. */
+.help-language-control{display:inline-flex;align-items:center;position:relative;width:max-content;max-width:100%;margin:0;padding:0;}
+.help-language-control select{appearance:none;-webkit-appearance:none;field-sizing:content;box-sizing:border-box;width:auto!important;max-width:100%;padding:3px 21px 3px 0;margin:0;border:0!important;border-radius:0;background:transparent;color:inherit;font:800 15px/1.2 "Barlow Condensed",sans-serif;letter-spacing:.03em;text-transform:uppercase;cursor:pointer;}
+.help-language-control .select-chevron{display:flex;align-items:center;justify-content:center;position:absolute;top:50%;right:0;transform:translateY(-50%);pointer-events:none;width:13px;height:13px;font-size:0;}
+.help-language-control .locale-chevron{width:13px;height:13px;display:block;}
+.help-language-control select:hover{color:#c94b2e;}
+.help-language-control select:focus-visible{outline:2px solid #ec6b2d!important;outline-offset:5px;}
+@media(max-width:620px){.help-language-control select{font-size:13px;} }
+.b4-translation-dialog .link-arrow{display:inline-flex;width:14px;height:14px;vertical-align:middle;}
+.b4-translation-dialog .link-arrow svg{width:100%;height:100%;}

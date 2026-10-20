@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="Consequence of Time: B4M4L development documentation preview, compatibility and support." name="description"/><title>Consequence of Time — B4~M4L</title><link href="../assets/brand/favicon-tilde.svg" rel="icon" type="image/svg+xml"/>
+<link href="../assets/fonts/barlow-condensed/font.css?v=1fdd6c9837" rel="stylesheet"/>
+<link href="../assets/fonts/m-plus-rounded-1c/font.css?v=44ba9e7308" rel="stylesheet"/><link href="../assets/css/site.css?v=0f21d0e35e" rel="stylesheet"/>
+<style>
+
+
+    :root {
+      --ink: #000000;
+      --paper: #f1f1ee;
+      --paper-2: #f4f4f0;
+      --panel: #fafaf7;
+      --accent: #ec6b2d;
+      --accent-deep: #c94b2e;
+      --green: #6a9e5d;
+      --muted: rgba(0, 0, 0, 0.64);
+      --hair: rgba(0, 0, 0, 0.11);
+      --hair-strong: rgba(0, 0, 0, 0.22);
+      --radius: 14px;
+      --shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+      --content: 1120px;
+      --font-body: "M PLUS Rounded 1c", ui-rounded, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      --sticky-offset: 78px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.52;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    button, summary { font: inherit; }
+    .hero-brand,
+    h1,
+    .quick-header h2,
+    .quick-step h3,
+    .section-title,
+    .card h3,
+    .nav-link {
+      font-family: var(--font-display);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--hair-strong);
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .topbar-inner {
+      width: min(calc(100% - 20px), var(--content));
+      margin: 0 auto;
+      min-height: 62px;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 12px;
+      padding: 7px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+      flex: 0 0 auto;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .mini-logo-wrap {
+      position: relative;
+      width: 34px;
+      height: 34px;
+      display: block;
+      flex: 0 0 auto;
+      transition: transform .15s ease;
+    }
+    .mini-logo {
+      position: absolute;
+      inset: 0;
+      width: 34px;
+      height: 34px;
+      display: block;
+      object-fit: contain;
+      transition: opacity .15s ease;
+    }
+    .mini-logo.orange { opacity: 0; }
+    .brand:hover .mini-logo.black,
+    .brand:focus-visible .mini-logo.black { opacity: 0; }
+    .brand:hover .mini-logo.orange,
+    .brand:focus-visible .mini-logo.orange { opacity: 1; }
+    .brand:active .mini-logo-wrap { transform: scale(.94); }
+
+    .sticky-nav {
+      display: none;
+      min-width: 0;
+      width: 100%;
+      padding: 2px 0;
+      gap: 6px;
+    }
+    body.nav-docked .sticky-nav {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr)) minmax(110px, 1.7fr) repeat(3, minmax(0, 1fr));
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 7px;
+      flex-wrap: nowrap;
+      justify-self: end;
+      white-space: nowrap;
+    }
+
+
+    .chip, .mini-button, .nav-link {
+      min-height: 30px;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 5px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+
+    .mini-button {
+      cursor: pointer;
+      transition: background .15s ease, color .15s ease, transform .15s ease;
+    }
+    .mini-button:hover { background: var(--ink); color: var(--paper); }
+    .mini-button:active { transform: translateY(1px); }
+    .mini-button.is-negative {
+      background: var(--ink);
+      color: var(--paper);
+    }
+    .mini-button.is-negative:hover {
+      background: transparent;
+      color: var(--ink);
+    }
+main {
+      width: min(calc(100% - 28px), var(--content));
+      margin: 0 auto;
+      padding: 52px 0 90px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(340px, .88fr);
+      gap: 38px;
+      align-items: stretch;
+      margin-bottom: 32px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-deep);
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(78px, 10.4vw, 136px);
+      line-height: .9;
+      letter-spacing: .025em;
+      font-weight: 900;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .hero-lede {
+      max-width: 720px;
+      margin: 0;
+      font-size: clamp(17px, 1.9vw, 22px);
+      line-height: 1.34;
+      letter-spacing: -0.01em;
+      font-weight: 400;
+    }
+
+    .hero-copy {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .hero-brand {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(18px, 2.2vw, 28px);
+      line-height: 1;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .hero-menu {
+      align-self: stretch;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: 1fr;
+      gap: 10px;
+      padding: 0;
+    }
+
+    .hero-menu .nav-link {
+      min-height: 48px;
+      justify-content: flex-start;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .sticky-nav .nav-link {
+      width: 100%;
+      min-height: 32px;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .045em;
+    }
+
+    .nav-link {
+      border-color: var(--hair-strong);
+      transition: border-color .15s ease, background .15s ease, color .15s ease;
+    }
+    .nav-link:hover { border-color: var(--ink); background: rgba(255,255,255,.18); }
+    .nav-link.active { border-color: var(--accent); background: var(--accent); color: var(--ink); }
+
+
+
+    .quick-start {
+      scroll-margin-top: var(--sticky-offset);
+      border: 2px solid var(--ink);
+      border-radius: var(--radius);
+      background: var(--accent);
+      color: var(--ink);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
+
+    .quick-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px 20px 14px;
+      border-bottom: 1px solid rgba(28, 23, 19, .28);
+    }
+    .quick-header h2 {
+      margin: 0;
+      font-size: 25px;
+      font-weight: 600;
+      letter-spacing: .02em;
+    }
+    .quick-header p {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      opacity: .72;
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+
+    .quick-step {
+      min-height: 238px;
+      padding: 18px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+      border-right: 1px solid rgba(28, 23, 19, .28);
+      border-bottom: 1px solid rgba(28, 23, 19, .28);
+      grid-column: span 2;
+    }
+    .quick-step:nth-child(3) { border-right: 0; }
+    .quick-step:nth-child(4),
+    .quick-step:nth-child(5) {
+      grid-column: span 3;
+      border-bottom: 0;
+    }
+    .quick-step:nth-child(5) { border-right: 0; }
+    .quick-step.no-media { min-height: 168px; }
+    .quick-copy { min-width: 0; }
+    .quick-media {
+      margin: auto 0 0;
+      border: 1px solid rgba(28, 23, 19, .38);
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(255,255,255,.26);
+      min-height: 118px;
+      display: grid;
+      place-items: center;
+    }
+    .quick-media img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 210px;
+      object-fit: contain;
+    }
+    .step-no {
+      display: block;
+      width: 28px;
+      height: 28px;
+      border: 1.5px solid var(--ink);
+      border-radius: 50%;
+      line-height: 25px;
+      text-align: center;
+      font-weight: 800;
+      font-size: 12px;
+      margin-bottom: 26px;
+    }
+    .quick-step h3 {
+      margin: 0 0 6px;
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: .035em;
+    }
+    .quick-step p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.46;
+    }
+
+    .manual {
+      display: grid;
+      gap: 10px;
+    }
+
+    details.manual-section,
+    section.manual-section.support-section {
+      border: 1px solid var(--hair-strong);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.18);
+      overflow: hidden;
+      scroll-margin-top: var(--sticky-offset);
+      transition: background .15s ease, border-color .15s ease;
+    }
+    details.manual-section[open] {
+      background: var(--panel);
+      border-color: var(--ink);
+    }
+    details.manual-section[open] .section-title { color: var(--accent); }
+
+    details.manual-section > summary,
+    .support-section > .support-heading {
+      list-style: none;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: minmax(150px, .55fr) minmax(0, 1.45fr) auto;
+      gap: 24px;
+      align-items: center;
+      min-height: 74px;
+      padding: 14px 18px;
+      user-select: none;
+    }
+    details.manual-section > summary::-webkit-details-marker { display: none; }
+    .support-section {
+      background: var(--panel) !important;
+      border-color: var(--ink) !important;
+    }
+    .support-section .section-title { color: var(--accent); }
+    .support-section > .support-heading { cursor: default; }
+
+    /* Only the Support email control: 125% size and high-contrast interaction. */
+    #support-email {
+      min-height: 38px;
+      padding: 7px 13px;
+      font-size: 15px;
+      background: transparent;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      touch-action: manipulation;
+    }
+    #support-email:hover,
+    #support-email:active,
+    #support-email:focus-visible {
+      background: var(--accent);
+      color: var(--ink);
+    }
+    #support-email:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: .035em;
+      text-transform: uppercase;
+    }
+    .section-summary {
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .section-toggle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid var(--ink);
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      line-height: 1;
+      transition: transform .18s ease, background .18s ease, color .18s ease;
+    }
+    details[open] .section-toggle {
+      transform: rotate(45deg);
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .section-body {
+      border-top: 1px solid var(--hair);
+      padding: 22px 18px 24px;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .section-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card {
+      border-top: 1px solid var(--ink);
+      padding: 11px 0 2px;
+    }
+    .card h3 {
+      margin: 0 0 7px;
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .055em;
+    }
+    .card p, .card li {
+      font-size: 15px;
+      color: var(--muted);
+    }
+    .card p { margin: 0; }
+    .card ul, .card ol { margin: 8px 0 0; padding-left: 18px; }
+    .card li + li { margin-top: 5px; }
+
+    .control-table {
+      display: grid;
+      grid-template-columns: minmax(120px, .58fr) minmax(0, 1.42fr);
+      border-top: 1px solid var(--ink);
+      margin-top: 4px;
+    }
+    .control-table > div {
+      padding: 9px 0;
+      border-bottom: 1px solid var(--hair);
+      font-size: 15px;
+    }
+    .control-table .label {
+      padding-right: 16px;
+      font-weight: 750;
+      letter-spacing: .02em;
+    }
+    .control-table .value { color: var(--muted); }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 9px;
+    }
+    .pill {
+      border: 1px solid var(--hair-strong);
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: .025em;
+    }
+
+    .callout {
+      border: 1px solid var(--ink);
+      border-left-width: 7px;
+      border-radius: 10px;
+      padding: 13px 14px;
+      margin-top: 14px;
+      background: rgba(255,255,255,.18);
+    }
+    .callout.warning { border-left-color: var(--accent-deep); }
+    .callout.ok { border-left-color: var(--green); }
+    .callout strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+    .callout p { margin: 0; font-size: 15px; color: var(--muted); }
+
+    .status-line {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .state-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--hair-strong);
+    }
+    .state-dot.ok { background: var(--green); }
+    .state-dot.progress { background: var(--accent); }
+    .state-dot.planned { background: var(--accent-deep); }
+    .status-copy { font-size: 13.5px; color: var(--muted); }
+
+    code {
+      font-family: var(--mono);
+      font-size: .92em;
+      background: rgba(28,23,19,.07);
+      border-radius: 5px;
+      padding: 1px 4px;
+    }
+
+    .help-media {
+      margin-top: 16px;
+      border: 1px solid var(--hair-strong);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--panel);
+    }
+    .help-media img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .help-media figcaption {
+      padding: 9px 11px;
+      border-top: 1px solid var(--hair);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      gap: 16px;
+      margin-top: 48px;
+      padding-top: 16px;
+      border-top: 2px solid var(--ink);
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .footer-left { justify-self: start; min-width: 0; }
+    .footer-center { justify-self: center; color: var(--ink); font-weight: 700; }
+    .footer-right { justify-self: end; }
+    .footer a { color: inherit; text-decoration: none; }
+    .footer a:hover, .footer a:focus-visible { color: var(--accent-deep); }
+    .footer-wordmark {
+      display: block;
+      width: 96px;
+      height: auto;
+    }
+
+    .manifest-error {
+      display: none;
+      margin: 18px 0;
+      border: 2px solid var(--accent-deep);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: rgba(201,75,46,.07);
+      font-size: 14px;
+    }
+    .manifest-error.visible { display: block; }
+
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; align-items: start; }
+      .hero-menu { min-height: 260px; }
+      body.nav-docked .topbar-inner { grid-template-columns: auto minmax(0,1fr) auto; }
+      body.nav-docked .sticky-nav {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      }
+      body.nav-docked .sticky-nav .nav-link {
+        min-height: 34px;
+        padding: 6px 10px;
+        font-size: 15px;
+        letter-spacing: .045em;
+      }
+      .quick-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .quick-step,
+      .quick-step:nth-child(4),
+      .quick-step:nth-child(5) {
+        grid-column: auto;
+        border-right: 1px solid rgba(28, 23, 19, .28);
+        border-bottom: 1px solid rgba(28, 23, 19, .28);
+      }
+      .quick-step:nth-child(2n) { border-right: 0; }
+      .quick-step:last-child { grid-column: 1 / -1; border-right: 0; border-bottom: 0; }
+      .quick-media { min-height: 110px; }
+      details.manual-section > summary, .support-section > .support-heading { grid-template-columns: minmax(130px,.6fr) 1fr auto; gap: 16px; }
+      .section-grid.three { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      :root { --sticky-offset: 128px; }
+      .topbar-inner { padding: 7px 0; gap: 7px; }
+      .top-actions { justify-self: end; gap: 5px; }
+      .chip, .mini-button { min-height: 28px; padding: 4px 8px; font-size: 10.5px; }
+      #support-email { min-height: 35px; padding: 5px 10px; font-size: 13.125px; }
+      .mini-logo { width: 32px; height: 32px; }
+      body.nav-docked .sticky-nav {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 5px;
+        width: 100%;
+      }
+      .sticky-nav .nav-link {
+        min-height: 34px;
+        padding: 6px 6px;
+        font-size: 15px;
+        letter-spacing: .025em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .hero-menu { grid-template-columns: 1fr 1fr; min-height: 300px; }
+      .hero-menu .nav-link { font-size: 15px; min-height: 50px; }
+      main { padding-top: 34px; }
+      h1 { font-size: clamp(66px, 20vw, 96px); line-height: .92; letter-spacing: .02em; }
+      .quick-grid { grid-template-columns: 1fr; }
+      .quick-step,
+      .quick-step:nth-child(4),
+      .quick-step:nth-child(5),
+      .quick-step:nth-child(2n) {
+        grid-column: auto;
+        border-right: 0;
+        border-bottom: 1px solid rgba(28, 23, 19, .28);
+        padding: 18px;
+      }
+      .quick-step:last-child { border-bottom: 0; }
+      details.manual-section > summary, .support-section > .support-heading { grid-template-columns: 1fr auto; gap: 10px; }
+      .section-summary { grid-column: 1 / -1; grid-row: 2; }
+      .section-grid, .section-grid.three { grid-template-columns: 1fr; }
+      .control-table { grid-template-columns: 1fr; }
+      .control-table .label { padding-bottom: 1px; border-bottom: 0; }
+      .control-table .value { padding-top: 1px; }
+      .footer {
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        gap: 6px;
+        font-size: clamp(8.5px, 2.45vw, 10.5px);
+      }
+      .footer-wordmark { width: clamp(62px, 18vw, 82px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+  
+
+    .mini-logo.single { position: static; width: 20px; height: 20px; }
+    .sticky-nav { display:flex; align-items:center; gap:6px; flex-wrap:wrap; min-width:0; width:100%; padding:2px 0; }
+    .sticky-nav .section-link { display:none; }
+    .sticky-nav .nav-help-link { display:inline-flex; }
+    body.nav-docked .sticky-nav .nav-help-link { display:none; }
+    body.nav-docked .sticky-nav .section-link { display:inline-flex; }
+    body.nav-docked .sticky-nav { display:flex; }
+    .topbar-inner { grid-template-columns:auto minmax(0,1fr) auto; }
+    .top-actions { gap:7px; }
+    .device-actions a .link-arrow, .site-home-footer .link-arrow, .topbar .link-arrow { width:14px; height:14px; }
+    .hero-device-wordmark { display:block; width:min(100%,540px); height:auto; }
+    .hero-copy { justify-content:center; }
+    .support-button { min-height:38px; padding:11px 20px; font:700 14px/1 var(--font-display); letter-spacing:.06em; text-transform:uppercase; border:1px solid var(--ink); border-radius:999px; background:transparent; color:var(--ink); display:inline-flex; align-items:center; justify-content:center; text-decoration:none; transition:background .15s ease,color .15s ease,transform .15s ease; }
+    .support-button:hover, .support-button:focus-visible { background:var(--accent); color:var(--ink); }
+    .support-button:active { transform:translateY(1px); }
+    .site-device-footer { margin-top:32px; border-top:1px solid #888; padding:23px 0 45px; }
+    .site-device-footer .site-shell { width:min(calc(100% - 28px), var(--content)); margin:0 auto; display:flex; justify-content:space-between; gap:20px; align-items:center; flex-wrap:wrap; }
+    .link-arrow { display:inline-flex; width:14px; height:14px; flex:0 0 auto; }
+    .link-arrow svg { width:100%; height:100%; display:block; stroke:currentColor; }
+    .device-card:hover .link-arrow, .device-card:focus-visible .link-arrow { color: var(--accent); }
+
+    .site-device-footer nav { display:flex; gap:20px; flex-wrap:wrap; }
+    .site-device-footer a { color:inherit; text-decoration:none; font:700 14px var(--font-display); }
+    .site-footer-brand { display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+    .site-footer-beerbelgio { display:inline-flex; align-items:center; gap:10px; text-decoration:none; font:700 14px var(--font-display); }
+    .site-footer-beerbelgio img { width:24px; height:24px; display:block; }
+    .site-footer-meta { font:700 13px var(--font-display); letter-spacing:.06em; }
+    .site-home-footer a:hover, .site-home-footer a:focus-visible, .device-actions a:hover, .device-actions a:focus-visible { color: var(--accent-deep); }
+    .device-actions a, .site-home-footer a { display:inline-flex; align-items:center; gap:8px; }
+    .device-cover-copy h2 { margin-bottom:24px; }
+    .section-title { font-family: var(--font-display); }
+    .chip { flex:0 0 auto; }
+    @media(max-width:900px){ .sticky-nav .nav-link{white-space:normal; min-width:0;} }
+    @media(max-width:700px){ .topbar-inner { grid-template-columns:auto minmax(0,1fr) auto; } .sticky-nav { justify-content:flex-start; } }
+    @media(max-width:620px){ .hero-menu { grid-template-columns:repeat(2,minmax(0,1fr)); } .hero-menu .nav-link{white-space:normal; overflow-wrap:anywhere;} .site-device-footer .site-shell, .site-footer-brand { align-items:flex-start; } .site-footer-brand{gap:10px; flex-direction:column;} }
+
+  
+    /* v0.3: consistent device overview, landscape device screenshot area. */
+    .device-cover {display:flex;flex-direction:column;gap:26px;min-height:0;margin-bottom:58px;}
+    .device-cover-copy {display:flex;flex-direction:column;align-items:flex-start;min-width:0;max-width:100%;}
+    .device-cover-copy > p {max-width:90ch;}
+    .device-cover-art {width:100%;aspect-ratio:2.6/1;min-height:235px;max-height:470px;padding:35px;}
+    .device-cover-art img {max-height:300px;width:100%;max-width:850px;object-fit:contain;}
+    .device-cover-copy h2 {font-size:clamp(57px,8.2vw,110px);line-height:.83;}
+    .topbar-inner {display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:12px;min-height:62px;}
+    .top-actions {grid-column:3;grid-row:1;display:flex;align-items:center;justify-self:end;gap:7px;flex-wrap:nowrap;white-space:nowrap;}
+    .nav-help-button {display:inline-flex;min-width:0;flex:0 0 auto;}
+    .sticky-nav,.sticky-nav .section-link {display:none;}
+    body.nav-docked .nav-help-button {display:none;}
+    body.nav-docked .sticky-nav {display:grid;grid-column:2;grid-row:1;grid-template-columns:repeat(12,minmax(0,1fr));align-items:stretch;gap:5px;width:100%;min-width:0;}
+    body.nav-docked .sticky-nav .section-link {display:flex;width:100%;min-width:0;min-height:32px;padding:5px 4px;white-space:normal;overflow-wrap:anywhere;text-overflow:clip;text-align:center;font-size:clamp(10px,.9vw,13px);line-height:1.1;}
+    .hero-copy {justify-content:center;}
+    .hero-device-wordmark {max-width:560px;width:min(100%,560px);max-height:200px;object-fit:contain;object-position:left center;}
+    .site-home-footer .site-shell {width:min(calc(100% - 28px),var(--content));}
+    @media (max-width:1020px) {
+      body.nav-docked .topbar-inner {grid-template-columns:auto minmax(0,1fr) auto;}
+      body.nav-docked .sticky-nav {grid-column:1/-1;grid-row:2;grid-template-columns:repeat(auto-fit,minmax(82px,1fr));}
+      body.nav-docked .sticky-nav .section-link {min-height:33px;font-size:12px;padding:6px 7px;}
+    }
+    @media (max-width:620px) {
+      .device-cover-art {aspect-ratio:2/1;min-height:180px;padding:22px;}
+      .device-cover-copy h2 {font-size:clamp(46px,12vw,73px);}
+      .topbar-inner {gap:7px;}
+      body.nav-docked .sticky-nav {grid-template-columns:repeat(auto-fit,minmax(82px,1fr));gap:5px;}
+      body.nav-docked .sticky-nav .section-link {min-height:34px;line-height:1.15;font-size:13px;padding:6px 5px;}
+      .hero-device-wordmark{max-height:145px;}
+    }
+
+    /* Keep the COT overview title at the same visual scale as Bridge while fitting its longer word. */
+    @media(min-width:1021px) {body.nav-docked .sticky-nav {grid-template-columns:repeat(10,minmax(0,1fr));}}
+    .cot-page .device-cover-copy h2 {font-size:clamp(49px,7.5vw,104px);}
+    @media(max-width:620px) {.cot-page .device-cover-copy h2 {font-size:clamp(43px,10.8vw,65px);}}
+
+  
+    /* V0.4: centre the tilde optically within its 34px header slot. */
+    .topbar .brand { display:inline-flex; align-items:center; justify-content:center; min-height:34px; }
+    .topbar .mini-logo-wrap { display:grid; place-items:center; width:34px; height:34px; }
+    .topbar .mini-logo.single { display:block; position:static; width:20px; height:20px; margin:0; }
+
+  
+/* B4~M4L v0.6: documentation locale control and rectangular action system. */
+.art-bridge{aspect-ratio:auto;height:clamp(130px,14vw,190px);min-height:0;}
+.device-release-row .preview-state,.device-release-row .device-actions a{border-radius:0;min-height:41px;display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;margin:0;line-height:1.2;font-family:var(--font-display);font-size:14px;}
+.device-release-row{gap:8px;margin-bottom:23px;}
+.device-release-row .device-actions{gap:8px;}
+.device-cover-art{width:100%;aspect-ratio:2.6;min-height:0;padding:24px;border-color:rgba(0,0,0,.28);}
+.device-cover-art img{max-height:100%;width:100%;height:100%;object-fit:contain;}
+.help-entry{display:flex;flex-wrap:wrap;gap:14px;}
+.help-entry-left{display:inline-flex;flex-wrap:wrap;align-items:center;gap:12px;min-width:0;}
+.help-locale-arrow{width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;color:var(--accent-deep);}
+.help-locale-arrow svg{width:100%;height:100%;}
+.help-language-control{position:relative;display:inline-flex;align-items:center;line-height:1;}
+.help-language-control select{font:800 15px/1.1 var(--font-display);letter-spacing:.05em;text-transform:uppercase;color:var(--ink);background:transparent;border:0;border-radius:0;appearance:none;-webkit-appearance:none;cursor:pointer;padding:4px 20px 4px 0;width:auto;min-width:4.6em;field-sizing:content;}
+.help-language-control select:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+.help-language-control .select-chevron{position:absolute;right:2px;top:50%;transform:translateY(-55%);pointer-events:none;font:800 18px/1 var(--font-display);}
+.help-entry-right{margin-left:auto;}
+.help-figure{display:block;width:100%;margin:0 0 22px;padding:16px;border:1px solid var(--hair-strong);background:var(--panel);}
+.help-figure img{display:block;width:100%;max-height:600px;object-fit:contain;}
+.b4-translation-dialog{max-width:min(490px,calc(100vw - 28px));padding:0;border:1px solid #000;border-radius:0;background:var(--paper);color:var(--ink);box-shadow:0 18px 60px rgba(0,0,0,.22);}
+.b4-translation-dialog::backdrop{background:rgba(0,0,0,.48);}
+.translation-dialog-inner{padding:25px;}
+.translation-dialog-inner h2{font:800 30px/1 var(--font-display);margin:0 0 18px;}
+.translation-dialog-inner p{font:400 14px/1.55 var(--font-body);margin:0 0 12px;}
+.translation-dialog-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-top:22px;}
+.translation-dialog-actions a,.translation-dialog-actions button{padding:9px 13px;border:1px solid #000;background:transparent;color:var(--ink);text-decoration:none;cursor:pointer;font:800 14px var(--font-display);}
+.translation-dialog-actions a:hover,.translation-dialog-actions button:hover,.translation-dialog-actions a:focus-visible,.translation-dialog-actions button:focus-visible{background:var(--accent);color:#000;}
+@media(max-width:600px){.help-entry{gap:9px}.help-entry-left{gap:8px}.help-language-control select{font-size:13px}.help-figure{padding:8px}.device-release-row .preview-state,.device-release-row .device-actions a{font-size:12px;min-height:36px}}
+
+
+/* V0.7: locale dropdown consistent with paper-style documentation heading. */
+.help-language-control{display:inline-flex;align-items:center;position:relative;max-width:100%;}
+.help-language-control select{appearance:none;-webkit-appearance:none;field-sizing:content;width:auto!important;max-width:100%;border:none!important;border-radius:0!important;background:transparent;padding:3px 21px 3px 0!important;margin:0;font:800 15px/1.2 var(--font-display);letter-spacing:.02em;cursor:pointer;}
+.help-language-control .select-chevron{display:flex;position:absolute;right:0;top:50%;transform:translateY(-50%);width:14px;height:14px;pointer-events:none;font-size:0;}
+.help-language-control .locale-chevron{display:block;width:14px;height:14px;}
+.help-language-control select:focus-visible{outline:2px solid var(--accent)!important;outline-offset:3px;}
+
+
+/* v0.7: no chopped words in sticky navigation; use rows at narrow widths. */
+body.nav-docked .sticky-nav{display:flex!important;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:5px;grid-template-columns:none!important;}
+body.nav-docked .sticky-nav .nav-link{flex:0 0 auto!important;width:auto!important;min-width:0!important;white-space:nowrap!important;overflow-wrap:normal!important;word-break:normal!important;font-size:12px!important;line-height:1.05!important;padding:6px 9px!important;min-height:30px!important;}
+@media(max-width:700px){body.nav-docked .sticky-nav{gap:4px}body.nav-docked .sticky-nav .nav-link{font-size:11px!important;padding:5px 7px!important;}}
+
+</style><link href="../assets/css/i18n.css?v=8f5609008d" rel="stylesheet"/><style>
+/* V0.5 horizontal overview title: outranks the legacy inline device page rules. */
+.device-cover-copy h2.device-one-line {font-size:clamp(20px,4.7vw,78px)!important;line-height:1!important;letter-spacing:-.006em!important;white-space:nowrap!important;}
+@media(max-width:400px) { .device-cover-copy h2.device-one-line {font-size:clamp(19px,5vw,27px)!important;} }
+</style><link rel="stylesheet" href="../assets/css/max-components.css?v=dbfc8ded10"/>
+<link rel="stylesheet" href="../assets/css/max-style.css?v=45e7fad548"/><script defer src="../assets/js/max-cords.js?v=e87f58e393"></script><script defer src="../assets/js/max-home.js?v=7aad1e80af"></script><script defer src="help/help-manifest.js?v=949b5635fa"></script><script defer src="../assets/js/device-docs.js?v=bb64785fd5"></script></head><body class="cot-page">
+<header class="topbar">
+<div class="topbar-inner">
+<a aria-label="B4M4L home" class="brand" href="../index.html">
+<span aria-hidden="true" class="mini-logo-wrap">
+<img alt="" class="mini-logo single" src="../assets/brand/favicon-tilde.svg"/>
+</span>
+</a>
+<nav aria-label="Documentation navigation" class="sticky-nav">
+<a class="nav-link section-link max-message" href="#quick-start">Quick</a>
+<a class="nav-link section-link max-message" href="#main">Main</a>
+<a class="nav-link section-link max-message" href="#audio">Audio</a>
+<a class="nav-link section-link max-message" href="#time">Time</a>
+
+<a class="nav-link section-link max-message" href="#mixed">MIXED</a><a class="nav-link section-link max-message" href="#mapping">Mapping</a>
+<a class="nav-link section-link max-message" href="#sidechain">Sidechain</a>
+<a class="nav-link section-link max-message" href="#troubleshooting">Trouble</a>
+<a class="nav-link section-link max-message" href="#architecture">Under</a>
+<a class="nav-link section-link max-message" href="#support">Support</a>
+</nav><div class="top-actions">
+<a class="mini-button nav-help-button" href="#help">HELP</a><button aria-pressed="false" class="mini-button" id="info-toggle" type="button">INFO +</button><span class="chip" data-cot-build>v0.1.6.4</span></div></div></header>
+<main><div class="site-breadcrumb"><a href="../index.html">← ALL DEVICES</a><span> / CONSEQUENCE OF TIME</span></div>
+<div class="max-device-overview" data-patch-graph><section aria-label="Consequence of Time overview" class="device-cover"><div class="device-cover-copy"><div class="max-newobj max-device-title"><h2 data-device-title="" aria-label="CONSEQUENCE OF TIME" class="device-one-line"><span>CONSEQUENCE</span> <em>OF TIME</em></h2><span class="max-port outlet" data-port="title-state" aria-hidden="true" style="--port-x:45%"></span><span class="max-port outlet" data-port="title-actions" aria-hidden="true" style="--port-x:75%"></span><span class="max-port outlet" data-port="title-sections" aria-hidden="true" style="--port-x:18px"></span></div><div class="device-release-row"><div class="device-states" aria-label="Development status"><span class="preview-state max-message"><span class="max-port inlet" data-port="state-in" aria-hidden="true"></span><span class="max-port outlet" data-port="state-out" aria-hidden="true"></span>TESTING</span><span class="preview-state max-message"><span class="max-port inlet" data-port="staging-in" aria-hidden="true"></span>STAGING</span><span class="preview-state max-message"><span class="max-port inlet" data-port="distribution-in" aria-hidden="true"></span>NOT DISTRIBUTED</span></div><div class="device-actions"><a class="max-message" href="https://ko-fi.com/beerbelgio" rel="noopener noreferrer" target="_blank"><span class="max-port inlet" data-port="action-1" aria-hidden="true"></span>SHOP <span aria-hidden="true" class="link-arrow"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg></span></a><a class="max-message" href="https://maxforlive.com/profile/user/BeerBelgio" rel="noopener noreferrer" target="_blank"><span class="max-port inlet" data-port="action-2" aria-hidden="true"></span>MAXFORLIVE.COM <span aria-hidden="true" class="link-arrow"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg></span></a></div><a class="max-message max-quick-guide nav-link" href="#quick-start"><span class="max-port inlet" data-port="quick-guide-in" aria-hidden="true"></span>QUICK GUIDE<span class="max-port outlet" data-port="quick-guide-out" aria-hidden="true"></span></a></div><p>Consequence of Time is a modulation device that uses mathematical relationships between audio and time to reshape modulation organically. Dedicated controls let you decide how contact duration influences its behavior.</p></div><div class="max-render"><span class="max-port inlet" data-port="render-in" aria-hidden="true"></span><div class="max-window-title">RENDER <span>DEVICE VIEW</span></div><div aria-label="Consequence of Time full interface" class="device-cover-art max-render-content cot-render"><a href="../assets/device-illustrations/cot/total.svg" target="_blank" rel="noopener" aria-label="Open the full Consequence of Time interface SVG"><img width="1860" height="173" alt="Consequence of Time: sidechain, MAIN, Audio, Time and Mixed panels" src="../assets/device-illustrations/cot/total.svg"/></a></div></div></section>
+<section aria-labelledby="compatibility-heading" class="public-section"><div class="public-section-header"><span class="site-kicker max-message"><span class="max-port inlet" data-port="compat-number" aria-hidden="true"></span>01 / REQUIREMENTS<span class="max-port outlet" data-port="requirements-out" aria-hidden="true"></span></span><h2 class="max-newobj" id="compatibility-heading"><span class="max-port inlet" data-port="compat-in" aria-hidden="true"></span>COMPATIBILITY<span class="max-port outlet" data-port="compat-out" aria-hidden="true"></span></h2></div><div class="compat-grid"><div class="max-compat-card"><span class="max-port inlet" data-port="compat-1" aria-hidden="true"></span><span>DAW <small class="compat-evidence-label">/ TEST ENVIRONMENT</small></span><strong>Ableton Live 12 + Max for Live</strong><small>0.1.6.4 has scoped Apple Silicon evidence with Live 12.4.2 and bundled Max 9.1.4. These are test environments, not certified minimum requirements.</small></div><div class="max-compat-card"><span class="max-port inlet" data-port="compat-2" aria-hidden="true"></span><span>PLATFORM</span><strong>macOS development testing</strong><small>0.1.6.3 is the preserved development baseline. Earlier Intel feedback belongs to earlier builds; exact 0.1.6.4 Intel and Windows tests remain pending.</small></div><div class="max-compat-card"><span class="max-port inlet" data-port="compat-3" aria-hidden="true"></span><span>RUNTIME <small class="compat-evidence-label">/ DISTRIBUTION</small></span><strong>Not yet cleared</strong><small>Standalone portability and permission to redistribute stock mapping, embedded sidechain and associated resources remain unresolved. No public release or device download is offered.</small></div></div></section>
+<section aria-labelledby="changes-heading" class="public-section"><div class="public-section-header"><h2 class="max-newobj" id="changes-heading"><span class="max-port inlet" data-port="changes-in" aria-hidden="true"></span>CHANGELOG<span class="max-port outlet" data-port="changes-out" aria-hidden="true"></span></h2></div><details class="public-accordion max-release-window"><span class="max-port inlet" data-port="releases-in" aria-hidden="true"></span><summary><span>PUBLIC RELEASE NOTES</span><span aria-hidden="true" class="public-toggle">+</span></summary><div class="public-accordion-body"><p>No public release is currently confirmed. This documentation is a <strong>draft based on testing candidate 0.1.6.4</strong>; internal milestones are deliberately excluded from public release notes.</p></div></details></section>
+<div class="help-entry" id="help" data-patch-graph><span class="help-entry-left"><span class="site-kicker max-message"><span class="max-port inlet" data-flow-port="in" data-port="help-number-in" aria-hidden="true"></span>03 / DOCUMENTATION<span class="max-port outlet" data-flow-port="out" data-port="help-number-out" aria-hidden="true"></span></span><span class="help-locale-arrow" hidden><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12 H20"></path><path d="M14 6 L20 12 L14 18"></path></svg></span><label class="help-language-control max-message"><span class="max-port inlet" data-flow-port="in" data-port="language-in" aria-hidden="true"></span><select aria-label="Manual language" data-b4-language=""><option value="en">English</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="es">Español</option><option value="fr">Français</option></select><span aria-hidden="true" class="select-chevron"><svg aria-hidden="true" class="locale-chevron" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m5 9 7 7 7-7"></path></svg></span></label></span><h2 class="max-newobj max-help-title"><span class="max-port inlet" data-port="help-title-in" aria-hidden="true"></span>HELP<span class="max-port outlet" data-flow-port="out" data-port="help-title-out" aria-hidden="true"></span></h2><i hidden data-cable data-from="help-title-out" data-to="help-number-in" data-kind="normal" data-route="flow"></i><i hidden data-cable data-from="help-number-out" data-to="language-in" data-kind="jitter" data-route="flow"></i></div><i hidden data-cable data-from="title-state" data-to="state-in" data-kind="normal" data-route=""></i><i hidden data-cable data-from="title-state" data-to="staging-in" data-kind="normal" data-route=""></i><i hidden data-cable data-from="title-state" data-to="distribution-in" data-kind="normal" data-route=""></i><i hidden data-cable data-from="state-out" data-to="render-in" data-kind="normal" data-route="render"></i><i hidden data-cable data-from="title-actions" data-to="action-1" data-kind="normal" data-route=""></i><i hidden data-cable data-from="title-actions" data-to="action-2" data-kind="normal" data-route=""></i><i hidden data-cable data-from="title-sections" data-to="compat-in" data-kind="jitter" data-route="section"></i><i hidden data-cable data-from="title-sections" data-to="changes-in" data-kind="jitter" data-route="section"></i><i hidden data-cable data-from="title-sections" data-to="help-title-in" data-kind="jitter" data-route="section"></i><i hidden data-cable data-from="compat-out" data-to="compat-number" data-kind="normal" data-route=""></i><i hidden data-cable data-from="requirements-out" data-to="compat-1" data-kind="normal" data-route=""></i><i hidden data-cable data-from="requirements-out" data-to="compat-2" data-kind="normal" data-route=""></i><i hidden data-cable data-from="requirements-out" data-to="compat-3" data-kind="normal" data-route=""></i><i hidden data-cable data-from="changes-out" data-to="releases-in" data-kind="jitter" data-route=""></i><i hidden data-cable data-from="title-actions" data-to="quick-guide-in" data-kind="jitter" data-route=""></i><i hidden data-cable data-from="quick-guide-out" data-to="quick-start-in" data-kind="jitter" data-route="guide"></i><section class="hero">
+<div class="hero-copy">
+<img alt="CONSEQUENCE OF TIME" class="hero-device-wordmark" src="../assets/brand/consequence-of-time-wordmark.svg"/>
+</div>
+<nav aria-label="Help sections" class="hero-menu"><a class="nav-link max-message" href="#quick-start">Quick start</a><a class="nav-link max-message" href="#main">Main</a><a class="nav-link max-message" href="#audio">Audio</a><a class="nav-link max-message" href="#time">Time</a><a class="nav-link max-message" href="#mixed">MIXED</a><a class="nav-link max-message" href="#mapping">Mapping</a><a class="nav-link max-message" href="#sidechain">Sidechain</a><a class="nav-link max-message" href="#troubleshooting">Troubleshooting</a><a class="nav-link max-message" href="#architecture">Under the hood</a><a class="nav-link max-message" href="#support">Support</a></nav></section><section class="quick-start" id="quick-start"><span class="max-port inlet" data-port="quick-start-in" aria-hidden="true" style="--port-x:calc(100% - 24px)"></span><div class="quick-header"><h2>Quick start</h2><p>Development reference only · final installation workflow to be verified on the distributed build.</p></div><div class="quick-grid">
+<article class="quick-step"><div class="quick-copy"><span class="step-no">1</span><h3>Send some audio</h3><p>For an already prepared internal test runtime, use an audio track with real input. Independent installation of this candidate remains blocked.</p></div></article>
+<article class="quick-step"><div class="quick-copy"><span class="step-no">2</span><h3 lang="en" data-no-translate>Watch A, B and C</h3><p lang="en" data-no-translate>A follows intensity. B develops after contact qualifies. C can combine their final signals; start with neutral Audio Thru.</p></div></article>
+<article class="quick-step"><div class="quick-copy"><span class="step-no">3</span><h3>Shape the signals</h3><p lang="en" data-no-translate>Use AUDIO for Gain, A Rise/Fall and Threshold. Begin with TIME GATE 0, Threshold 5%, Tolerance 110 ms and CLEAN. Open MIXED independently.</p></div></article>
+<article class="quick-step"><div class="quick-copy"><span class="step-no">4</span><h3 lang="en" data-no-translate>Map independent destinations</h3><p lang="en" data-no-translate>A, B and C each have a native 1+7 mapper. Choose Mod or Remote deliberately and verify the actual target response after a Set reload.</p></div></article>
+<article class="quick-step"><div class="quick-copy"><span class="step-no">5</span><h3>Try behaviors</h3><p>Start in CLEAN, then explore the seven other modes and their Time Amount controls.</p></div></article>
+</div></section></div><section aria-label="Consequence of Time manual" class="manual"><p class="doc-sync-notice" data-no-translate><span lang="it">Le note aggiornate per le candidate attuali sono in inglese, in attesa di revisione delle traduzioni tecniche. Le altre sezioni conservano le traduzioni precedenti.</span><span lang="de">Die aktualisierten Hinweise zu den aktuellen Testversionen bleiben bis zur technischen Übersetzungsprüfung auf Englisch. Andere Abschnitte behalten ihre bisherigen Übersetzungen.</span><span lang="es">Las notas actualizadas de las candidatas actuales están en inglés, pendientes de revisión de la traducción técnica. Las demás secciones conservan sus traducciones anteriores.</span><span lang="fr">Les notes mises à jour pour les versions candidates actuelles restent en anglais, en attente de révision de la traduction technique. Les autres sections conservent leurs traductions précédentes.</span></p><p lang="en" data-no-translate class="doc-version-note">Guide: 0.1.6.4 REV10 internal testing candidate; preserved baseline 0.1.6.3. Scoped M5 audio, mapping and cold-recall evidence is available. Remote Unmap after recall remains a known limitation, also observed with the stock Envelope Follower in a separate M5 test; its cause is unproven. Exact 0.1.6.4 Intel and Windows validation is pending. Independent installation remains blocked. Illustrations show example settings, not factory defaults.</p><p class="manifest-fallback-note" id="cot-manifest-note" hidden>Live metadata unavailable. The versioned static guide remains readable.</p><details class="manual-section" id="main"><summary><span class="section-title">Main</span><span class="section-summary" lang="en" data-no-translate>Three independent carriers: audio A, time B and mixed C.</span><span aria-hidden="true" class="section-toggle">+</span></summary><div class="section-body"><div class="section-grid illustrated-guide"><div class="card"><h3>A / Audio Signal</h3><p>Tracks audio intensity via an envelope follower. A ranges from 0 to 1 and responds relatively quickly to changes in the source.</p></div><div class="card"><h3>B / Time Signal</h3><p>Accumulates recognized contact time. B also ranges from 0 to 1, but follows its own time engine, hold and decay.</p></div><div class="card"><h3>The scope</h3><p lang="en" data-no-translate>MAIN overlays three independent 0–1 traces: A green, B orange and C yellow. C reads final A/B without feedback and has its own MIXED scope and mapper.</p></div><figure class="device-figure"><img width="250" height="174" loading="lazy" src="../assets/device-illustrations/cot/core.svg" alt="Consequence of Time MAIN: independent A, B and C traces"></figure></div></div></details><details class="manual-section" id="audio"><summary><span class="section-title">Audio</span><span class="section-summary">Shape the audio-responsive signal A.</span><span aria-hidden="true" class="section-toggle">+</span></summary><div class="section-body"><div class="section-grid illustrated-guide"><div class="card"><h3>Audio source</h3><p>Use the main track input or select an external sidechain. Check routing when nothing moves.</p></div><div class="card"><h3>Gain</h3><p>Adjust incoming level before the signal is analyzed.</p></div><figure class="device-figure"><img width="409" height="174" loading="lazy" src="../assets/device-illustrations/cot/audio.svg" alt="Consequence of Time Audio: Gain, Rise, Fall, Amount, Threshold and mapper A"></figure><div class="card"><h3>A Rise / A Fall</h3><p>Set how quickly signal A reacts to increasing and decreasing audio intensity. These controls do not modify B Attack, Hold or Decay.</p></div><div class="card"><h3>Audio Amount</h3><p>Adjust the amount applied to normalized A. It is not the contact threshold used by the time engine.</p></div><div class="card" lang="en" data-no-translate><h3>Current panel labels</h3><p>Audio uses the shorter labels Rise, Fall, Amount and Threshold. Amount still scales A; Threshold still qualifies Time contact. The underlying Live names and all ranges, defaults and signal behavior are unchanged.</p></div></div></div></details><details class="manual-section" id="time"><summary><span class="section-title">Time</span><span class="section-summary">Build a time-driven signal B from recognized contact.</span><span aria-hidden="true" class="section-toggle">+</span></summary><div class="section-body"><div class="section-grid illustrated-guide"><div class="card"><h3>Contact threshold</h3><p lang="en" data-no-translate>AUDIO THRESHOLD is amplitude after Gain/Rise/Fall, before Audio Amount: UI 0–100%, effective clamp 0.1–95%, default 5%. TIME GATE is a separate qualification duration: 0–2000 ms, default 0, in 5 ms steps.</p></div><div class="card"><h3>Tolerance</h3><p lang="en" data-no-translate>After contact is active, the release threshold is 65% of AUDIO THRESHOLD. TOLERANCE allows continuous time below that release level before HOLD then DECAY. It does not qualify initial contact.</p></div><figure class="device-figure"><img width="625" height="174" loading="lazy" src="../assets/device-illustrations/cot/time.svg" alt="Consequence of Time Time: Behavior, Sync, timing controls and mapper B"></figure><div class="card"><h3>Window</h3><p>Choose BEATS (musical tempo) or TIME (elapsed time) as the accumulation window; the two modes retain separate values.</p></div><div class="card"><h3>Growth / Accel</h3><p lang="en" data-no-translate>Growth changes phase rate. Accel −10…+10, default 0.5, accelerates or slows forward growth without reversing phase. FREEZE may intentionally stop the phase.</p></div><div class="card"><h3>B Start / B Depth</h3><p>Set initial signal level and range of movement.</p></div><div class="card"><h3>B Attack / Hold / Decay</h3><p>Attack smooths growth, Hold keeps the value after contact is lost, Decay returns B toward zero.</p></div><div class="card" lang="en" data-no-translate><h3>Qualification example</h3><p>Threshold 5%, Gate 50 ms, Tolerance 110 ms: 50 ms continuously above 5% qualifies contact; falling below 5% resets qualification. A keeps moving. On qualification B starts at phase zero and grows from the next nominal 5 ms tick. Once active, 110 ms below 3.25% ends contact. Gate 0 retains immediate startup; timing is not sample-accurate.</p></div><div class="card" lang="en" data-no-translate><h3>Native time readings</h3><p>Window retains separate Beats/Time values. Native dials may display 1752.125 ms as 1.75 s without quantizing the stored value. B Start and REVERSE can produce positive B even at time phase zero.</p></div></div><section class="behavior-guide" id="behaviors"><h3>Behaviours</h3><p lang="en" data-no-translate>The patch already includes a concise message for the selected Behaviour. The supplied view shows CLEAN; this inline detail preserves that message. Only one mode is active at a time.</p><figure class="device-figure device-detail"><img width="357" height="25" loading="lazy" src="../assets/device-illustrations/cot/behaviour-message.svg" alt="Consequence of Time Behaviour message: CLEAN: contact-time growth. TIME AMOUNT inactive."><figcaption lang="en" data-no-translate>CLEAN: contact-time growth. TIME AMOUNT inactive.</figcaption></figure><div class="section-grid"><div class="card"><h3>CLEAN</h3><p>Pure time evolution. Time Amount has no effect in CLEAN.</p></div><div class="card"><h3>DEPTH</h3><p>Changes movement range in response to intensity.</p></div><div class="card"><h3>SPEED</h3><p>Changes accumulation speed in response to intensity.</p></div><div class="card"><h3>JITTER</h3><p>Adds signal-dependent irregular fluctuations.</p></div><div class="card"><h3>REVERSE</h3><p>May produce a descending positive curve, not negative output; transitions can be abrupt.</p></div><div class="card"><h3>FREEZE</h3><p>Can pause time progress when intensity meets its condition.</p></div><div class="card"><h3>STEPS</h3><p>Quantizes the time signal into discrete steps.</p></div><div class="card"><h3>CHAOS</h3><p>Combines speed changes and irregular fluctuations. Time Amount adjusts each active behavior, not the basic B Depth.</p></div></div></section></div></details><details class="manual-section" id="mixed"><summary><span class="section-title">MIXED</span><span class="section-summary" lang="en" data-no-translate>Relate the final audio and time signals through a third independent carrier.</span><span class="section-toggle" aria-hidden="true">+</span></summary><div class="section-body"><div class="section-grid illustrated-guide"><div class="card" lang="en" data-no-translate><h3>Neutral start</h3><p>Begin with Audio Thru, C Amount +1, Chaos 0 and Math Constant Off. C equals A exactly, including tiny values. Time Thru passes B the same way.</p></div><div class="card" lang="en" data-no-translate=""><h3>Combine and Amount</h3><p>Nine modes: Sum (soft saturation), Average, Difference (A−B), Ratio A/B, Ratio B/A, Multiply, Distance (abs(A−B)), Audio Thru and Time Thru. Ratios are protected near zero and bounded. Sum differs from Average. C Amount is −10…+10, default +1. At relevant activity of at least 1%, Amount −1 on Thru gives 1−A/B. Amount 0 gives the centre 0.5 while active; it does not unmap the target.</p><p>The Combine message in the patch explains the selected mode. This supplied example shows Average.</p><figure class="device-figure device-detail"><img width="197" height="24" loading="lazy" src="../assets/device-illustrations/cot/combine-message.svg" alt="Consequence of Time Combine message: Averages Audio and Time equally."><figcaption lang="en" data-no-translate>Averages Audio and Time equally.</figcaption></figure></div><figure class="device-figure"><img width="462" height="174" loading="lazy" src="../assets/device-illustrations/cot/mixed.svg" alt="Consequence of Time Mixed: Combine, Sync, Math Period and mapper C"></figure><div class="card" lang="en" data-no-translate><h3>Source activity</h3><p>Non-neutral C carriers fade continuously to zero below 1% relevant final activity using t²(3−2t), t=clamp(activity/0.01,0,1). Activity is A for Audio Thru/Ratio A/B, B for Time Thru/Ratio B/A, min(A,B) for Multiply, max(A,B) otherwise. Neutral Thru bypasses attenuation. Equal active sources in Difference give 0.5; absent sources give zero. Carrier zero under Mod does not universally mean target zero.</p></div><div class="card" lang="en" data-no-translate=""><h3>Math Period</h3><p>Math Period sets the base cycle duration; Math Constant sets the ratio/phase. Constants: Off, π, e, φ, √2, ln2. Chaos Amount is −100…+100%, default 0; negative values flip deterministic motion. Chaos 0 or Constant Off removes motion exactly. Separate memories: Beats 1–64 quarter notes, default 8; Time 100–60000 ms, default 4000. A 100 ms floor is shown when applied. Visible labels preserve stored parameter identities.</p></div><div class="card" lang="en" data-no-translate><h3>Clock and recall</h3><p>Beats advances with transport Play; Time can advance with useful input while transport is stopped. B Hold/Freeze/Decay does not freeze C. Tempo feed updates every 250 ms; no sample-accurate or song-position lock is promised. Loading restarts phases; controls and the two period caches persist.</p></div><div class="card" lang="en" data-no-translate><h3>Known mapping limitation</h3><p>A first-slot C Mod → Remote transition failed in a historical instrumented M5 fixture. Later exact-device M5 tests and user-reported Intel 0.1.6.1 mixed-mode tests were positive in their own scope; they do not erase that earlier failure. Remote → Mod may use the last absolute position as the new relative base: this is accepted behavior. Verify the actual destination after changing mode.</p></div></div></div></details><details class="manual-section" id="mapping"><summary><span class="section-title">Mapping</span><span class="section-summary" lang="en" data-no-translate>Connect A, B and C to independent Live destinations.</span><span aria-hidden="true" class="section-toggle">+</span></summary><div class="section-body"><div class="section-grid"><div class="card"><h3 lang="en" data-no-translate>A / B / C mapping</h3><p lang="en" data-no-translate>Each output has its own native 1+7 mapping interface. The overlay covers its local scope while modulation and MAIN continue. Verify both destination association and mode after recall.</p></div><div class="card"><h3>Mod / Remote</h3><p>Mod works as relative modulation around a parameter base value. Remote takes exclusive control of its destination. These are native Ableton behaviors.</p></div><div class="card"><h3>Save &amp; Reload</h3><p>After mapping, verify actual modulation after saving and reopening the Live Set — not only that the destination name persists.</p></div><div class="card" lang="en" data-no-translate=""><h3>Distribution note</h3><p>The mapping interfaces use native Live/Max for Live controls for Mod/Remote to support familiar Live interactions. Public Max APIs document mapping and modulation, while this implementation also uses internal Ableton abstractions: documentation of native APIs does not certify every abstraction, platform or redistribution right. Those dependencies and portability remain unresolved; no public installation package is offered.</p></div><div class="card" lang="en" data-no-translate=""><h3>Remote Unmap after recall</h3><p>After recalling a Set, X may clear a Remote mapping row while its former target remains locked. The symptom was also reproduced with the official stock Envelope Follower in a separate M5 test. The cause is unproven; this is retained as a known limitation in 0.1.6.4. Check actual target editability and movement rather than the Map label. Preserve a copy of the Set and report exact versions; no reliable workaround is promised.</p></div></div></div></details><details class="manual-section" id="sidechain"><summary><span class="section-title">Sidechain</span><span class="section-summary">Choose a separate source for audio analysis.</span><span aria-hidden="true" class="section-toggle">+</span></summary><div class="section-body"><div class="section-grid illustrated-guide"><div class="card"><h3>Main audio</h3><p>Analyze the audio passing through the track that contains Consequence of Time.</p></div><figure class="device-figure"><img width="105" height="174" loading="lazy" src="../assets/device-illustrations/cot/sc.svg" alt="Consequence of Time sidechain: external source, channel and Mix"></figure><div class="card"><h3>External sidechain</h3><p lang="en" data-no-translate>Choose an appropriate external source and channel in Live, set Mix, then inspect A/B/C in MAIN. The sidechain indicator reports routing state, not measured loudness.</p></div><div class="card"><h3>Reference layout</h3><p lang="en" data-no-translate>SC opens to the left of MAIN; AUDIO, TIME and MIXED open independently to the right. MAIN stays visible. The SC button alternates native fill and yellow every 200 ms for an enabled, valid external route with Mix above zero, even when its panel is closed.</p></div></div></div></details><details class="manual-section" id="troubleshooting"><summary><span class="section-title">Troubleshooting</span><span class="section-summary">Common checks for signal, timing and mapping.</span><span aria-hidden="true" class="section-toggle">+</span></summary><div class="section-body"><div class="section-grid"><div class="card"><h3>No signal movement</h3><p>Confirm that audio is present, inspect source and routing, increase Gain as appropriate, and check the contact threshold and B Depth.</p></div><div class="card"><h3>A moves but B does not</h3><p>Check the threshold and Tolerance, the Window, Growth, B Start/Depth and whether sufficient contact time has accumulated.</p></div><div class="card"><h3>Mapping looks static</h3><p>In Mod mode, the base knob may stay at its set value while modulation operates. Check the destination response, not only the knob position.</p></div><div class="card" lang="en" data-no-translate=""><h3>Migration to another Mac</h3><p>Independent installation of 0.1.6.4 is blocked. Do not open the staged package as a self-contained device or use extracted stock resources, scripts, symlinks or manual search-path changes as a customer installation. Await a validated package; preserve existing test Sets and originals.</p></div><div class="card" lang="en" data-no-translate=""><h3>Current test boundaries</h3><p>The current prepared M5 runtime has scoped audio, three-curve, mapping and cold-recall evidence with Live 12.4.2 / Max 9.1.4. External sidechain end-to-end was not tested on the exact 0.1.6.4 candidate. Earlier Intel 0.1.6.2 sidechain and Unmap results are user-reported for that build. Intel 0.1.6.4, Windows, all themes and every mapping slot remain unverified.</p></div></div></div></details><details class="manual-section" id="architecture"><summary><span class="section-title">Under the hood</span><span class="section-summary" lang="en" data-no-translate>How A, B and C differ.</span><span aria-hidden="true" class="section-toggle">+</span></summary><div class="section-body"><div class="section-grid"><div class="card"><h3>A: amplitude response</h3><p>The envelope follower translates the level of the input signal into a continuous normalized modulation output.</p></div><div class="card"><h3>B: duration response</h3><p>Contact recognition drives a separate time engine. Window, Growth, Accel, Hold, Decay and Behavior change the shape of B.</p></div><div class="card"><h3 lang="en" data-no-translate>C: MIXED carrier</h3><p lang="en" data-no-translate>Output C is integrated for testing in 0.1.6.4. It reuses final A/B at the existing nominal 5 ms tick, with its own mapping and trace. This is not a release-ready claim.</p></div><div class="card"><h3>Audio transparency</h3><p>The project is a modulation effect: it is intended to let audio pass rather than synthesize new sound.</p></div></div></div></details><section aria-labelledby="support-heading" class="manual-section support-section" id="support"><div class="support-heading"><span class="section-title" id="support-heading">Support</span><span class="section-summary">Report an issue or get in touch.</span></div><div class="section-body"><div class="card"><h3>REPORT AN ISSUE</h3><p>Having trouble with CONSEQUENCE OF TIME? Get in touch.</p><p style="margin-top:12px"><a class="support-button" href="mailto:matteo.sonodgtl@gmail.com" id="support-email">REPORT AN ISSUE</a></p></div></div></section></section></main>
+<footer class="site-home-footer"><div class="site-shell">
+<div class="footer-signature"><span class="footer-signature-left">© 2026 BeerBelgio</span><span aria-hidden="true" class="footer-signature-dot">·</span><span class="footer-signature-right">FUN IS A SERIOUS THING</span></div>
+<nav aria-label="B4M4L links" class="footer-links">
+<a class="privacy-link" href="../privacy/index.html">PRIVACY</a>
+<a href="https://ko-fi.com/beerbelgio" rel="noopener noreferrer" target="_blank">SHOP <span aria-hidden="true" class="link-arrow"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg></span></a>
+<a href="https://maxforlive.com/profile/user/BeerBelgio" rel="noopener noreferrer" target="_blank">MAXFORLIVE.COM <span aria-hidden="true" class="link-arrow"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg></span></a>
+<a class="hub-link" href="https://beerbelgio.github.io/" rel="noopener noreferrer" target="_blank"><span>BEERBELGIO</span><img alt="" aria-hidden="true" src="../assets/brand/beerbelgio-button.svg"/></a>
+</nav>
+</div></footer><dialog aria-describedby="translation-dialog-message" aria-labelledby="translation-dialog-title" class="b4-translation-dialog" id="b4-translation-dialog"><div class="translation-dialog-inner"><h2 id="translation-dialog-title">TRANSLATION NOTICE</h2><p id="translation-dialog-message">Please note that this is an automatically generated translation and has not been manually verified. If something looks wrong, please report it.</p><p>Want a new language? Let me know ♥</p><div class="translation-dialog-actions"><a href="mailto:matteo.sonodgtl@gmail.com?subject=B4M4L%20translation%20feedback">REPORT / REQUEST LANGUAGE <span aria-hidden="true" class="link-arrow"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg></span></a><button data-close-translation-dialog="" type="button">GOT IT</button></div></div></dialog><script>
+(()=>{'use strict';const $=(s)=>document.querySelector(s),$$=(s)=>[...document.querySelectorAll(s)];const panels=()=>$$('details.manual-section');
+function updateInfo(){const any=panels().some(p=>p.open),b=$('#info-toggle');b.textContent=any?'INFO −':'INFO +';b.setAttribute('aria-pressed',String(any));b.setAttribute('aria-label',any?'Collapse all information':'Expand all information');b.classList.toggle('is-negative',any)}
+$('#info-toggle').addEventListener('click',()=>{const open=panels().some(p=>p.open);panels().forEach(p=>p.open=!open);updateInfo()});panels().forEach(p=>p.addEventListener('toggle',updateInfo));
+function offset(){document.documentElement.style.setProperty('--sticky-offset',(Math.ceil($('.topbar').getBoundingClientRect().height)+14)+'px')}
+function dock(){const hero=$('.hero');document.body.classList.toggle('nav-docked',hero.getBoundingClientRect().bottom<=$('.topbar').getBoundingClientRect().height+4);offset()}
+function goto(id,setHash=true){const node=document.getElementById(id);if(!node)return;$$('.nav-link').forEach(n=>n.classList.toggle('active',n.getAttribute('href')==='#'+id));if(node.closest('details.manual-section')){const owner=node.closest('details.manual-section');panels().forEach(p=>p.open=p===owner);}if(id==='quick-start')panels().forEach(p=>p.open=false);updateInfo();requestAnimationFrame(()=>{const top=Math.max(0,node.getBoundingClientRect().top+window.scrollY-$('.topbar').getBoundingClientRect().height-14);window.scrollTo({top,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});if(setHash)history.replaceState(null,'','#'+id)})}
+$$('.nav-link').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();goto(a.getAttribute('href').slice(1))}));window.addEventListener('scroll',dock,{passive:true});window.addEventListener('resize',dock,{passive:true});window.addEventListener('load',()=>{if(location.hash)setTimeout(()=>goto(location.hash.slice(1),false),60)},{once:true});
+const mail=['Hello,','','I am contacting you about CONSEQUENCE OF TIME.','','Device version: 0.1.6.4','','Ableton Live version:','','Max version:','','Operating system / architecture:','','Problem category (signal A/B/C, sidechain, mapping, UI, recall or other):','','Description:','','Steps to reproduce:','','Expected behavior:','','Observed behavior:','','Please review any attachments yourself before sending; no files are collected automatically.'].join('\n');$('#support-email').href='mailto:matteo.sonodgtl@gmail.com?subject='+encodeURIComponent('CONSEQUENCE OF TIME — Support Request')+'&body='+encodeURIComponent(mail);
+updateInfo();dock();})();
+</script><script src="../assets/js/i18n.js?v=4d15a9dc46"></script></body></html>

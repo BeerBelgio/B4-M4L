@@ -1,0 +1,272 @@
+/* B4~M4L public shell — original INDEX HTML BRIDGE HELP CSS remains intact. */
+:root { --b4-accent:#ec6b2d; --b4-dark:#000; --b4-paper:#f1f1ee; --b4-font:"Barlow Condensed","Arial Narrow",sans-serif; }
+.site-back {text-decoration:none;font-family:var(--b4-font);font-weight:800;letter-spacing:.06em}
+.site-breadcrumb {display:flex;gap:9px;align-items:center;padding:0 0 26px;font-family:var(--b4-font);font-weight:700;letter-spacing:.075em;font-size:14px;color:#666;text-transform:uppercase}
+.site-breadcrumb a {color:#000;text-decoration:none}.site-breadcrumb a:hover,.site-breadcrumb a:focus-visible {color:var(--b4-accent)}
+.site-kicker {font-family:var(--b4-font);font-size:14px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:#c94b2e}
+.device-cover {display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);min-height:420px;gap:34px;margin-bottom:65px;align-items:stretch}
+.device-cover-copy {display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-width:0}
+.device-cover-copy h2 {margin:9px 0 24px;font:900 clamp(62px,8vw,110px)/.82 var(--b4-font);letter-spacing:.005em}
+.device-cover-copy h2 em {font-style:normal;color:var(--b4-accent)}
+.device-cover-copy p {font-size:clamp(16px,1.7vw,19px);line-height:1.48;max-width:620px;margin:0 0 21px}
+.preview-state {font:800 13px/1.4 var(--b4-font);letter-spacing:.07em;border:1px solid #222;padding:6px 10px;margin-bottom:27px;text-transform:uppercase}
+.device-actions {display:flex;gap:9px;flex-wrap:wrap}
+.device-actions a,.site-cta {font:800 14px/1.2 var(--b4-font);letter-spacing:.05em;text-decoration:none;text-align:center;border:1px solid #000;border-radius:999px;padding:11px 17px;display:inline-flex;justify-content:center;align-items:center;transition:background .15s ease, transform .15s ease;color:#000;background:transparent;text-transform:uppercase}
+.device-actions a:hover,.site-cta:hover,.device-actions a:focus-visible,.site-cta:focus-visible {background:var(--b4-accent)}
+.device-actions a:active,.site-cta:active{transform:translateY(1px)}
+.device-cover-art {border:1px solid rgba(0,0,0,.3);background:#e5d3b9;min-height:330px;display:flex;position:relative;justify-content:center;align-items:center;padding:28px;overflow:hidden}
+.device-cover-art img{max-width:100%;max-height:200px;object-fit:contain;width:100%;filter:none}
+.device-cover-art span{position:absolute;bottom:13px;left:16px;font:700 12px/1.2 var(--b4-font);letter-spacing:.09em;color:#353535}
+.art-cot{background:#e6d2b8}.art-cot img{max-height:270px}.art-cot span{color:#1c1713}
+.public-section{margin-bottom:39px;border-top:1px solid rgba(0,0,0,.55);padding-top:15px}
+.public-section-header{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:18px}
+.public-section-header h2 {font:800 clamp(30px,4vw,47px)/1 var(--b4-font);margin:0;text-transform:uppercase;letter-spacing:.015em}
+.compat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.compat-grid>div {border:1px solid rgba(0,0,0,.22);padding:18px;background:#fafaf7;display:flex;flex-direction:column;gap:9px}
+.compat-grid span{font:800 13px var(--b4-font);letter-spacing:.07em;color:#c94b2e}
+.compat-grid strong{font:700 19px/1.1 var(--b4-font)}
+.compat-grid small{font-size:13px;line-height:1.5;color:#555}
+.public-accordion{border:1px solid rgba(0,0,0,.28);background:#fafaf7}
+.public-accordion summary{cursor:pointer;padding:20px;display:flex;align-items:center;justify-content:space-between;gap:15px;list-style:none;font:700 20px/1.1 var(--b4-font)}
+.public-accordion summary::-webkit-details-marker{display:none}
+.public-accordion summary:hover,.public-accordion summary:focus-visible{color:#c94b2e}
+.public-toggle{font-size:25px}.public-accordion[open] .public-toggle{transform:rotate(45deg)}
+.public-accordion-body{padding:0 20px 20px;color:#444;max-width:86ch}.public-accordion-body p{margin:0}
+.help-entry{display:flex;align-items:center;justify-content:space-between;border-top:2px solid #000;padding:12px 0 6px;margin-top:52px;scroll-margin-top:90px;font:800 14px var(--b4-font);letter-spacing:.05em}
+.help-entry>span:last-child{color:#333}
+.site-bottom-note{border-top:1px solid #bbb;padding-top:19px;font-size:13px;color:#666}
+/* Homepage */
+body.site-home{background:#f1f1ee;color:#000;margin:0;font-family:"M PLUS Rounded 1c",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.site-home *, .site-home *::before,.site-home *::after{box-sizing:border-box}
+.site-home a{color:inherit}
+.site-shell{max-width:1200px;margin:0 auto;padding:0 25px}
+.site-home-header{border-bottom:1px solid #bbb}.site-home-header .site-shell{height:69px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.site-home-brand{font:900 25px/1 var(--b4-font);letter-spacing:.03em;text-decoration:none}
+.site-global-links{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.site-global-links a{font:700 15px var(--b4-font);text-transform:uppercase;text-decoration:none;letter-spacing:.06em}
+.site-global-links a:hover,.site-global-links a:focus-visible{color:#cb5325}
+.site-home-hero{padding:72px 0 77px;border-bottom:1px solid #999;display:grid;grid-template-columns:1fr minmax(220px,360px);gap:34px;align-items:end}
+.site-hero-mark{width:min(100%,850px);height:auto;display:block;margin-bottom:21px}
+.site-home-hero h1{font:800 clamp(30px,4.3vw,58px)/.98 var(--b4-font);letter-spacing:-.005em;text-transform:uppercase;margin:0 0 16px;max-width:810px}
+.site-home-hero p{margin:0;max-width:50ch;line-height:1.6;font-size:15px}
+.site-home-hero aside{border-left:3px solid var(--b4-accent);padding:0 0 0 20px;display:flex;flex-direction:column;gap:12px;align-self:center}
+.site-home-hero aside span{font:800 14px/1.4 var(--b4-font);letter-spacing:.08em;color:#9d4523}
+.site-home-hero aside p{font-size:14px;color:#444}
+.site-catalogue-head{padding:38px 0 19px;display:flex;justify-content:space-between;align-items:baseline;gap:15px;border-bottom:1px solid #999}
+.site-catalogue-head h2{font:900 clamp(32px,4vw,56px) var(--b4-font);line-height:1;margin:0;text-transform:uppercase}
+.site-catalogue-head span{font:700 14px var(--b4-font);letter-spacing:.07em;color:#777}
+.device-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;padding:27px 0 82px}
+.device-card{display:flex;flex-direction:column;text-decoration:none;border:1px solid #888;background:#f9f9f6;min-width:0;transition:border-color .15s ease,transform .18s ease}
+.device-card:hover,.device-card:focus-visible{border-color:#000;transform:translateY(-3px)}
+.device-card-art{height:235px;display:flex;align-items:center;justify-content:center;padding:28px;position:relative;background:#e7d6bd;overflow:hidden}
+.device-card-art img{width:100%;max-width:380px;max-height:190px;object-fit:contain}.device-card-art.cot{background:#e6d2b8}
+.device-card-art .card-art-label{position:absolute;left:17px;bottom:13px;color:#252525;font:800 12px var(--b4-font);letter-spacing:.075em}.device-card-art.cot .card-art-label{color:#1c1713}
+.device-card-body{padding:23px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.device-card-body h3{font:800 clamp(29px,3.4vw,45px)/.96 var(--b4-font);text-transform:uppercase;margin:0}
+.device-card-body p{font-size:14px;line-height:1.6;margin:0;flex:1}
+.device-card-flag{font:800 12px var(--b4-font);letter-spacing:.075em;color:#ac4a23;text-transform:uppercase}
+.device-card-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #bbb;margin-top:20px;padding-top:14px;font:800 14px var(--b4-font);text-transform:uppercase}
+.site-home-footer{border-top:1px solid #888;padding:23px 0 45px}.site-home-footer .site-shell{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+.site-home-footer span{font:700 13px var(--b4-font);letter-spacing:.06em}
+.site-home-footer nav{display:flex;gap:20px;flex-wrap:wrap}.site-home-footer a{font:700 14px var(--b4-font);text-decoration:none}
+.site-home-footer a:hover{color:#cb5325}
+@media(max-width:800px){.site-home-hero{grid-template-columns:1fr;padding:48px 0 50px}.site-home-hero aside{max-width:600px}.device-cover{grid-template-columns:1fr;gap:22px;margin-bottom:46px}.device-cover-art{min-height:280px}.compat-grid{grid-template-columns:1fr}.site-back{font-size:12px;padding-inline:8px}.public-section-header h2{font-size:32px}}
+@media(max-width:600px){.site-shell{padding-inline:16px}.site-global-links{gap:10px}.site-global-links a{font-size:12px}.device-grid{grid-template-columns:1fr;gap:17px;padding-bottom:60px}.device-cover-copy h2{font-size:clamp(56px,18vw,88px)}.public-section-header{align-items:flex-start;flex-direction:column;gap:6px}.site-home-hero h1{font-size:clamp(32px,10vw,50px)}.site-catalogue-head h2{font-size:38px}.device-actions a{font-size:12px}.site-back{display:none}.device-cover-art{min-height:240px}}
+@media(prefers-reduced-motion:reduce){.device-card,.device-actions a,.site-cta{transition:none}}
+
+/* The unusually long COT name must fit narrow phone widths without overflow. */
+.cot-device-title {font-size:clamp(44px,6.4vw,84px)!important;}
+@media(max-width:600px){.cot-device-title{font-size:clamp(39px,11.2vw,56px)!important;letter-spacing:-.025em!important;}}
+
+/* COT manual has longer navigation labels than the Bridge. Keep both mobile columns flexible. */
+.cot-page .hero-copy,.cot-page .hero-menu {min-width:0;}
+.cot-page .hero-brand {overflow-wrap:anywhere;}
+@media(max-width:620px) { .cot-page .hero-menu {grid-template-columns:repeat(2,minmax(0,1fr));} .cot-page .hero-menu .nav-link{min-width:0;white-space:normal;overflow-wrap:anywhere;} }
+
+
+/* local fonts are self-hosted; no external font service required. */
+.site-home-header .site-shell{height:auto;min-height:69px;padding-top:14px;padding-bottom:14px}
+.site-home-brand{display:inline-flex;align-items:center;gap:10px}
+.site-home-brand-icon{width:20px;height:20px;display:block}
+.site-global-links a,.site-home-footer a,.device-card-bottom,.device-actions a{display:inline-flex;align-items:center;gap:8px}
+.link-arrow{width:14px;height:14px;display:inline-block;flex:0 0 auto}
+.site-home-hero{padding:72px 0 77px;border-bottom:1px solid #999;display:block}
+.site-home-hero > div{max-width:980px}
+.site-home-hero p{margin:0;max-width:66ch;line-height:1.6;font-size:15px}
+.site-catalogue-head{padding:38px 0 19px;display:flex;justify-content:flex-start;align-items:baseline;gap:15px;border-bottom:1px solid #999}
+.device-card:hover .device-card-cta,.device-card:focus-visible .device-card-cta,.device-card:hover .link-arrow,.device-card:focus-visible .link-arrow{color:var(--b4-accent);filter:none}
+.device-card-bottom .link-arrow{width:16px;height:16px}
+.device-card-bottom{transition:color .15s ease}
+.site-home-footer .site-shell{align-items:center}
+.site-footer-brand{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.site-footer-beerbelgio{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font:700 14px var(--b4-font)}
+.site-footer-beerbelgio img{width:24px;height:24px;display:block}
+.site-footer-meta{font:700 13px var(--b4-font);letter-spacing:.06em}
+@media(max-width:800px){.site-home-hero{padding:48px 0 50px}.site-footer-brand{gap:10px;align-items:flex-start;flex-direction:column}}
+@media(max-width:600px){.site-home-brand span{font-size:22px}.site-global-links a{font-size:12px}}
+
+.link-arrow{display:inline-flex;width:14px;height:14px;flex:0 0 auto;color:currentColor}.link-arrow svg{width:100%;height:100%;display:block;stroke:currentColor}.device-card:hover .link-arrow,.device-card:focus-visible .link-arrow{color:var(--b4-accent)}
+
+/* B4~M4L v0.3: INDEX-style footer + homepage polish */
+.site-home-hero {padding-top:62px;padding-bottom:64px;}
+.site-home-hero > div {max-width:none;width:100%;}
+.site-home-hero .site-hero-mark {width:min(100%,850px);height:auto;margin-inline:auto;}
+.site-home-hero p {max-width:none;width:100%;font-size:clamp(15px,1.5vw,18px);line-height:1.55;}
+.site-catalogue-head {border:0;padding:38px 0 16px;}
+.device-card:hover h3,.device-card:focus-visible h3,.device-card:active h3 {color:var(--b4-accent);}
+.device-card:hover .device-card-bottom,.device-card:focus-visible .device-card-bottom,.device-card:active .device-card-bottom {color:var(--b4-accent);}
+.device-card-bottom {font-size:clamp(17px,1.7vw,20px);}
+.device-card-bottom .link-arrow {width:20px;height:20px;}
+.device-card h3 {transition:color .15s ease;}
+/* The public footer mirrors the three-part INDEX footer signature/links layout. */
+.site-home-footer {border-top:1px solid rgba(0,0,0,.22);padding:0;background:var(--b4-paper);color:var(--b4-dark);}
+.site-home-footer .site-shell {min-height:88px;padding-block:18px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:nowrap;}
+.site-home-footer .footer-signature {display:inline-grid;grid-template-columns:auto auto auto;align-items:center;gap:7px;flex:0 0 auto;font-family:var(--b4-font);font-size:13px;font-weight:700;letter-spacing:.04em;}
+.site-home-footer .footer-signature-left,.site-home-footer .footer-signature-right {white-space:nowrap;}
+.site-home-footer .footer-links {display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:18px;}
+.site-home-footer .footer-links a {display:inline-flex;align-items:center;gap:7px;text-decoration:none;font:800 13px/1 var(--b4-font);letter-spacing:.06em;white-space:nowrap;}
+.site-home-footer .footer-links a:hover,.site-home-footer .footer-links a:focus-visible {color:var(--b4-accent);}
+.site-home-footer .footer-links .hub-link img {width:24px;height:24px;display:block;flex:0 0 auto;}
+.site-home-footer .footer-links .link-arrow{width:13px;height:13px;}
+@media(max-width:1100px) {
+  .site-home-footer .site-shell {align-items:stretch;flex-direction:column;gap:14px;padding-block:22px;}
+  .site-home-footer .footer-signature {width:100%;grid-template-columns:1fr auto 1fr;gap:10px;}
+  .site-home-footer .footer-signature-left{text-align:left;}
+  .site-home-footer .footer-signature-right{text-align:right;}
+  .site-home-footer .footer-links{width:100%;justify-content:space-between;gap:14px;}
+}
+@media(max-width:600px){
+  .site-home-footer .footer-signature {font-size:clamp(9px,2.5vw,12px);}
+  .site-home-footer .footer-links a{font-size:clamp(10px,2.7vw,13px);}
+  .site-home-footer .footer-links{gap:10px;}
+  .site-home-hero {padding-top:46px;padding-bottom:50px;}
+}
+
+.site-home-hero {border-bottom:0;}
+
+/* V0.4 — homepage spacing, optical alignment and consistent INDEX footer links. */
+.site-home-hero {
+  padding-top: 58px;
+  padding-bottom: 14px;
+}
+.site-home-hero .site-hero-mark {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.site-home-hero p {
+  width: 100%;
+  max-width: none;
+}
+.site-catalogue-head {
+  padding-top: 18px;
+  padding-bottom: 12px;
+}
+.device-grid { padding-top: 20px; }
+.site-home-footer .footer-links a,
+.site-home-footer .footer-links a span:not(.link-arrow) {
+  font-family: var(--b4-font);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  line-height: 1;
+}
+/* Match the native BeerBelgio link in INDEX: icon and text share the same optical baseline. */
+.site-home-footer .footer-links a { align-items: center; }
+.site-home-header .site-home-brand { min-height: 34px; display: inline-flex; align-items: center; }
+.site-home-header .site-home-brand-icon { display: block; align-self: center; }
+@media (max-width: 600px) {
+  .site-home-hero { padding-top: 42px; padding-bottom: 8px; }
+  .site-catalogue-head { padding-top: 16px; padding-bottom: 12px; }
+  .site-home-footer .footer-links a,
+  .site-home-footer .footer-links a span:not(.link-arrow) {
+    font-size: clamp(10px, 2.7vw, 13px);
+  }
+}
+
+/* V0.5: horizontal device titles, shared one-row actions; CORE screenshot slots. */
+.device-cover-copy h2.device-one-line{white-space:nowrap;letter-spacing:-.005em;font-size:clamp(24px,6.2vw,82px);line-height:.98;margin:10px 0 22px;max-width:100%;}
+.device-cover-copy h2.device-one-line span{color:#000;}
+.device-cover-copy h2.device-one-line em{color:var(--b4-accent);}
+.device-release-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:0 0 24px;}
+.device-release-row .preview-state{margin:0;white-space:normal;}
+.device-release-row .device-actions{display:flex;align-items:center;flex-wrap:wrap;gap:9px;}
+@media(max-width:600px){.device-cover-copy h2.device-one-line{font-size:clamp(21px,6.0vw,40px);letter-spacing:-.01em}.device-release-row{gap:9px;}}
+/* Keep long COT title safely within narrower screens. */
+@media(max-width:375px){.cot-page .device-cover-copy h2.device-one-line{font-size:clamp(19px,5.65vw,30px);}}
+.site-home-hero h1{font-size:clamp(36px,5.5vw,66px);}
+.site-home-hero p{font-family:var(--b4-font);font-size:clamp(21px,2.45vw,29px);font-weight:600;letter-spacing:.025em;line-height:1.06;max-width:28em;}
+/* Five-language selector: compact and shared across all headers. */
+.language-control{display:inline-flex;align-items:center;gap:6px;flex:0 0 auto;}
+.language-control select{appearance:none;-webkit-appearance:none;background:transparent;color:inherit;border:1px solid rgba(0,0,0,.5);border-radius:999px;padding:5px 25px 5px 11px;font:700 13px/1.25 var(--b4-font);text-transform:uppercase;cursor:pointer;min-height:30px;}
+.language-control{position:relative;}
+.language-control::after{content:'⌄';pointer-events:none;position:absolute;right:10px;top:50%;transform:translateY(-58%);font:700 16px var(--b4-font);}
+.language-control select:hover,.language-control select:focus-visible{border-color:#ec6b2d;outline-offset:3px;}
+.site-home-header .site-shell{gap:12px;}
+.site-global-links{margin-left:auto;}
+@media(max-width:600px){.site-home-header .site-shell{flex-wrap:wrap}.site-global-links{gap:9px}.language-control select{font-size:12px}}
+
+/* V0.5 narrow viewport safeguards for the INDEX-style footer. */
+@media(max-width:400px){
+ .site-home-footer .footer-signature{grid-template-columns:auto auto minmax(0,1fr);gap:4px;min-width:0;}
+ .site-home-footer .footer-signature-left{white-space:nowrap;}
+ .site-home-footer .footer-signature-right{white-space:normal;text-align:right;min-width:0;}
+ .site-home-footer .footer-links{flex-wrap:wrap;gap:8px;}
+ .site-home-footer .footer-links a{font-size:11px;}
+}
+
+/* B4~M4L v0.6: artwork layer is decorative behind the actual HTML site. */
+body.site-home{position:relative;isolation:isolate;overflow-x:clip;}
+.site-artwork-layer{position:absolute;z-index:0;left:0;right:0;top:69px;bottom:0;overflow:hidden;pointer-events:none;}
+.site-artwork-layer>img{position:absolute;top:0;left:50%;width:min(100%,1600px);max-width:none;height:auto;transform:translateX(-50%);}
+.site-home>header,.site-home>main,.site-home>footer{position:relative;z-index:1;}
+.site-home-hero{padding:34px 0 14px;}
+.site-home-hero .site-home-hero-inner{width:100%;max-width:none;}
+.site-wordmark-space{height:clamp(190px,16.4vw,245px);}
+.site-home-hero h1{max-width:none;width:100%;font:900 clamp(38px,5.1vw,67px)/.98 var(--b4-font);letter-spacing:-.015em;}
+.site-home-hero p{font-family:"M PLUS Rounded 1c",system-ui,sans-serif;font-size:clamp(14px,1.32vw,17px);font-weight:400;line-height:1.62;letter-spacing:0;text-transform:none;max-width:none;width:100%;}
+.site-home .device-card-art img{max-width:80%;max-height:170px;}
+@media(max-width:600px){
+ .site-artwork-layer>img{width:760px;}
+ .site-home-hero{padding:30px 0 8px;}
+ .site-wordmark-space{height:170px;}
+ .site-home-hero h1{font-size:clamp(35px,9vw,54px);}
+ .site-home-hero p{font-size:14px;line-height:1.55;}
+}
+
+/* Readability fade beneath the hero copy: decorative SVG remains untouched. */
+.site-artwork-layer::after{content:"";position:absolute;z-index:1;left:0;right:0;top:218px;height:320px;background:linear-gradient(to bottom,rgba(241,241,238,0) 0%,rgba(241,241,238,.89) 22%,rgba(241,241,238,.93) 69%,rgba(241,241,238,0) 100%);}
+@media(max-width:600px){.site-artwork-layer::after{top:175px;height:320px;}}
+
+/* V0.7 — SVG artwork scales proportionally to viewport: never cover/crop horizontally. */
+.site-artwork-layer{left:0;right:0;top:69px;overflow:visible;}
+.site-artwork-layer>img{position:relative;display:block;top:0;left:auto;width:100%;max-width:none;height:auto;transform:none;object-fit:contain;}
+body.site-home{overflow-x:clip;}
+/* On smaller screens the artwork remains whole instead of being enlarged to 760px and cropped. */
+@media(max-width:600px){.site-artwork-layer>img{width:100%;max-width:none}.site-wordmark-space{height:clamp(76px,24vw,135px)}}
+/* Wordmark cards use Ableton-Max gray, without a separate beige variant. */
+.site-home .device-card-art,.site-home .device-card-art.cot{background:#929292;}
+
+/* v0.7 correction: artwork never creates a phantom page below the footer. */
+.site-artwork-layer{overflow:hidden!important;bottom:0!important;}
+.site-artwork-layer>img{opacity:.79;}
+.site-catalogue-head h2{display:inline-block;background:rgba(241,241,238,.90);padding-right:12px;}
+/* Mobile legibility: retain the whole SVG without cropping, but soften cables behind HTML copy. */
+@media(max-width:600px){
+ .site-artwork-layer::after{
+   top:95px!important;height:540px!important;
+   background:linear-gradient(to bottom,rgba(241,241,238,0) 0%,rgba(241,241,238,.91) 14%,rgba(241,241,238,.96) 40%,rgba(241,241,238,.88) 72%,rgba(241,241,238,0) 100%)!important;
+ }
+}
+
+
+/* v0.8 — restore the uncluttered v0.5 homepage, without experimental SVG background. */
+body.site-home{overflow-x:clip;}
+.site-home-hero{padding:58px 0 14px;}
+.site-home-hero .site-home-hero-inner{width:100%;max-width:none;}
+.site-home-hero .site-hero-mark{display:block;width:min(100%,850px);max-width:100%;height:auto;margin:0 auto 24px;}
+.site-home-hero h1{font:900 clamp(38px,5.1vw,67px)/.98 var(--b4-font);letter-spacing:-.015em;max-width:none;width:100%;}
+.site-home-hero p{font-family:"M PLUS Rounded 1c",system-ui,sans-serif;font-size:clamp(14px,1.32vw,17px);font-weight:400;line-height:1.62;letter-spacing:0;text-transform:none;max-width:none;width:100%;}
+.site-catalogue-head h2{background:none;padding-right:0;}
+@media(max-width:800px){.site-home-hero{padding:48px 0 14px;}}
+@media(max-width:600px){.site-home-hero{padding:38px 0 8px;}.site-home-hero .site-hero-mark{margin-bottom:20px;}.site-home-hero h1{font-size:clamp(35px,9vw,54px);}.site-home-hero p{font-size:14px;line-height:1.55;}}

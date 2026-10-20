@@ -1,0 +1,1440 @@
+{
+  "schemaVersion": 1,
+  "device": {
+    "name": "INDEX HTML BRIDGE",
+    "build": "DEV2-2026-10-18",
+    "packageName": "BRIDGE-LIVE-DEV2-2026-10-18",
+    "deviceFile": "INDEX_HTML_BRIDGE_DEV2_2026-10-18.amxd",
+    "creator": "BeerBelgio",
+    "project": "INDEX HTML",
+    "deviceType": "Max for Live Audio Effect",
+    "developmentStatus": "testing_candidate",
+    "liveParameterCount": 88,
+    "environment": {
+      "establishedTarget": "Ableton Live 12 with Max for Live",
+      "compatibilityReference": "Max8.6.5; no new minimum adopted",
+      "currentM5TestEnvironment": "Live12.4.2 / bundledMax9.1.4 / macOS26.5.1",
+      "intelRuntimeValidation": "not_tested_DEV2",
+      "windowsRuntimeValidation": "not_tested",
+      "currentCandidateNativeAcceptance": "PENDING USER ACCEPTANCE"
+    },
+    "frozenReference": "0.23.0",
+    "developmentPhase": "isolated live-only DEV2 testing candidate",
+    "nativeAcceptance": "PENDING USER ACCEPTANCE",
+    "frozenBaselineApproval": {
+      "date": "2026-10-09",
+      "timezone": "Europe/Rome",
+      "basis": "explicit_user_instruction",
+      "supersedesFrozenReference": "0.22.23",
+      "functionalFilesChanged": false,
+      "additionalNativeTestResultsReported": false,
+      "build": "0.23.0"
+    },
+    "releaseStatus": "testing_candidate",
+    "statePersistenceAcceptance": "native_user_accepted_0.23.7-rc.1_Intel_M5",
+    "functionalControlCount": 87,
+    "hiddenGaugeParameterCount": 1,
+    "storedOnlyBlobCount": 1,
+    "parameterEnabledObjectCount": 89,
+    "acceptedDevelopmentBaseline": "0.23.8-rc.2 (historical, not DEV2 acceptance)"
+  },
+  "layers": {
+    "count": 5,
+    "ids": [
+      "L1",
+      "L2",
+      "L3",
+      "L4",
+      "L5"
+    ],
+    "compositionOrder": [
+      "L1",
+      "L2",
+      "L3",
+      "L4",
+      "L5"
+    ],
+    "activeEditorCountMaximum": 1,
+    "sectionFlags": "PARAMS, COLORS & BLEND and MIDI are independent; remembered separately for each Layer in the UI instance.",
+    "visibility": "Each Layer has a separate Live-enabled visible toggle; closing its editor does not hide it.",
+    "toolSelectionLoadsAutomatically": false,
+    "toolLoad": "Explicit LOAD, or successful selected UPDATE/DOWNLOAD, loads the tool.",
+    "toolChangeDefaults": "Loading a tool initializes numeric bases and colors from its manifest and resets color opacity to 1.",
+    "perToolParameterOrColorMemory": false,
+    "mappingScope": "Mapping configuration is held per Layer/slot; tool loads do not clear the existing modCfg array.",
+    "effects": "An enabled loaded effect modifies the accumulated lower-layer composite; it does not process later Layers."
+  },
+  "library": {
+    "implementationStatus": "implemented",
+    "runtimeValidation": "validated",
+    "remote": {
+      "repository": "BeerBelgio/index-html",
+      "branch": "main",
+      "catalogue": "data/tools.json",
+      "catalogueUrl": "https://raw.githubusercontent.com/BeerBelgio/index-html/main/data/tools.json"
+    },
+    "local": {
+      "toolLayout": "tools/<actual-tool-filename>.html",
+      "catalogueCache": "cache/registry.json",
+      "installationMetadata": "cache/installed.json",
+      "htmlFileCount": 21,
+      "installedMetadataEntryCount": 21,
+      "cachedRemoteEntryCount": 20,
+      "countBasis": "Current delivered files and cache, not a live remote inventory.",
+      "localOnlyFixtures": [
+        "INDEX_Wave_Processor_TEST-v0.1-local.html"
+      ]
+    },
+    "statuses": [
+      {
+        "id": "CURRENT",
+        "meaning": "Local file exists and installation version equals catalogue version."
+      },
+      {
+        "id": "OUTDATED",
+        "meaning": "Local file exists and installation version differs from catalogue version."
+      },
+      {
+        "id": "MISSING",
+        "meaning": "Installation metadata or resolved local file is absent."
+      },
+      {
+        "id": "LOCAL",
+        "meaning": "Installed entry absent from the remote catalogue, with an existing local file."
+      }
+    ],
+    "checkIndex": "Fetch/validate catalogue, cache it and compare statuses; no tool HTML download.",
+    "selectedAction": "UPDATE/DOWNLOAD operates on the selected entry; after success the controller loads it into the action-targeted Layer.",
+    "updateAll": "Sequential MISSING+OUTDATED queue; CURRENT left untouched; no repository ZIP download.",
+    "selectionAutoLoads": false,
+    "downloadIntegrity": "Validate HTML/manifest presence and use temporary-file replacement for tool writes.",
+    "network": "CHECK INDEX and remote downloads require network access; cached installed tools remain local.",
+    "downloadStatusCopy": "DOWNLOADING"
+  },
+  "parameters": {
+    "liveParameterCount": 88,
+    "countMethod": "87 functional controls plus one Hidden numeric FPS gauge; one separate Stored Only Blob. Native Set serialization and registered-object counts are different measures.",
+    "bankStructure": {
+      "layers": 5,
+      "numericSlotsPerLayer": 12,
+      "numericLiveParameterCount": 60,
+      "colorOpacitySlotsPerLayer": 4,
+      "colorOpacityLiveParameterCount": 20,
+      "layerVisibilityLiveParameterCount": 5,
+      "connectedNonPresentationLiveParameterCount": 2,
+      "connectedNonPresentationNames": [
+        "MIDI Warp Amount",
+        "MIDI Warp Release"
+      ]
+    },
+    "slotLabels": "P01–P12; tool-specific labels/min/max/step/default come from the loaded manifest; unused slots show UNUSED.",
+    "nativeValueConversion": "Normalized 0..1 bases map to manifest min/max and are quantized/clamped using the manifest step.",
+    "automationAndExternalModulation": {
+      "implementationStatus": "implemented",
+      "runtimeValidation": "validated",
+      "targets": "Established root Live parameter objects remain available while their UI pages are closed.",
+      "identitiesStable": true
+    },
+    "effectiveMidiDisplay": {
+      "implementationStatus": "implemented",
+      "runtimeValidation": "requires_DEV2_visual_acceptance",
+      "baseValueRemainsMappable": true,
+      "display": "Internal Note/CC: gray effective arc/needle and an updating final numerical readout. Reference is the native Live input, which may include external Macro modulation. No cosmetic writes to Live parameters.",
+      "validationScope": "DEV2 M5 Note36/CC1 and Macro tests are scoped evidence; visual acceptance remains pending."
+    },
+    "singleReset": "Reset the base of one active slot to its manifest default; preserves assigned MIDI contribution.",
+    "defaultButton": "Restore all active Layer parameter bases, colors and opacity defaults; MIDI configuration/visibility/blend are not cleared.",
+    "registry": [
+      {
+        "hierarchy": "root",
+        "objectId": "p2-dial",
+        "varname": "l1_p2_dial",
+        "maxclass": "live.dial",
+        "longName": "P02",
+        "shortName": "L1 P02"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "p3-dial",
+        "varname": "l1_p3_dial",
+        "maxclass": "live.dial",
+        "longName": "P03",
+        "shortName": "L1 P03"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "p4-dial",
+        "varname": "l1_p4_dial",
+        "maxclass": "live.dial",
+        "longName": "P04",
+        "shortName": "L1 P04"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "p5-dial",
+        "varname": "l1_p5_dial",
+        "maxclass": "live.dial",
+        "longName": "P05",
+        "shortName": "L1 P05"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "p6-dial",
+        "varname": "l1_p6_dial",
+        "maxclass": "live.dial",
+        "longName": "P06",
+        "shortName": "L1 P06"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "p7-dial",
+        "varname": "l1_p7_dial",
+        "maxclass": "live.dial",
+        "longName": "P07",
+        "shortName": "L1 P07"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "p8-dial",
+        "varname": "l1_p8_dial",
+        "maxclass": "live.dial",
+        "longName": "P08",
+        "shortName": "L1 P08"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "p9-dial",
+        "varname": "l1_p9_dial",
+        "maxclass": "live.dial",
+        "longName": "P09",
+        "shortName": "L1 P09"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "p10-dial",
+        "varname": "l1_p10_dial",
+        "maxclass": "live.dial",
+        "longName": "P10",
+        "shortName": "L1 P10"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "p11-dial",
+        "varname": "l1_p11_dial",
+        "maxclass": "live.dial",
+        "longName": "P11",
+        "shortName": "L1 P11"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "p12-dial",
+        "varname": "l1_p12_dial",
+        "maxclass": "live.dial",
+        "longName": "P12",
+        "shortName": "L1 P12"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "amount",
+        "varname": "midi_warp_amount",
+        "maxclass": "live.dial",
+        "longName": "MIDI Warp Amount",
+        "shortName": "MIDI Amt"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "release",
+        "varname": "midi_warp_release",
+        "maxclass": "live.dial",
+        "longName": "MIDI Warp Release",
+        "shortName": "Release"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "p1-dial",
+        "varname": "l1_p1_dial",
+        "maxclass": "live.dial",
+        "longName": "P01",
+        "shortName": "L1 P01"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l1-visible",
+        "varname": "l1_visible",
+        "maxclass": "live.toggle",
+        "longName": "L1 Visible",
+        "shortName": "L1 Vis"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l2-visible",
+        "varname": "l2_visible",
+        "maxclass": "live.toggle",
+        "longName": "L2 Visible",
+        "shortName": "L2 Vis"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l3-visible",
+        "varname": "l3_visible",
+        "maxclass": "live.toggle",
+        "longName": "L3 Visible",
+        "shortName": "L3 Vis"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l4-visible",
+        "varname": "l4_visible",
+        "maxclass": "live.toggle",
+        "longName": "L4 Visible",
+        "shortName": "L4 Vis"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l5-visible",
+        "varname": "l5_visible",
+        "maxclass": "live.toggle",
+        "longName": "L5 Visible",
+        "shortName": "L5 Vis"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l2-p1-dial",
+        "varname": "l2_p1_dial",
+        "maxclass": "live.dial",
+        "longName": "L2 P01",
+        "shortName": "L2 P01"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l2-p2-dial",
+        "varname": "l2_p2_dial",
+        "maxclass": "live.dial",
+        "longName": "L2 P02",
+        "shortName": "L2 P02"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l2-p3-dial",
+        "varname": "l2_p3_dial",
+        "maxclass": "live.dial",
+        "longName": "L2 P03",
+        "shortName": "L2 P03"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l2-p4-dial",
+        "varname": "l2_p4_dial",
+        "maxclass": "live.dial",
+        "longName": "L2 P04",
+        "shortName": "L2 P04"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l2-p5-dial",
+        "varname": "l2_p5_dial",
+        "maxclass": "live.dial",
+        "longName": "L2 P05",
+        "shortName": "L2 P05"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l2-p6-dial",
+        "varname": "l2_p6_dial",
+        "maxclass": "live.dial",
+        "longName": "L2 P06",
+        "shortName": "L2 P06"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l2-p7-dial",
+        "varname": "l2_p7_dial",
+        "maxclass": "live.dial",
+        "longName": "L2 P07",
+        "shortName": "L2 P07"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l2-p8-dial",
+        "varname": "l2_p8_dial",
+        "maxclass": "live.dial",
+        "longName": "L2 P08",
+        "shortName": "L2 P08"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l2-p9-dial",
+        "varname": "l2_p9_dial",
+        "maxclass": "live.dial",
+        "longName": "L2 P09",
+        "shortName": "L2 P09"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l2-p10-dial",
+        "varname": "l2_p10_dial",
+        "maxclass": "live.dial",
+        "longName": "L2 P10",
+        "shortName": "L2 P10"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l2-p11-dial",
+        "varname": "l2_p11_dial",
+        "maxclass": "live.dial",
+        "longName": "L2 P11",
+        "shortName": "L2 P11"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l2-p12-dial",
+        "varname": "l2_p12_dial",
+        "maxclass": "live.dial",
+        "longName": "L2 P12",
+        "shortName": "L2 P12"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l3-p1-dial",
+        "varname": "l3_p1_dial",
+        "maxclass": "live.dial",
+        "longName": "L3 P01",
+        "shortName": "L3 P01"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l3-p2-dial",
+        "varname": "l3_p2_dial",
+        "maxclass": "live.dial",
+        "longName": "L3 P02",
+        "shortName": "L3 P02"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l3-p3-dial",
+        "varname": "l3_p3_dial",
+        "maxclass": "live.dial",
+        "longName": "L3 P03",
+        "shortName": "L3 P03"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l3-p4-dial",
+        "varname": "l3_p4_dial",
+        "maxclass": "live.dial",
+        "longName": "L3 P04",
+        "shortName": "L3 P04"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l3-p5-dial",
+        "varname": "l3_p5_dial",
+        "maxclass": "live.dial",
+        "longName": "L3 P05",
+        "shortName": "L3 P05"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l3-p6-dial",
+        "varname": "l3_p6_dial",
+        "maxclass": "live.dial",
+        "longName": "L3 P06",
+        "shortName": "L3 P06"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l3-p7-dial",
+        "varname": "l3_p7_dial",
+        "maxclass": "live.dial",
+        "longName": "L3 P07",
+        "shortName": "L3 P07"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l3-p8-dial",
+        "varname": "l3_p8_dial",
+        "maxclass": "live.dial",
+        "longName": "L3 P08",
+        "shortName": "L3 P08"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l3-p9-dial",
+        "varname": "l3_p9_dial",
+        "maxclass": "live.dial",
+        "longName": "L3 P09",
+        "shortName": "L3 P09"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l3-p10-dial",
+        "varname": "l3_p10_dial",
+        "maxclass": "live.dial",
+        "longName": "L3 P10",
+        "shortName": "L3 P10"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l3-p11-dial",
+        "varname": "l3_p11_dial",
+        "maxclass": "live.dial",
+        "longName": "L3 P11",
+        "shortName": "L3 P11"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l3-p12-dial",
+        "varname": "l3_p12_dial",
+        "maxclass": "live.dial",
+        "longName": "L3 P12",
+        "shortName": "L3 P12"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l4-p1-dial",
+        "varname": "l4_p1_dial",
+        "maxclass": "live.dial",
+        "longName": "L4 P01",
+        "shortName": "L4 P01"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l4-p2-dial",
+        "varname": "l4_p2_dial",
+        "maxclass": "live.dial",
+        "longName": "L4 P02",
+        "shortName": "L4 P02"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l4-p3-dial",
+        "varname": "l4_p3_dial",
+        "maxclass": "live.dial",
+        "longName": "L4 P03",
+        "shortName": "L4 P03"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l4-p4-dial",
+        "varname": "l4_p4_dial",
+        "maxclass": "live.dial",
+        "longName": "L4 P04",
+        "shortName": "L4 P04"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l4-p5-dial",
+        "varname": "l4_p5_dial",
+        "maxclass": "live.dial",
+        "longName": "L4 P05",
+        "shortName": "L4 P05"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l4-p6-dial",
+        "varname": "l4_p6_dial",
+        "maxclass": "live.dial",
+        "longName": "L4 P06",
+        "shortName": "L4 P06"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l4-p7-dial",
+        "varname": "l4_p7_dial",
+        "maxclass": "live.dial",
+        "longName": "L4 P07",
+        "shortName": "L4 P07"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l4-p8-dial",
+        "varname": "l4_p8_dial",
+        "maxclass": "live.dial",
+        "longName": "L4 P08",
+        "shortName": "L4 P08"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l4-p9-dial",
+        "varname": "l4_p9_dial",
+        "maxclass": "live.dial",
+        "longName": "L4 P09",
+        "shortName": "L4 P09"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l4-p10-dial",
+        "varname": "l4_p10_dial",
+        "maxclass": "live.dial",
+        "longName": "L4 P10",
+        "shortName": "L4 P10"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l4-p11-dial",
+        "varname": "l4_p11_dial",
+        "maxclass": "live.dial",
+        "longName": "L4 P11",
+        "shortName": "L4 P11"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l4-p12-dial",
+        "varname": "l4_p12_dial",
+        "maxclass": "live.dial",
+        "longName": "L4 P12",
+        "shortName": "L4 P12"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l5-p1-dial",
+        "varname": "l5_p1_dial",
+        "maxclass": "live.dial",
+        "longName": "L5 P01",
+        "shortName": "L5 P01"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l5-p2-dial",
+        "varname": "l5_p2_dial",
+        "maxclass": "live.dial",
+        "longName": "L5 P02",
+        "shortName": "L5 P02"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l5-p3-dial",
+        "varname": "l5_p3_dial",
+        "maxclass": "live.dial",
+        "longName": "L5 P03",
+        "shortName": "L5 P03"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l5-p4-dial",
+        "varname": "l5_p4_dial",
+        "maxclass": "live.dial",
+        "longName": "L5 P04",
+        "shortName": "L5 P04"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l5-p5-dial",
+        "varname": "l5_p5_dial",
+        "maxclass": "live.dial",
+        "longName": "L5 P05",
+        "shortName": "L5 P05"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l5-p6-dial",
+        "varname": "l5_p6_dial",
+        "maxclass": "live.dial",
+        "longName": "L5 P06",
+        "shortName": "L5 P06"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l5-p7-dial",
+        "varname": "l5_p7_dial",
+        "maxclass": "live.dial",
+        "longName": "L5 P07",
+        "shortName": "L5 P07"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l5-p8-dial",
+        "varname": "l5_p8_dial",
+        "maxclass": "live.dial",
+        "longName": "L5 P08",
+        "shortName": "L5 P08"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l5-p9-dial",
+        "varname": "l5_p9_dial",
+        "maxclass": "live.dial",
+        "longName": "L5 P09",
+        "shortName": "L5 P09"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l5-p10-dial",
+        "varname": "l5_p10_dial",
+        "maxclass": "live.dial",
+        "longName": "L5 P10",
+        "shortName": "L5 P10"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l5-p11-dial",
+        "varname": "l5_p11_dial",
+        "maxclass": "live.dial",
+        "longName": "L5 P11",
+        "shortName": "L5 P11"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l5-p12-dial",
+        "varname": "l5_p12_dial",
+        "maxclass": "live.dial",
+        "longName": "L5 P12",
+        "shortName": "L5 P12"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l1-c1-alpha",
+        "varname": "l1_c1_alpha",
+        "maxclass": "live.dial",
+        "longName": "L1 C1 Opacity",
+        "shortName": "L1 C1 α"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l1-c2-alpha",
+        "varname": "l1_c2_alpha",
+        "maxclass": "live.dial",
+        "longName": "L1 C2 Opacity",
+        "shortName": "L1 C2 α"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l1-c3-alpha",
+        "varname": "l1_c3_alpha",
+        "maxclass": "live.dial",
+        "longName": "L1 C3 Opacity",
+        "shortName": "L1 C3 α"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l1-c4-alpha",
+        "varname": "l1_c4_alpha",
+        "maxclass": "live.dial",
+        "longName": "L1 C4 Opacity",
+        "shortName": "L1 C4 α"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l2-c1-alpha",
+        "varname": "l2_c1_alpha",
+        "maxclass": "live.dial",
+        "longName": "L2 C1 Opacity",
+        "shortName": "L2 C1 α"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l2-c2-alpha",
+        "varname": "l2_c2_alpha",
+        "maxclass": "live.dial",
+        "longName": "L2 C2 Opacity",
+        "shortName": "L2 C2 α"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l2-c3-alpha",
+        "varname": "l2_c3_alpha",
+        "maxclass": "live.dial",
+        "longName": "L2 C3 Opacity",
+        "shortName": "L2 C3 α"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l2-c4-alpha",
+        "varname": "l2_c4_alpha",
+        "maxclass": "live.dial",
+        "longName": "L2 C4 Opacity",
+        "shortName": "L2 C4 α"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l3-c1-alpha",
+        "varname": "l3_c1_alpha",
+        "maxclass": "live.dial",
+        "longName": "L3 C1 Opacity",
+        "shortName": "L3 C1 α"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l3-c2-alpha",
+        "varname": "l3_c2_alpha",
+        "maxclass": "live.dial",
+        "longName": "L3 C2 Opacity",
+        "shortName": "L3 C2 α"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l3-c3-alpha",
+        "varname": "l3_c3_alpha",
+        "maxclass": "live.dial",
+        "longName": "L3 C3 Opacity",
+        "shortName": "L3 C3 α"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l3-c4-alpha",
+        "varname": "l3_c4_alpha",
+        "maxclass": "live.dial",
+        "longName": "L3 C4 Opacity",
+        "shortName": "L3 C4 α"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l4-c1-alpha",
+        "varname": "l4_c1_alpha",
+        "maxclass": "live.dial",
+        "longName": "L4 C1 Opacity",
+        "shortName": "L4 C1 α"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l4-c2-alpha",
+        "varname": "l4_c2_alpha",
+        "maxclass": "live.dial",
+        "longName": "L4 C2 Opacity",
+        "shortName": "L4 C2 α"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l4-c3-alpha",
+        "varname": "l4_c3_alpha",
+        "maxclass": "live.dial",
+        "longName": "L4 C3 Opacity",
+        "shortName": "L4 C3 α"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l4-c4-alpha",
+        "varname": "l4_c4_alpha",
+        "maxclass": "live.dial",
+        "longName": "L4 C4 Opacity",
+        "shortName": "L4 C4 α"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l5-c1-alpha",
+        "varname": "l5_c1_alpha",
+        "maxclass": "live.dial",
+        "longName": "L5 C1 Opacity",
+        "shortName": "L5 C1 α"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l5-c2-alpha",
+        "varname": "l5_c2_alpha",
+        "maxclass": "live.dial",
+        "longName": "L5 C2 Opacity",
+        "shortName": "L5 C2 α"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l5-c3-alpha",
+        "varname": "l5_c3_alpha",
+        "maxclass": "live.dial",
+        "longName": "L5 C3 Opacity",
+        "shortName": "L5 C3 α"
+      },
+      {
+        "hierarchy": "root",
+        "objectId": "l5-c4-alpha",
+        "varname": "l5_c4_alpha",
+        "maxclass": "live.dial",
+        "longName": "L5 C4 Opacity",
+        "shortName": "L5 C4 α"
+      },
+      {
+        "hierarchy": "ui-performance-module",
+        "objectId": "render-dial",
+        "varname": "render_dial",
+        "maxclass": "live.dial",
+        "longName": "INDEX Render Performance",
+        "shortName": "FPS",
+        "rootRegistryKey": "ui-performance-module::render-dial",
+        "hidden": true,
+        "mappable": false,
+        "ownership": "computed display, no output cords or Set Blob payload"
+      }
+    ],
+    "dialGeometry": {
+      "implementationStatus": "implemented",
+      "runtimeValidation": "validated",
+      "sharedKnobGeometry": true,
+      "source": "Established root boxes/presentation/patching geometry unchanged. Free/external controls use original live.dial drawing; INDEX MIDI-only painter preserves exact accepted .22 proportional dialGeometry. No parentpaint or pattern reconstruction.",
+      "parameterObjectsReplaced": false,
+      "hierarchyChanged": false,
+      "validationScope": "Native0.22.23 accepted on Intel and M5;0.23.0 only translates entire root banks with their panel, retaining dial size, bank-relative alignment and paint behavior.",
+      "diagnostic": "No verbose geometry logging or display-state LiveAPI observers.",
+      "nativeIndicators": {
+        "focus": "Native default behavior; no guessed focus state.",
+        "freeAndExternal": "Original Max/Live painter owns automation, external modulation/mapping and macro/relative/dot relationships on both Max versions.",
+        "INDEXMidi": "Only existing INDEX final/base information customized. Independent native automation dots enabled when supported; unsupported Max8 attributes are not set.",
+        "runtimeValidation": "validated"
+      }
+    },
+    "dialVisualState": {
+      "implementationStatus": "implemented",
+      "runtimeValidation": "requires_DEV2_visual_acceptance",
+      "nativeReference": "Existing Colors & Blend opacity live.dials: same showname=0, shownumber=0, parameter range/type/modulation metadata; numeric differs only in slot width and conditional INDEX MIDI painter.",
+      "paintOwnership": "Native live.dial when INDEX MIDI is unassigned. Custom display attached only for an assigned INDEX MIDI note/CC on a manifest-defined slot; removed when unassigned/unused.",
+      "activeArc": "Native active span minimum->current in free/external state; INDEX MIDI minimum->final gray.",
+      "inactiveArc": "Current/final->maximum dark.",
+      "internalMidi": "Gray effective arc and needle. The final number remains readable and updates; native drawing is restored when internal MIDI is unassigned.",
+      "externalInformation": "Native Max/Live owns relative/absolute/percentage/dot, automation and focus appearance. No value-difference inference or additional LiveAPI display-state model.",
+      "parameterWritesForPainting": false,
+      "acceptedGeometryBuild": "0.22.23",
+      "validationScope": "DEV2 preserves native control identity and geometry; only the internal-MIDI display is changed. External Macro and historical LFO behavior are separate test scopes."
+    },
+    "presentation": {
+      "numericGroupCount": 12,
+      "columns": 6,
+      "rows": 2,
+      "columnPitch": 82,
+      "rowPitch": 73,
+      "nativeDialSize": [
+        44,
+        28
+      ],
+      "resetLocation": "left of dial / above numeric field",
+      "numericFieldSize": [
+        64,
+        18
+      ],
+      "nameCenteredOverWholeGroup": true,
+      "runtimeValidation": "awaiting_test"
+    },
+    "functionalControlCount": 87,
+    "hiddenGaugeParameterCount": 1,
+    "parameterEnabledObjectCountIncludingBlob": 89
+  },
+  "colorsAndBlend": {
+    "maximumColorSlotsPerLayer": 4,
+    "colorSlotNames": [
+      "C1",
+      "C2",
+      "C3",
+      "C4"
+    ],
+    "activeSlots": "Loaded selected INDEX_TOOL.colors or legacy SKETCH_TOOL.colors manifest; unused slots display UNUSED.",
+    "colorInput": [
+      "Native colorpicker",
+      "Six-digit RGB hex textedit"
+    ],
+    "hexFormat": "#RRGGBB",
+    "opacity": {
+      "implementationStatus": "implemented",
+      "runtimeValidation": "validated",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 1,
+      "nativeLiveParameters": 20,
+      "contract": "hostContext.colorOpacity[colorKey] in 0..1; colorKey comes from selected INDEX_TOOL.colors or legacy SKETCH_TOOL.colors.",
+      "legacyFallback": "Missing hostContext/key preserves standalone behavior.",
+      "consumesNumericSlots": false,
+      "mappedDisplay": {
+        "implementationStatus": "implemented",
+        "runtimeValidation": "validated",
+        "nativePainter": true,
+        "feedbackCorrection": "Ordinary editor/library/MIDI refresh no longer sets opacity from cached effective output. Only explicit tool LOAD/DEFAULT assigns opacity defaults.",
+        "rootCauseConfidence": "Source effective-to-base feedback removed in0.22.23; user now confirms stable native mapped opacity across Layer changes/panel toggles on both Macs. No new fix in0.23.0."
+      }
+    },
+    "blend": {
+      "visibleOptions": [
+        "Normal",
+        "Add",
+        "Multiply",
+        "Screen"
+      ],
+      "internalValues": [
+        "normal",
+        "add",
+        "multiply",
+        "screen"
+      ],
+      "default": "normal",
+      "scope": "Per Layer; generator composition. Effect Layers instead run their lower-composite shader."
+    },
+    "presentation": {
+      "slots": 4,
+      "swatchWidthEqualsHEXField": true,
+      "swatchAndHEXSize": [
+        62,
+        18
+      ],
+      "slotPitch": 69,
+      "opacityNativeSize": [
+        34,
+        28
+      ],
+      "opacityBottom": 156,
+      "layerSectionButtonBottom": 156,
+      "blendLabelAndMenuCentersAligned": true,
+      "hexHorizontalJustification": "center",
+      "hexVerticalLayout": "native single-line18-unit textedit; no custom painter or editing overlay",
+      "runtimeValidation": "awaiting_test"
+    }
+  },
+  "midi": {
+    "implementationStatus": "implemented",
+    "runtimeValidation": "awaiting_test",
+    "mappingSlotsPerLayer": 12,
+    "maximumLayerMappingSlots": 60,
+    "visibleMappingRows": 12,
+    "targets": "Active Layer P01–P12 numeric parameters; only manifest-defined parameter rows are active.",
+    "sources": [
+      "NONE",
+      "MIDI NOTE",
+      "MIDI CC"
+    ],
+    "idRange": [
+      0,
+      127
+    ],
+    "unassigned": {
+      "visibleLabel": "—",
+      "internalId": -1,
+      "contribution": 0
+    },
+    "defaults": {
+      "source": "MIDI NOTE",
+      "id": -1,
+      "amountPercent": 50,
+      "attackMs": 0,
+      "releaseMs": 250
+    },
+    "controls": {
+      "amountPercent": [
+        -100,
+        100
+      ],
+      "attackMs": [
+        0,
+        5000
+      ],
+      "releaseMs": [
+        0,
+        10000
+      ]
+    },
+    "notes": {
+      "matching": "One selected pitch per slot; note labels C-2 through G8, C1=36.",
+      "velocity": "Positive note velocity sets peak=velocity/127. Velocity zero/note-off does not trigger.",
+      "envelope": "Attack from current value to the velocity peak, then automatic release to zero; not held until note-off."
+    },
+    "cc": {
+      "matching": "One selected CC number per slot.",
+      "target": "CC value/127.",
+      "smoothing": "Attack for rising target, release for falling target."
+    },
+    "contribution": "finalNorm=clamp(baseNorm + envelopeValue * amountPercent/100, 0, 1), then manifest-native quantization.",
+    "routing": {
+      "userManaged": true,
+      "selectors": [
+        "MIDI Input",
+        "Channel"
+      ],
+      "optionLists": "Native runtime routing menus; track/source-dependent.",
+      "preFx": "Existing routing can receive notes before an instrument on the source MIDI track; user-validated.",
+      "offlineClipSelector": false
+    },
+    "learn": {
+      "implementationStatus": "unavailable",
+      "controlPresent": false
+    },
+    "savedMappingConfigurationPersistence": {
+      "established": false,
+      "notes": "Per-Set MIDI configuration included in new internal Blob; real save/recall pending user test.",
+      "implementationStatus": "implemented",
+      "runtimeValidation": "awaiting_test"
+    },
+    "restoration": {
+      "source": "frozen0.23.0 original module, byte-identical",
+      "missingFromSourceBuild": "0.23.1",
+      "nativeValidation": "awaiting_test",
+      "controls": 74,
+      "slots": 12,
+      "inlets": 2,
+      "outlets": 2,
+      "nativeReadiness": "Actual loaded child ports and all74 controls; INDEX UI MIDI READY",
+      "controllerAndRootRoutingUnchanged": true
+    }
+  },
+  "liveRender": {
+    "implementationStatus": "implemented",
+    "runtimeValidation": "validated",
+    "controlLabel": "RENDER",
+    "action": "Toggle dedicated live Chromium output, independently owned and closed with its Bridge session.",
+    "defaultWindowSize": [
+      1280,
+      720
+    ],
+    "automaticallyLoadsSelectedTool": false,
+    "browserDiscovery": {
+      "implementationStatus": "implemented",
+      "macOSDefaultDetection": "Read-only NSWorkspace URLForApplicationToOpenURL for HTTP via JXA; bundle executable path",
+      "windowsDefaultDetection": "Read-only AssocQueryStringW(ASSOCF_IS_PROTOCOL, ASSOCSTR_EXECUTABLE / FRIENDLYAPPNAME) for HTTP via PowerShell; UTF-8 output",
+      "defaultSelection": "Use detected installed supported app-style Chromium default; otherwise explicit fallback",
+      "macOSFallbackOrder": [
+        "Google Chrome",
+        "Chromium",
+        "Microsoft Edge",
+        "Brave",
+        "Ecosia",
+        "Vivaldi"
+      ],
+      "windowsFallbackOrder": [
+        "Google Chrome",
+        "Microsoft Edge",
+        "Chromium",
+        "Brave",
+        "Vivaldi",
+        "Ecosia"
+      ],
+      "unsupportedDefaultHandlers": [
+        "Safari",
+        "Firefox",
+        "unknown app-style capability"
+      ],
+      "detectionFailure": "Log UNKNOWN and reason; installed fallback is not described as OS default",
+      "windowsDiscoveryImplemented": true,
+      "windowsRuntimeValidation": "awaiting_test",
+      "linuxDiscoveryImplemented": false,
+      "diagnostics": [
+        "platform",
+        "HTTP default name/path or UNKNOWN with query error",
+        "selected name/executable path",
+        "selection/fallback reason",
+        "spawn/exit errors"
+      ],
+      "macOSRuntimeValidation": "validated"
+    },
+    "bridge": "Live changes pass through the compositor EventSource and postMessage to five tool iframes.",
+    "timing": "Live drawing advances with browser requestAnimationFrame time through the existing compositor.",
+    "requirements": [
+      "Ready local Node host",
+      "Supported installed Chromium executable",
+      "Compatible Canvas/WebGL tool/renderer support"
+    ],
+    "monitoring": {
+      "implementationStatus": "implemented",
+      "runtimeValidation": "validated",
+      "phase": "DEV2 M5 scoped native evidence; user acceptance pending",
+      "updateHz": 1,
+      "windowSeconds": 2.5,
+      "controlMode": "native hidden display-only gauge plus non-parameter live-quality menus",
+      "visibleMetrics": [
+        "Completed coherent composition FPS / estimated AUTO target",
+        "Hidden native D gauge, normalized0..1 actual/target; native entire active arc red/yellow/green, dark remaining arc; no mouse/mapping/output",
+        "Frame cadence in ms (1000/observed completed FPS)",
+        "Actual WebGL drawingBufferWidth × drawingBufferHeight"
+      ],
+      "frameDefinition": "Existing composite draw and gl.finish returned, with fresh successful draws from every visible loaded generator and valid effect programs; callbacks alone, failed uploads or stale tool canvases do not count. Not physical display scanout certification.",
+      "targetEstimate": "AUTO remains worker/main cadence estimate marked ~; explicitly selected 30/60 are requested maxima, not achieved FPS guarantees.",
+      "lifecycle": "Issued live-page session attaches to existing single compositor SSE. Pagehide closes token; disconnect hides; reconnect restores; latest foreground connected session selected if multiple windows. A connected stalled renderer remains visible as STALLED/PAUSED.",
+      "nodeLossUIWatchdogMs": 5000,
+      "noNewLiveParameters": true,
+      "windowsNativeValidation": "awaiting_test",
+      "nativeEvidenceBuild": "0.23.4",
+      "indicatorRuntimeValidation": "DEV2 scoped M5 evidence",
+      "nativePhaseAEvidenceBuild": "0.23.3"
+    },
+    "quality": {
+      "implementationStatus": "implemented",
+      "runtimeValidation": "DEV2 evidence in REPORT-DEV2.md; user acceptance remains separate.",
+      "FPS": [
+        "AUTO",
+        "30 FPS",
+        "60 FPS"
+      ],
+      "resolution": [
+        "AUTO/current window",
+        "720p 1280x720",
+        "1080p 1920x1080",
+        "1440p 2560x1440",
+        "4K UHD 3840x2160"
+      ],
+      "defaults": {
+        "fps": "AUTO",
+        "resolution": "AUTO/current window"
+      },
+      "fixedPixelsIgnoreDPR": true,
+      "scheduling": "Explicit FPS cap coordinates all five hosted indexDraw or legacy sketchDraw calls and composition through one parent cadence; supplied tools disable standalone loops while hosted. AUTO retains browser-driven child cadence. Self-scheduled independent tool work is outside the existing host contract.",
+      "persistence": "Saved per Bridge instance and Live Set in the separate Stored Only Blob. New device AUTO/AUTO; closing/reopening RENDER and switching Layers retain selections.",
+      "resolutionFailure": "GPU size or allocation failures report the reason and restore a supported preceding resolution.",
+      "windowsNativeValidation": "awaiting_test",
+      "FPSRuntimeValidation": "validated",
+      "framingRuntimeValidation": "Component pixel comparisons and native DEV2 resize evidence tracked separately.",
+      "displayViewport": "Stage/final canvas/iframe CSS remain full current window. No preset-sized stage, transforms, letterboxing, crop or zoom.",
+      "resolutionGeometry": "Preset bounds:1280x720,1920x1080,2560x1440,3840x2160. Scale=min(presetWidth/windowWidth,presetHeight/windowHeight), pixels=floor(windowSize*scale), minimum1. Exact16:9 presets; other aspect ratios fit within bounds, preserve full-window framing, PREVIEW reports actual dimensions. User explicitly approves this trade-off.",
+      "sourceCanvasCSS": "Tool canvases use iframe viewport CSS size and preset-constrained pixel buffers; no pointer routing changes."
+    },
+    "performanceGauge": {
+      "implementation": "native live.dial, approved D / Parameter Mode enabled, Hidden Float",
+      "range": [
+        0,
+        1
+      ],
+      "ratio": "clamp(actualFPS/effectiveTargetFPS,0,1); inactive/invalid target gives0",
+      "parameterName": "INDEX Render Performance",
+      "parameterRegistryKey": "ui-performance-module::render-dial",
+      "mouseInteraction": "ignoreclick1",
+      "mapping": "parameter_mappable0, parameter_invisible2 Hidden; no output patchcords",
+      "state": "Transient derived UI value, excluded from deviceState Blob; initialize/reset0 on load/close/watchdog, selected FPS/RES preserved",
+      "appearance": "D native Free unipolar needle/arc, same38x38 box; no custom painter, LCD or background container",
+      "activeArcAttribute": "activedialcolor (native live_value_arc), updated only when band changes",
+      "inactiveArcAttribute": "activefgdialcolor stays dark",
+      "colors": {
+        "zero": "dark",
+        "above0Through25Percent": "red",
+        "above25Through75Percent": "yellow",
+        "above75Through100Percent": "green"
+      },
+      "diagnosticNativeValidation": "user confirmed D and integrated diagnostic full arc and no white background; platform/version unspecified for this reply",
+      "actualDeviceNativeValidation": "DEV2 M5 scoped evidence; not universal certification"
+    },
+    "browserLifecycle": {
+      "profile": "unique private temporary profile",
+      "transport": "inherited private CDP pipe",
+      "ownership": "nonce, exact target URL, dedicated child process",
+      "shutdown": "graceful close via independent guardian; guarded fallback only on verified own process",
+      "publicOnlineHelp": "not changed by this candidate"
+    }
+  },
+  "toolContract": {
+    "canonical": "INDEX_TOOL schemaVersion 1 RC2",
+    "legacy": "SKETCH_TOOL",
+    "priority": "INDEX presence always wins; invalid INDEX never falls through to Sketch",
+    "capabilities": "Required RC2 renderer/visualInput/audioInput validation; colorOpacity optional host feature",
+    "generatorEntrypoints": [
+      "indexResize",
+      "indexDraw"
+    ],
+    "legacyGeneratorEntrypoints": [
+      "sketchResize",
+      "sketchDraw"
+    ],
+    "effect": "INDEX_TOOL.effect fragment API1; legacy SKETCH_TOOL.index.effect preserved",
+    "limits": "12 numeric/4 colors are Bridge UI capacity, not schema limits; excess controls keep canonical defaults with diagnostics",
+    "audioColorKeys": "Preserved in audio; Bridge numeric MIDI/control modulation does not implement color modulation or direct PCM/FFT input",
+    "candidateNativeStatus": "DEV2 native verification and user acceptance tracked separately; contract unchanged.",
+    "localOverlay": "Packaged tools are local; CHECK refreshes metadata only; UPDATE/UPDATE ALL are explicit HTML replacement operations.",
+    "currentCandidateValidation": "No tool algorithm or contract changes.",
+    "bundledTools": "20 INDEX-native RC2 generators plus existing legacy Wave Processor FX; reference originals retained for rollback.",
+    "orbitalGeometryDefaultScale": 100
+  },
+  "deviceState": {
+    "implementationStatus": "implemented",
+    "runtimeValidation": "awaiting_test",
+    "schema": 1,
+    "storage": "one Stored Only pattr Blob bound to existing controller; not automatable/mappable/exposed",
+    "liveControlIdentities": 87,
+    "additionalStoredOnlyBlobs": 1,
+    "nativeValues": "Live remains authoritative for87 controls/automation/mappings; recall never resets them",
+    "ownedData": [
+      "tool references",
+      "HEX",
+      "MIDI configuration",
+      "blend",
+      "UI open states",
+      "MIDI input/channel",
+      "LIVE quality choices"
+    ],
+    "missingFiles": "explicit error, no catalogue download/substitution; retained reference",
+    "oldSets": "cannot reconstruct nonparam data never saved in pre.37 Sets; native identities/values preserved",
+    "transientNotStored": [
+      "browser session",
+      "MIDI envelopes",
+      "GPU resources"
+    ],
+    "additionalHiddenGaugeParameters": 1,
+    "totalNumericIdentities": 88,
+    "totalParameterEnabledObjectsIncludingBlob": 89,
+    "transientGauge": "Hidden gauge is derived from current renderer metrics, not saved/restored in Blob; parameter_initial0 and runtime resets prevent stale green"
+  },
+  "generatedForBuild": "DEV2-2026-10-18",
+  "architecture": {
+    "controlPath": "Live/Max -> Node -> single SSE -> external Chromium -> five layers",
+    "layerCount": 5,
+    "rendering": "Canvas2D/WebGL + fragment effects; no Jitter",
+    "responsibilities": {
+      "Max": "controls, MIDI, native parameters and Blob",
+      "Node": "local host/library and owned Chromium session",
+      "Chromium": "live tools and composition"
+    },
+    "sourceFiles": [
+      "scripts/index_manifest_controller.js",
+      "scripts/index_library_node.js",
+      "scripts/index_ui_pages_live_dev.js",
+      "scripts/index_browser_session.js"
+    ]
+  },
+  "ui": {
+    "controls": [
+      {
+        "id": "project-link",
+        "visibleLabel": "<BRIDGE/>",
+        "location": "CORE",
+        "action": "Open the INDEX HTML project website.",
+        "implementationStatus": "implemented",
+        "graphic": "assets/bridge-logo.svg",
+        "url": "https://beerbelgio.github.io/index-html/",
+        "runtimeValidation": "validated",
+        "validationScope": "Existing logo/link/geometry inherited from user-accepted .23.2; unchanged.",
+        "nativeEvidenceBuild": "0.23.2"
+      },
+      {
+        "id": "repository-link",
+        "visibleLabel": "?",
+        "location": "CORE",
+        "action": "Open the package-root HELP.html through the local Node server in the default browser.",
+        "implementationStatus": "implemented",
+        "url": "/HELP.html",
+        "opensOfflineHelp": true,
+        "runtimeValidation": "validated",
+        "conditionalBehaviour": "Node server must be ready and package-root HELP.html must exist; explicit HELP error otherwise.",
+        "idNote": "Existing manifest control id retained for the user-authored HELP consumer; action now opens local help."
+      },
+      {
+        "id": "live-render",
+        "visibleLabel": "RENDER",
+        "location": "CORE",
+        "action": "Toggle one dedicated Chromium output per Bridge instance; close on Set/device teardown.",
+        "implementationStatus": "implemented",
+        "conditionalBehaviour": "Requires a ready localhost host and a supported installed Chromium browser.",
+        "runtimeValidation": "validated",
+        "nativeEvidenceBuild": "0.23.1"
+      },
+      {
+        "id": "layer-editor",
+        "visibleLabel": null,
+        "location": "CORE",
+        "action": "Open the selected Layer editor; clicking its open control again closes it.",
+        "implementationStatus": "implemented",
+        "labelsByState": {
+          "closed": ">",
+          "open": "<"
+        },
+        "associatedLayerLabels": [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        "graphics": {
+          "closed": "assets/index-layer-open.svg",
+          "open": "assets/index-layer-close.svg"
+        },
+        "options": [
+          "closed",
+          "open"
+        ],
+        "feedback": "Persistent: closed > outline yellow; active open < yellow fill/dark SVG stroke; state from page manager",
+        "runtimeValidation": "validated",
+        "nativeEvidenceBuild": "0.23.2"
+      },
+      {
+        "id": "layer-visible",
+        "visibleLabel": null,
+        "location": "CORE",
+        "action": "Include or exclude the corresponding Layer from composition independently of its editor visibility.",
+        "implementationStatus": "implemented",
+        "associatedLayerLabels": [
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5"
+        ],
+        "liveParameter": true,
+        "options": [
+          0,
+          1
+        ],
+        "presentationSize": [
+          13.75,
+          13.75
+        ],
+        "sizeChangeFromFrozenBaseline": "10% in each dimension, exact existing center retained",
+        "runtimeValidation": "validated",
+        "nativeEvidenceBuild": "0.23.2"
+      }
+    ],
+    "sections": [
+      {
+        "id": "core"
+      },
+      {
+        "id": "layers"
+      },
+      {
+        "id": "params"
+      },
+      {
+        "id": "color"
+      },
+      {
+        "id": "midi"
+      },
+      {
+        "id": "library"
+      },
+      {
+        "id": "render"
+      },
+      {
+        "id": "performance"
+      },
+      {
+        "id": "troubleshooting"
+      }
+    ],
+    "layout": {
+      "CORE": 247,
+      "PERFORMANCE": 190,
+      "LAYER": 249,
+      "PARAMS": 512,
+      "COLOR": 298,
+      "MIDI": 743
+    },
+    "offlineHelp": {
+      "available": true,
+      "destination": "/HELP.html",
+      "publicOnlineReleaseGate": "PENDING B4M4L publication"
+    }
+  },
+  "limitations": [
+    {
+      "id": "capacity",
+      "fact": "Bridge exposes up to12 numeric/4 color controls per layer; this is not a limit of the INDEX contract."
+    },
+    {
+      "id": "performance",
+      "fact": "Requested FPS is a maximum cadence, not guaranteed performance. Lower live resolution/FPS when workload exceeds the machine."
+    },
+    {
+      "id": "platforms",
+      "fact": "DEV2 Intel/Windows acceptance remains pending; M5 results are build-specific."
+    }
+  ],
+  "knownIssues": [
+    {
+      "id": "bpatcher-startup",
+      "implementationStatus": "known",
+      "runtimeValidation": "requires_native_observation",
+      "fact": "Initial search-path warnings may precede successful loading of packaged modules. Missing UI or READY errors must be reported."
+    },
+    {
+      "id": "CF-001",
+      "implementationStatus": "tool_issue_unchanged",
+      "runtimeValidation": "user_reported_Intel_standalone",
+      "fact": "Cellular Field standalone geometric discontinuities on Intel belong to the independent tool; no shader fix is included."
+    }
+  ],
+  "documentationSnapshot": {
+    "siteVersion": "0.12",
+    "reviewed": "2026-10-19",
+    "sourceBuild": "DEV2-2026-10-18",
+    "status": "testing/staging; not a public release",
+    "sourceReconciliation": "Historical count/timing/monitor notes superseded by DEVICE-SPEC-LIVE-DEV and REPORT-DEV2; see DEVICE-DOC-SYNC-v0.12.md."
+  }
+}

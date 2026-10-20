@@ -1,0 +1,42 @@
+{
+  "schema": "b4m4l.hero-layout",
+  "schemaVersion": 1,
+  "siteVersion": "0.12",
+  "layoutVersion": 3,
+  "container": {
+    "id": "patch-canvas",
+    "coordinateSpace": "normalized",
+    "referenceWidth": 1408,
+    "referenceHeight": 900
+  },
+  "nodes": [
+    {
+      "id": "wordmark",
+      "x": 0.07102272727272728,
+      "y": 0.03111111111111111,
+      "width": 0.7386363636363636,
+      "height": 0.28888888888888886
+    },
+    {
+      "id": "claim",
+      "x": 0.17045454545454544,
+      "y": 0.49444444444444446,
+      "width": 0.40482954545454547,
+      "height": 0.2
+    },
+    {
+      "id": "description",
+      "x": 0.11079545454545454,
+      "y": 0.8088888888888889,
+      "width": 0.4119318181818182,
+      "height": 0.15555555555555556
+    },
+    {
+      "id": "browse",
+      "x": 0.7670454545454546,
+      "y": 0.45555555555555555,
+      "width": 0.17045454545454544,
+      "height": 0.1111111111111111
+    }
+  ]
+}
