@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "documentationVersion": "0.13-rc.1",
+  "documentationVersion": "0.13",
   "device": {
     "name": "CONSEQUENCE OF TIME",
     "build": "0.1.6.5",
