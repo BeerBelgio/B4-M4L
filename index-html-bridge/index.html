@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>INDEX HTML BRIDGE — B4~M4L</title>
-<meta content="INDEX HTML BRIDGE: device documentation, compatibility, release notes and support by BeerBelgio." name="description"/>
-<link href="../assets/brand/favicon-tilde.svg" rel="icon" type="image/svg+xml"/>
-<link href="../assets/fonts/barlow-condensed/font.css?v=1fdd6c9837" rel="stylesheet"/>
-<link href="../assets/fonts/m-plus-rounded-1c/font.css?v=44ba9e7308" rel="stylesheet"/>
-<link href="../assets/css/site.css?v=0f21d0e35e" rel="stylesheet"/>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>INDEX HTML BRIDGE — Guide and support | B4~M4L</title>
+<link href="../assets/brand/favicon-tilde.svg" rel="icon" type="image/svg+xml">
+<link href="../assets/fonts/barlow-condensed/font.css?v=1fdd6c9837" rel="stylesheet">
+<link href="../assets/fonts/m-plus-rounded-1c/font.css?v=44ba9e7308" rel="stylesheet">
+<link href="../assets/css/site.css?v=0f21d0e35e" rel="stylesheet">
 <style>
 
 
@@ -878,28 +876,31 @@ body.nav-docked .sticky-nav .nav-link{flex:0 0 auto!important;width:auto!importa
   .manual-section .help-visual img{height:auto;max-height:190px;max-width:100%;}
   .manual-section .help-core-layout .control-table,.manual-section .help-visual-export .control-table{grid-template-columns:1fr;}
 }
+
+/* Keep the CORE table label typographic; only its destination is interactive. */
+#core-controls .label a.inline-anchor{color:inherit;text-decoration:none;background:none;border:0;padding:0;font:inherit;letter-spacing:inherit;}
+#core-controls .label a.inline-anchor:hover,#core-controls .label a.inline-anchor:focus-visible{color:var(--accent);text-decoration:underline;}
 </style>
-<link href="../assets/css/i18n.css?v=8f5609008d" rel="stylesheet"/><style>
+<link href="../assets/css/i18n.css?v=8f5609008d" rel="stylesheet"><style>
 /* V0.5 horizontal overview title: outranks the legacy inline device page rules. */
 .device-cover-copy h2.device-one-line {font-size:clamp(22px,5.8vw,92px)!important;line-height:1!important;letter-spacing:-.006em!important;white-space:nowrap!important;}
 @media(max-width:400px) { .device-cover-copy h2.device-one-line {font-size:clamp(19px,5vw,27px)!important;} }
-</style><link rel="stylesheet" href="../assets/css/max-components.css?v=dbfc8ded10"/>
-<link rel="stylesheet" href="../assets/css/max-style.css?v=45e7fad548"/><script defer src="../assets/js/max-cords.js?v=e87f58e393"></script><script defer src="../assets/js/max-home.js?v=7aad1e80af"></script></head>
+</style><link rel="stylesheet" href="../assets/css/max-components.css?v=46a16dac37">
+<link rel="stylesheet" href="../assets/css/max-style.css?v=faefc2fbd1"><script defer src="../assets/js/max-cords.js?v=e9a9a99d71"></script><script defer src="../assets/js/max-home.js?v=2c1b6d3d73"></script><meta name="description" content="Guide to INDEX HTML BRIDGE: five layers of browser-native visuals controlled from Ableton Live. Requirements, Quick Guide and support for the testing device."><link rel="canonical" href="https://beerbelgio.github.io/b4-m4l/index-html-bridge/"><meta property="og:type" content="website"><meta property="og:site_name" content="B4~M4L"><meta property="og:title" content="INDEX HTML BRIDGE — Guide and support | B4~M4L"><meta property="og:description" content="Guide to INDEX HTML BRIDGE: five layers of browser-native visuals controlled from Ableton Live. Requirements, Quick Guide and support for the testing device."><meta property="og:url" content="https://beerbelgio.github.io/b4-m4l/index-html-bridge/"><meta name="twitter:card" content="summary"></head>
 <body>
 <header class="topbar">
 <div class="topbar-inner">
 <a aria-label="B4M4L home" class="brand" href="../index.html">
 <span aria-hidden="true" class="mini-logo-wrap">
-<img alt="" class="mini-logo single" src="../assets/brand/favicon-tilde.svg"/>
+<img alt="" class="mini-logo single" src="../assets/brand/favicon-tilde.svg">
 </span>
 </a>
 <nav aria-label="Documentation navigation" class="sticky-nav">
 <a class="nav-link section-link max-message" href="#quick-start">Quick</a>
-<a class="nav-link section-link max-message" href="#layers">Layers</a>
+<a class="nav-link section-link max-message" href="#core">Core</a><a class="nav-link section-link max-message" href="#layers">Layers</a>
 <a class="nav-link section-link max-message" href="#params">Params</a>
 <a class="nav-link section-link max-message" href="#color">Color</a>
 <a class="nav-link section-link max-message" href="#midi">MIDI</a>
-<a class="nav-link section-link max-message" href="#library">Library</a>
 <a class="nav-link section-link max-message" href="#render">Render</a>
 <a aria-label="Live Render Performance" class="nav-link section-link max-message" href="#performance">PERFORMANCE</a>
 
@@ -910,7 +911,7 @@ body.nav-docked .sticky-nav .nav-link{flex:0 0 auto!important;width:auto!importa
 <div class="top-actions">
 <a class="mini-button nav-help-button" href="#help">HELP</a>
 <button aria-pressed="false" class="mini-button" id="info-toggle" type="button">INFO +</button>
-<span class="chip" id="build-chip">DEV2 · 18 OCT 2026</span>
+<span class="chip" id="build-chip">1.3 · TESTING</span>
 </div>
 </div>
 </header>
@@ -920,36 +921,35 @@ body.nav-docked .sticky-nav .nav-link{flex:0 0 auto!important;width:auto!importa
 <div class="max-device-overview" data-patch-graph><section aria-label="INDEX HTML BRIDGE overview" class="device-cover">
 <div class="device-cover-copy">
 
-<div class="max-newobj max-device-title"><h2 data-device-title="" aria-label="INDEX HTML BRIDGE" class="device-one-line"><span>INDEX HTML</span> <em>BRIDGE</em></h2><span class="max-port outlet" data-port="title-state" aria-hidden="true" style="--port-x:45%"></span><span class="max-port outlet" data-port="title-actions" aria-hidden="true" style="--port-x:75%"></span><span class="max-port outlet" data-port="title-sections" aria-hidden="true" style="--port-x:18px"></span></div><div class="device-release-row"><div class="device-states" aria-label="Development status"><span class="preview-state max-message"><span class="max-port inlet" data-port="state-in" aria-hidden="true"></span><span class="max-port outlet" data-port="state-out" aria-hidden="true"></span>TESTING</span><span class="preview-state max-message"><span class="max-port inlet" data-port="staging-in" aria-hidden="true"></span>STAGING</span><span class="preview-state max-message"><span class="max-port inlet" data-port="distribution-in" aria-hidden="true"></span>NOT DISTRIBUTED</span></div><div class="device-actions"><a class="max-message" href="https://ko-fi.com/beerbelgio" rel="noopener noreferrer" target="_blank"><span class="max-port inlet" data-port="action-1" aria-hidden="true"></span>SHOP <span aria-hidden="true" class="link-arrow"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg></span></a><a class="max-message" href="https://maxforlive.com/profile/user/BeerBelgio" rel="noopener noreferrer" target="_blank"><span class="max-port inlet" data-port="action-2" aria-hidden="true"></span>MAXFORLIVE.COM <span aria-hidden="true" class="link-arrow"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg></span></a></div><a class="max-message max-quick-guide nav-link" href="#quick-start"><span class="max-port inlet" data-port="quick-guide-in" aria-hidden="true"></span>QUICK GUIDE<span class="max-port outlet" data-port="quick-guide-out" aria-hidden="true"></span></a></div><p>Turn browser-native HTML sketches into visuals controlled from Ableton Live. Compose five layers, shape native parameters and colors, add MIDI modulation and perform through a dedicated live render window.</p>
+<div class="max-newobj max-device-title"><h1 data-device-title="" aria-label="INDEX HTML BRIDGE" class="device-one-line"><span>INDEX HTML</span> <em>BRIDGE</em></h1><span class="max-port outlet" data-port="title-state" aria-hidden="true" style="--port-x:45%"></span><span class="max-port outlet" data-port="title-actions" aria-hidden="true" style="--port-x:75%"></span><span class="max-port outlet" data-port="title-sections" aria-hidden="true" style="--port-x:18px"></span></div><div class="device-release-row"><div class="device-states" aria-label="Development status"><span class="preview-state max-message"><span class="max-port inlet" data-port="state-in" aria-hidden="true"></span><span class="max-port outlet" data-port="state-out" aria-hidden="true"></span>TESTING</span><span class="preview-state max-message"><span class="max-port inlet" data-port="staging-in" aria-hidden="true"></span>STAGING</span><span class="preview-state max-message"><span class="max-port inlet" data-port="distribution-in" aria-hidden="true"></span>NOT DISTRIBUTED</span></div><div class="device-actions"><a class="max-message" href="https://ko-fi.com/beerbelgio" rel="noopener noreferrer" target="_blank"><span class="max-port inlet" data-port="action-1" aria-hidden="true"></span>SHOP <span aria-hidden="true" class="link-arrow"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg></span></a><a class="max-message" href="https://maxforlive.com/profile/user/BeerBelgio" rel="noopener noreferrer" target="_blank"><span class="max-port inlet" data-port="action-2" aria-hidden="true"></span>MAXFORLIVE.COM <span aria-hidden="true" class="link-arrow"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg></span></a></div><a class="max-message max-quick-guide nav-link" href="#quick-start"><span class="max-port inlet" data-port="quick-guide-in" aria-hidden="true"></span>QUICK GUIDE<span class="max-port outlet" data-port="quick-guide-out" aria-hidden="true"></span></a></div><p>Turn browser-native HTML sketches into visuals controlled from Ableton Live. Compose five layers, shape native parameters and colors, add MIDI modulation and perform through a dedicated live render window.</p>
 </div>
 <div class="max-render"><span class="max-port inlet" data-port="render-in" aria-hidden="true"></span><div class="max-window-title">RENDER <span>DEVICE VIEW</span></div><div aria-label="INDEX HTML BRIDGE — full device interface" class="device-cover-art max-render-content art-bridge">
-<img width="2242" height="171" alt="INDEX HTML BRIDGE — full device interface" src="../assets/device-illustrations/bridge-total.svg"/>
+<img width="2242" height="171" alt="INDEX HTML BRIDGE — full device interface" src="../assets/device-illustrations/bridge-total.svg">
 </div></div>
 </section>
 <section aria-labelledby="compatibility-heading" class="public-section">
 <div class="public-section-header"><span class="site-kicker max-message"><span class="max-port inlet" data-port="compat-number" aria-hidden="true"></span>01 / REQUIREMENTS<span class="max-port outlet" data-port="requirements-out" aria-hidden="true"></span></span><h2 class="max-newobj" id="compatibility-heading"><span class="max-port inlet" data-port="compat-in" aria-hidden="true"></span>COMPATIBILITY<span class="max-port outlet" data-port="compat-out" aria-hidden="true"></span></h2></div>
 <div class="compat-grid">
 <div class="max-compat-card"><span class="max-port inlet" data-port="compat-1" aria-hidden="true"></span><span>DAW</span><strong>Ableton Live 12 + Max for Live</strong><small>Established development target; exact minimum release version is not certified.</small></div>
-<div class="max-compat-card"><span class="max-port inlet" data-port="compat-2" aria-hidden="true"></span><span>PLATFORM</span><strong>macOS</strong><small>DEV2 has scoped native evidence on Apple M5. DEV2 Intel and Windows tests and user acceptance remain pending. The accepted 0.23.8-rc.2 baseline is historical evidence for its own build.</small></div>
+<div class="max-compat-card"><span class="max-port inlet" data-port="compat-2" aria-hidden="true"></span><span>PLATFORM</span><strong>macOS</strong><small>Development tested on Apple M5 with Live 12.4.2 and bundled Max 9.1.4. Intel, Windows and older Max versions remain unverified for version 1.3. Performance depends on the computer and composition.</small></div>
 <div class="max-compat-card"><span class="max-port inlet" data-port="compat-3" aria-hidden="true"></span><span>RUNTIME</span><strong>Node for Max / Chromium</strong><small>Requires the complete device runtime, Node for Max and a supported installed Chromium browser. A self-contained AMXD or zero-setup customer installation is not certified.</small></div>
 </div>
 </section>
 <section aria-labelledby="changes-heading" class="public-section">
 <div class="public-section-header"><h2 class="max-newobj" id="changes-heading"><span class="max-port inlet" data-port="changes-in" aria-hidden="true"></span>CHANGELOG<span class="max-port outlet" data-port="changes-out" aria-hidden="true"></span></h2></div>
-<details class="public-accordion max-release-window"><span class="max-port inlet" data-port="releases-in" aria-hidden="true"></span><summary><span>PUBLIC RELEASE NOTES</span><span aria-hidden="true" class="public-toggle">+</span></summary><div class="public-accordion-body"><p>No publicly distributed release has been verified for this documentation snapshot. The manual below references the <strong>DEV2-2026-10-18 testing candidate</strong>; release candidate notes are not published as commercial release history.</p></div></details>
+<details class="public-accordion max-release-window"><span class="max-port inlet" data-port="releases-in" aria-hidden="true"></span><summary><span>PUBLIC RELEASE NOTES</span><span aria-hidden="true" class="public-toggle">+</span></summary><div class="public-accordion-body"><p>INDEX HTML BRIDGE is in testing and is not publicly distributed. This guide describes version 1.3 (testing). No public release notes or download are available.</p></div></details>
 </section>
 <div class="help-entry" id="help" data-patch-graph><span class="help-entry-left"><span class="site-kicker max-message"><span class="max-port inlet" data-flow-port="in" data-port="help-number-in" aria-hidden="true"></span>03 / DOCUMENTATION<span class="max-port outlet" data-flow-port="out" data-port="help-number-out" aria-hidden="true"></span></span><span class="help-locale-arrow" hidden><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 12 H20"></path><path d="M14 6 L20 12 L14 18"></path></svg></span><label class="help-language-control max-message"><span class="max-port inlet" data-flow-port="in" data-port="language-in" aria-hidden="true"></span><select aria-label="Manual language" data-b4-language=""><option value="en">English</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="es">Español</option><option value="fr">Français</option></select><span aria-hidden="true" class="select-chevron"><svg aria-hidden="true" class="locale-chevron" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m5 9 7 7 7-7"></path></svg></span></label></span><h2 class="max-newobj max-help-title"><span class="max-port inlet" data-port="help-title-in" aria-hidden="true"></span>HELP<span class="max-port outlet" data-flow-port="out" data-port="help-title-out" aria-hidden="true"></span></h2><i hidden data-cable data-from="help-title-out" data-to="help-number-in" data-kind="normal" data-route="flow"></i><i hidden data-cable data-from="help-number-out" data-to="language-in" data-kind="jitter" data-route="flow"></i></div><i hidden data-cable data-from="title-state" data-to="state-in" data-kind="normal" data-route=""></i><i hidden data-cable data-from="title-state" data-to="staging-in" data-kind="normal" data-route=""></i><i hidden data-cable data-from="title-state" data-to="distribution-in" data-kind="normal" data-route=""></i><i hidden data-cable data-from="state-out" data-to="render-in" data-kind="normal" data-route="render"></i><i hidden data-cable data-from="title-actions" data-to="action-1" data-kind="normal" data-route=""></i><i hidden data-cable data-from="title-actions" data-to="action-2" data-kind="normal" data-route=""></i><i hidden data-cable data-from="title-sections" data-to="compat-in" data-kind="jitter" data-route="section"></i><i hidden data-cable data-from="title-sections" data-to="changes-in" data-kind="jitter" data-route="section"></i><i hidden data-cable data-from="title-sections" data-to="help-title-in" data-kind="jitter" data-route="section"></i><i hidden data-cable data-from="compat-out" data-to="compat-number" data-kind="normal" data-route=""></i><i hidden data-cable data-from="requirements-out" data-to="compat-1" data-kind="normal" data-route=""></i><i hidden data-cable data-from="requirements-out" data-to="compat-2" data-kind="normal" data-route=""></i><i hidden data-cable data-from="requirements-out" data-to="compat-3" data-kind="normal" data-route=""></i><i hidden data-cable data-from="changes-out" data-to="releases-in" data-kind="jitter" data-route=""></i>
 <i hidden data-cable data-from="title-actions" data-to="quick-guide-in" data-kind="jitter" data-route=""></i><i hidden data-cable data-from="quick-guide-out" data-to="quick-start-in" data-kind="jitter" data-route="guide"></i><section class="hero">
 <div class="hero-copy">
-<img alt="INDEX HTML BRIDGE" class="hero-device-wordmark" src="../assets/brand/bridge-wordmark.svg"/>
+<img alt="INDEX HTML BRIDGE" class="hero-device-wordmark" src="../assets/brand/bridge-wordmark.svg">
 </div>
 <nav aria-label="Help sections" class="hero-menu">
 <a class="nav-link max-message" href="#quick-start">Quick start</a>
-<a class="nav-link max-message" href="#layers">Layers</a>
+<a class="nav-link max-message" href="#core">Core</a><a class="nav-link max-message" href="#layers">Layers</a>
 <a class="nav-link max-message" href="#params">Params</a>
 <a class="nav-link max-message" href="#color">Color</a>
 <a class="nav-link max-message" href="#midi">MIDI</a>
-<a class="nav-link max-message" href="#library">Library</a>
 <a class="nav-link max-message" href="#render">Render</a>
 <a class="nav-link max-message" href="#performance">Performance</a>
 
@@ -959,7 +959,7 @@ body.nav-docked .sticky-nav .nav-link{flex:0 0 auto!important;width:auto!importa
 </nav>
 </section>
 <div class="manifest-error" id="manifest-error">
-<strong>Help manifest unavailable.</strong><br/>
+<strong>Help manifest unavailable.</strong><br>
       Open this page through the B4~M4L local server or check that the documentation manifest is present.
     </div>
 <section class="quick-start" id="quick-start"><span class="max-port inlet" data-port="quick-start-in" aria-hidden="true" style="--port-x:calc(100% - 24px)"></span>
@@ -970,49 +970,41 @@ body.nav-docked .sticky-nav .nav-link{flex:0 0 auto!important;width:auto!importa
 <article class="quick-step">
 <div class="quick-copy">
 <span class="step-no">1</span>
-<h3>Pick a layer</h3>
-<p>Open L1–L5. Only one Layer editor is open at a time.</p>
+<h3>Layers</h3>
+<p>Open L1–L5, choose a tool and check its library status. Press LOAD, UPDATE or DOWNLOAD to use it; selecting the name alone does not change the running Layer.</p>
 </div>
 </article>
 <article class="quick-step">
 <div class="quick-copy">
 <span class="step-no">2</span>
-<h3>Choose a tool</h3>
-<p>Select it from the library, check its status, then LOAD / UPDATE / DOWNLOAD explicitly.</p>
-</div>
-</article>
-<article class="quick-step">
-<div class="quick-copy">
-<span class="step-no">3</span>
 <h3>Shape it</h3>
 <p>Open PARAMETERS, COLORS &amp; BLEND and MIDI MAPPING in any combination.</p>
 </div>
 </article>
 <article class="quick-step">
 <div class="quick-copy">
-<span class="step-no">4</span>
+<span class="step-no">3</span>
 <h3>Render live</h3>
 <p>RENDER opens the external Chromium compositor. Your five Layers are combined there.</p>
 </div>
 </article>
 <article class="quick-step">
 <div class="quick-copy">
-<span class="step-no">5</span>
+<span class="step-no">4</span>
 <h3>Perform live</h3>
 <p lang="en" data-no-translate>Use RENDER, choose FPS/RES for your workload and save the Live Set to retain tools and controls.</p>
 </div>
 </article>
 </div>
 </section>
-</div><section aria-label="INDEX-HTML Bridge manual" class="manual"><p class="doc-sync-notice" data-no-translate><span lang="it">Le note aggiornate per le candidate attuali sono in inglese, in attesa di revisione delle traduzioni tecniche. Le altre sezioni conservano le traduzioni precedenti.</span><span lang="de">Die aktualisierten Hinweise zu den aktuellen Testversionen bleiben bis zur technischen Übersetzungsprüfung auf Englisch. Andere Abschnitte behalten ihre bisherigen Übersetzungen.</span><span lang="es">Las notas actualizadas de las candidatas actuales están en inglés, pendientes de revisión de la traducción técnica. Las demás secciones conservan sus traducciones anteriores.</span><span lang="fr">Les notes mises à jour pour les versions candidates actuelles restent en anglais, en attente de révision de la traduction technique. Les autres sections conservent leurs traductions précédentes.</span></p><p lang="en" data-no-translate class="doc-version-note">Guide: LIVE DEV2-2026-10-18, an isolated testing candidate, not a new numbered release. Historical accepted baseline: 0.23.8-rc.2. M5 scoped live-render, Note/CC, Macro, recall and browser-lifecycle evidence is available. DEV2 user acceptance, Intel/Windows and Max 8.6.5 validation remain pending. No public release is offered.</p>
-<details class="manual-section" id="core">
+</div><section aria-label="INDEX-HTML Bridge manual" class="manual"><details class="manual-section" id="core">
 <summary>
 <span class="section-title">Core</span>
 <span class="section-summary">The permanent strip: project, HELP, live output and five Layers.</span>
 <span aria-hidden="true" class="section-toggle">+</span>
 </summary>
 <div class="section-body">
-<div class="help-visual-layout help-core-layout"><div class="help-copy-column"><div class="control-table" id="core-controls"><div class="label">INDEX HTML</div><div class="value">Open the INDEX HTML project website.</div><div class="label">HELP (?)</div><div class="value">Open the package-local development manual through the ready Node host. The public product guide is still a release gate.</div><div class="label">RENDER</div><div class="value">Toggle one dedicated Chromium output owned by this Bridge instance.</div><div class="label">Layer visibility</div><div class="value">Include or exclude each Layer independently from editor visibility.</div><div class="label">Layer editor</div><div class="value">Open one Layer editor; click its control again to close it.</div></div></div><figure aria-label="Core controls" class="help-visual device-figure"><img width="243" height="172" alt="INDEX HTML BRIDGE CORE controls" loading="lazy" src="../assets/device-illustrations/bridge-core.svg"></figure></div></div>
+<div class="help-visual-layout help-core-layout"><div class="help-copy-column"><div class="control-table" id="core-controls"><div class="label">INDEX HTML</div><div class="value">Open the INDEX HTML project website.</div><div class="label">HELP (?)</div><div class="value">Open this online HELP in your normal browser. The device’s ? button may still open the BeerBelgio homepage until the updated HELP URL is installed in the device.</div><div class="label"><a class="inline-anchor" href="#render">RENDER</a></div><div class="value">Toggle one dedicated Chromium output owned by this Bridge instance.</div><div class="label">Layer visibility</div><div class="value">Include or exclude each Layer independently from editor visibility.</div><div class="label">Layer editor</div><div class="value">Open one Layer editor; click its control again to close it.</div></div></div><figure aria-label="Core controls" class="help-visual device-figure"><img width="243" height="172" alt="INDEX HTML BRIDGE CORE controls" loading="lazy" src="../assets/device-illustrations/bridge-core.svg"></figure></div></div>
 </details>
 <details class="manual-section" id="layers">
 <summary>
@@ -1033,12 +1025,28 @@ body.nav-docked .sticky-nav .nav-link{flex:0 0 auto!important;width:auto!importa
 <h3>Generator vs effect</h3>
 <p>Generators draw their own canvas. Effects receive the composite of the Layers beneath them and process that result.</p>
 </div>
-</div></div><figure class="help-visual device-figure"><img width="236" height="173" alt="Layer panel of INDEX HTML BRIDGE" loading="lazy" src="../assets/device-illustrations/bridge-layer.svg"/></figure></div>
+</div></div><figure class="help-visual device-figure"><img width="236" height="173" alt="Layer panel of INDEX HTML BRIDGE" loading="lazy" src="../assets/device-illustrations/bridge-layer.svg"></figure></div>
 <div class="callout">
 <strong>Remembered per layer</strong>
 <p>Each Layer remembers its section visibility. Saving a Live Set also stores the loaded tools, native values, HEX, mappings and device settings. Changing a tool resets its values: there is no separate preset memory for every tool. Keep the local tool files available when reopening a Set.</p>
 </div>
+<section class="library-inline" id="library" aria-labelledby="library-heading"><h3 id="library-heading">Library</h3><div class="library-columns"><div class="card">
+<h3>Status</h3>
+<p class="library-status-intro">The library compares the files installed locally with the INDEX catalogue. These labels explain each possible result:</p><div class="pill-list" id="library-status-pills"><div class="library-status-definition"><span class="pill">CURRENT</span><p>Local file exists and installation version equals catalogue version.</p></div><div class="library-status-definition"><span class="pill">OUTDATED</span><p>Local file exists and installation version differs from catalogue version.</p></div><div class="library-status-definition"><span class="pill">MISSING</span><p>Installation metadata or resolved local file is absent.</p></div><div class="library-status-definition"><span class="pill">LOCAL</span><p>Installed entry absent from the remote catalogue, with an existing local file.</p></div></div>
 </div>
+<div class="library-actions"><div class="card">
+<h3>CHECK INDEX</h3>
+<p>Refreshes the remote catalogue and compares it with the flat local <code>tools/</code> library. It does not download tools automatically.</p>
+</div>
+<div class="card">
+<h3>UPDATE ALL</h3>
+<p>Queues only MISSING and OUTDATED catalogue tools. CURRENT entries are left untouched; local-only fixtures remain local.</p>
+</div>
+<div class="card">
+<h3>Selected tool</h3>
+<p>Depending on state, the action becomes LOAD, UPDATE or DOWNLOAD. A dropdown selection alone never changes the running Layer.</p>
+</div>
+</div></div></section></div>
 </details>
 <details class="manual-section" id="params">
 <summary>
@@ -1050,14 +1058,14 @@ body.nav-docked .sticky-nav .nav-link{flex:0 0 auto!important;width:auto!importa
 <div class="section-grid">
 <div class="card">
 <h3>Native Live parameters</h3>
-<p id="parameter-count-copy">The device exposes a stable Live parameter registry for automation and external modulation.</p>
+<p id="parameter-count-copy">87 functional Live controls keep their identities, plus one hidden performance gauge. Each of the five Layers exposes up to 12 numeric slots, with independent color opacity and visibility controls.</p>
 </div>
 <div class="card">
 <h3>Reset &amp; defaults</h3>
 <p>Use the single reset beside a parameter for that control only. DEFAULT restores the loaded tool’s manifest defaults.</p>
 </div>
 <div class="card" lang="en" data-no-translate=""><h3>Effective values</h3><p>With internal Note/CC assigned, the dial uses a grey effective arc and needle, an updating final numerical readout and a separate reference to the native Live input. That input can already include Macro modulation. Mouse editing is disabled for the assigned slot; no cosmetic values are written back to Live. Unassigned slots retain native drawing.</p></div>
-<div class="card" lang="en" data-no-translate=""><h3>Automation stays yours</h3><p>The established Live parameter remains the automation and external modulation target. DEV2 tests covered native Macro modulation and internal Note36/CC1. External LFO and MAP ABS/% variants were not represented by that fixture and are not declared fixed or universally supported.</p></div>
+<div class="card" lang="en" data-no-translate=""><h3>Automation stays yours</h3><p>The Live parameter remains the automation and external modulation target. Internal Note/CC temporarily owns the final value of an assigned slot; choose NONE to return it to native editing.</p></div>
 </div>
 </div>
 </details>
@@ -1067,9 +1075,9 @@ body.nav-docked .sticky-nav .nav-link{flex:0 0 auto!important;width:auto!importa
 <span class="section-summary">Up to four tool-defined colors, independent opacity and per-Layer blend mode.</span>
 <span aria-hidden="true" class="section-toggle">+</span>
 </summary>
-<div class="section-body"><div class="help-visual-layout help-visual-color max-help-layout"><figure class="help-visual device-figure"><img width="299" height="171" alt="Color panel of INDEX HTML BRIDGE" loading="lazy" src="../assets/device-illustrations/bridge-colors.svg"/></figure><div class="card">
+<div class="section-body"><div class="help-visual-layout help-visual-color max-help-layout"><figure class="help-visual device-figure"><img width="299" height="171" alt="Color panel of INDEX HTML BRIDGE" loading="lazy" src="../assets/device-illustrations/bridge-colors.svg"></figure><div class="card">
 <h3>Colors</h3>
-<p id="color-copy">Each active color can be edited with the picker or six-digit HEX input. Unused manifest slots stay clearly marked.</p>
+<p id="color-copy">Up to four manifest-defined colors per Layer. Edit them with the native picker or #RRGGBB text; unused slots display UNUSED.</p>
 </div><div class="card">
 <h3>Opacity</h3>
 <p>Color opacity is a native host control and does not consume P01–P12. Missing host opacity keeps the standalone tool behaviour unchanged.</p>
@@ -1092,7 +1100,7 @@ body.nav-docked .sticky-nav .nav-link{flex:0 0 auto!important;width:auto!importa
 <div class="section-grid three">
 <div class="card">
 <h3>Source</h3>
-<div class="pill-list" id="midi-source-pills"></div>
+<div class="pill-list" id="midi-source-pills"><span class="pill">NONE</span><span class="pill">MIDI NOTE</span><span class="pill">MIDI CC</span></div>
 <p style="margin-top:9px">Mappings start unassigned. Choose the MIDI input and channel, then a slot source and NOTE/CC ID. NONE unassigns a slot. Amount sets the contribution; attack/release shape its response. Assignments are Layer-specific and saved with the Set; the functional Live controls keep their automation identities.</p>
 </div>
 <div class="card">
@@ -1104,34 +1112,7 @@ body.nav-docked .sticky-nav .nav-link{flex:0 0 auto!important;width:auto!importa
 <p>The incoming 0–127 value becomes the target. Attack smooths upward movement; release smooths downward movement.</p>
 </div>
 </div>
-<div class="callout"><strong>Assigned slots</strong><p lang="en" data-no-translate>Choose NONE to return an internally mapped slot to native editing. Check its final value and target response after changing assignment. Native M5 evidence covers Note36/CC1, attack/release, unmap and recall within the documented fixture.</p></div>
-</div>
-</details>
-<details class="manual-section" id="library">
-<summary>
-<span class="section-title">Library</span>
-<span class="section-summary">CHECK INDEX compares your local HTML tools with the INDEX catalogue. Nothing updates by itself.</span>
-<span aria-hidden="true" class="section-toggle">+</span>
-</summary>
-<div class="section-body">
-<div class="section-grid">
-<div class="card">
-<h3>Status</h3>
-<p class="library-status-intro">The library compares the files installed locally with the INDEX catalogue. These labels explain each possible result:</p><div class="pill-list" id="library-status-pills"></div>
-</div>
-<div class="card">
-<h3>CHECK INDEX</h3>
-<p>Refreshes the remote catalogue and compares it with the flat local <code>tools/</code> library. It does not download tools automatically.</p>
-</div>
-<div class="card">
-<h3>Selected tool</h3>
-<p>Depending on state, the action becomes LOAD, UPDATE or DOWNLOAD. A dropdown selection alone never changes the running Layer.</p>
-</div>
-<div class="card">
-<h3>UPDATE ALL</h3>
-<p>Queues only MISSING and OUTDATED catalogue tools. CURRENT entries are left untouched; local-only fixtures remain local.</p>
-</div>
-</div>
+<div class="callout"><strong>Assigned slots</strong><p>Choose NONE to return an internally mapped slot to native editing. Check its final value and destination response after changing assignment.</p></div>
 </div>
 </details>
 <details class="manual-section" id="render">
@@ -1151,7 +1132,7 @@ body.nav-docked .sticky-nav .nav-link{flex:0 0 auto!important;width:auto!importa
 <p>A ready local Node host, a supported installed Chromium browser and compatible Canvas/WebGL support are required.</p>
 </div>
 </div>
-<div class="callout ok"><strong>Session ownership</strong><p lang="en" data-no-translate>RENDER uses a private browser session per instance. Closing the output, toggling RENDER, switching Sets and quitting Live were tested on M5. Uncertain ownership or shutdown is reported rather than closing an unrelated browser. Other platforms and failure paths remain separate tests.</p></div>
+<div class="callout ok"><strong>Session ownership</strong><p>RENDER uses a private browser session for each instance. It is designed to close its rendering processes when you close the output, toggle RENDER, switch Live Sets or quit Live. If the output remains open, see Troubleshooting.</p></div>
 </div>
 </details>
 <details class="manual-section" id="performance">
@@ -1174,7 +1155,6 @@ body.nav-docked .sticky-nav .nav-link{flex:0 0 auto!important;width:auto!importa
 <strong>Same view, different quality</strong>
 <p>The full composition scales to the RENDER window without zooming or cropping when RES changes. Settings survive closing and reopening RENDER and are saved with the Live Set. A new unconfigured device starts from AUTO / AUTO. If a buffer is unsupported, INDEX reports the error and restores the preceding selection.</p>
 </div>
-<div class="callout ok"><strong>Measured on M5</strong><p lang="en" data-no-translate>A five-layer composite sustained 1080p30 for 120 seconds at 29.994 FPS average. The same tested load reached about 33.19 FPS when 60 was requested; 60 FPS was not sustained. Brief 1440p30 and 4K30 tests are separate evidence. AUTO/AUTO remains the device default; no universal performance guarantee is implied.</p></div>
 </div>
 </details>
 
@@ -1188,12 +1168,7 @@ body.nav-docked .sticky-nav .nav-link{flex:0 0 auto!important;width:auto!importa
 <div class="section-body">
 <div class="section-grid">
 <div class="card"><h3>Browser or missing resources</h3><p>Keep the complete folder together, load a local tool, and confirm Chromium is installed. RENDER opens an isolated app-style Chromium window; HELP uses the normal browser. Missing tool/module/font errors need the exact Console message and package version. CHECK refreshes metadata without replacing HTML; UPDATE explicitly downloads a selected tool.</p></div>
-<div class="card" lang="en" data-no-translate><h3>Output will not open</h3><p>Check the complete runtime folder, the ready Node host and a supported installed Chromium browser. Capture the first exact Console error and package/build version; missing UI or READY errors are separate from initial startup warnings.</p></div><div class="card" lang="en" data-no-translate><h3>Output stops or is slow</h3><p>Check whether a loaded Layer is visible, whether the selected tool was actually loaded, and the actual/target FPS readout. Reduce FPS or resolution for a heavy composition; a requested cap is not an achieved-rate guarantee.</p></div><div class="card" lang="en" data-no-translate><h3>MIDI and Macro checks</h3><p>Start with one clearly identified target and input. DEV2 M5 tests covered Note36/CC1 and two Macro-controlled parameters. External LFO and MAP ABS/% remain unvalidated for this candidate.</p></div><div class="card" lang="en" data-no-translate><h3>Browser session remains open</h3><p>Report the exact build and closure path. A session with uncertain ownership may be retained intentionally; do not close unrelated personal browser processes as a workaround.</p></div></div>
-<div class="section-grid" id="issues-grid" style="margin-top:18px"></div>
-<div class="card" style="margin-top:18px">
-<h3>Current limitations</h3>
-<ul id="limitations-list"></ul>
-</div>
+<div class="card" lang="en" data-no-translate><h3>Output will not open</h3><p>Check the complete runtime folder, the ready Node host and a supported installed Chromium browser. Capture the first exact Console error and package/build version; missing UI or READY errors are separate from initial startup warnings.</p></div><div class="card" lang="en" data-no-translate><h3>Output stops or is slow</h3><p>Check whether a loaded Layer is visible, whether the selected tool was actually loaded, and the actual/target FPS readout. Reduce FPS or resolution for a heavy composition; a requested cap is not an achieved-rate guarantee.</p></div><div class="card" lang="en" data-no-translate><h3>Browser session remains open</h3><p>Report the exact build and closure path. A session with uncertain ownership may be retained intentionally; do not close unrelated personal browser processes as a workaround.</p></div></div>
 </div>
 </details>
 <details class="manual-section" id="architecture">
@@ -1232,10 +1207,10 @@ body.nav-docked .sticky-nav .nav-link{flex:0 0 auto!important;width:auto!importa
 <a class="privacy-link" href="../privacy/index.html">PRIVACY</a>
 <a href="https://ko-fi.com/beerbelgio" rel="noopener noreferrer" target="_blank">SHOP <span aria-hidden="true" class="link-arrow"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg></span></a>
 <a href="https://maxforlive.com/profile/user/BeerBelgio" rel="noopener noreferrer" target="_blank">MAXFORLIVE.COM <span aria-hidden="true" class="link-arrow"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg></span></a>
-<a class="hub-link" href="https://beerbelgio.github.io/" rel="noopener noreferrer" target="_blank"><span>BEERBELGIO</span><img alt="" aria-hidden="true" src="../assets/brand/beerbelgio-button.svg"/></a>
+<a class="hub-link" href="https://beerbelgio.github.io/" rel="noopener noreferrer" target="_blank"><span>BEERBELGIO</span><img alt="" aria-hidden="true" src="../assets/brand/beerbelgio-button.svg"></a>
 </nav>
 </div></footer>
-<dialog aria-describedby="translation-dialog-message" aria-labelledby="translation-dialog-title" class="b4-translation-dialog" id="b4-translation-dialog"><div class="translation-dialog-inner"><h2 id="translation-dialog-title">TRANSLATION NOTICE</h2><p id="translation-dialog-message">Please note that this is an automatically generated translation and has not been manually verified. If something looks wrong, please report it.</p><p>Want a new language? Let me know ♥</p><div class="translation-dialog-actions"><a href="mailto:matteo.sonodgtl@gmail.com?subject=B4M4L%20translation%20feedback">REPORT / REQUEST LANGUAGE <span aria-hidden="true" class="link-arrow"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg></span></a><button data-close-translation-dialog="" type="button">GOT IT</button></div></div></dialog><script src="help/help-manifest.js?v=16262c3766"></script>
+<dialog aria-describedby="translation-dialog-message" aria-labelledby="translation-dialog-title" class="b4-translation-dialog" id="b4-translation-dialog"><div class="translation-dialog-inner"><h2 id="translation-dialog-title">TRANSLATION NOTICE</h2><p id="translation-dialog-message">Please note that this is an automatically generated translation and has not been manually verified. If something looks wrong, please report it.</p><p>Want a new language? Let me know ♥</p><div class="translation-dialog-actions"><a href="mailto:matteo.sonodgtl@gmail.com?subject=B4M4L%20translation%20feedback">REPORT / REQUEST LANGUAGE <span aria-hidden="true" class="link-arrow"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg></span></a><button data-close-translation-dialog="" type="button">GOT IT</button></div></div></dialog><script src="help/help-manifest.js?v=09313590b3"></script>
 <script>
     (() => {
       const $ = (sel, root = document) => root.querySelector(sel);
@@ -1244,52 +1219,14 @@ body.nav-docked .sticky-nav .nav-link{flex:0 0 auto!important;width:auto!importa
       let manifest = null;
       const fallbackManifest = window.INDEX_HELP_MANIFEST || null;
 
-      const friendlyStatus = (value) => String(value || '')
-        .replaceAll('_', ' ')
-        .replace(/\b\w/g, c => c.toUpperCase());
-
-      const pill = (text) => {
-        const span = document.createElement('span');
-        span.className = 'pill';
-        span.textContent = text;
-        return span;
-      };
-
-      const addRow = (root, label, value) => {
-        const l = document.createElement('div');
-        l.className = 'label';
-        l.textContent = label;
-        const v = document.createElement('div');
-        v.className = 'value';
-        v.textContent = value;
-        root.append(l, v);
-      };
-
-      const coreControlMap = {
-        'project-link': ['INDEX HTML', 'Open the INDEX HTML project website.'],
-        'repository-link': ['?', 'Open the local HELP in this testing build; public releases will open the online B4~M4L manual.'],
-        'live-render': ['RENDER', 'Open the live external Chromium compositor.'],
-        'layer-visible': ['Layer visibility', 'Include or exclude L1–L5 from the composition independently from editor state.'],
-        'layer-editor': ['Layer editor', 'Open one Layer editor at a time; click the same control again to close it.']
-      };
-
-      function renderCore(d) {
-        const table = $('#core-controls');
-        table.innerHTML = '';
-        const controls = d.ui?.controls || [];
-        Object.entries(coreControlMap).forEach(([id, fallback]) => {
-          const found = controls.find(c => c.id === id);
-          addRow(table, fallback[0], id === 'repository-link' ? fallback[1] : (found?.action || fallback[1]));
-        });
-      }
-
       function renderMeta(d) {
         const build = d.device?.build || d.generatedForBuild || '—';
-        $('#build-chip').textContent = String(build);
-        if ($('#footer-build')) $('#footer-build').textContent = String(build);
+        const publicVersion = d.device?.publicVersion || '1.3';
+        $('#build-chip').textContent = String(publicVersion) + ' · TESTING';
+        if ($('#footer-build')) $('#footer-build').textContent = String(publicVersion);
         const email = $('#support-email');
         if (email) {
-          const body = ["Hello,","","I'm contacting you about an issue with INDEX HTML BRIDGE.","","Bridge version: " + build,"","Ableton Live version:","","Max version:","","Operating system:","","Description of the issue:","","Steps to reproduce:","","Expected behavior:","","Actual behavior:","","You may attach relevant Max Console messages, screenshots, diagnostic reports or any other files that could help investigate the issue.","","Please review attachments before sending: diagnostic files may include local file paths, project information or personal data."].join('\n');
+          const body = ["Hello,","","I'm contacting you about an issue with INDEX HTML BRIDGE.","","Bridge version: " + publicVersion,"Internal build: " + build,"","Ableton Live version:","","Max version:","","Operating system:","","Description of the issue:","","Steps to reproduce:","","Expected behavior:","","Actual behavior:","","You may attach relevant Max Console messages, screenshots, diagnostic reports or any other files that could help investigate the issue.","","Please review attachments before sending: diagnostic files may include local file paths, project information or personal data."].join('\n');
           email.href = 'mailto:matteo.sonodgtl@gmail.com?subject=' + encodeURIComponent('INDEX HTML BRIDGE — Support Request') + '&body=' + encodeURIComponent(body);
         }
 
@@ -1299,87 +1236,10 @@ body.nav-docked .sticky-nav .nav-link{flex:0 0 auto!important;width:auto!importa
         if (repo && $('#repo-link')) $('#repo-link').href = `https://github.com/${repo}`;
       }
 
-      function renderParameters(d) {
-        const count = d.parameters?.liveParameterCount ?? d.device?.liveParameterCount;
-        const bank = d.parameters?.bankStructure || {};
-        if (count != null) {
-          $('#parameter-count-copy').textContent = `87 functional Live controls keep their identities, with one separate hidden performance gauge (${count} numeric identities total). Functional controls stay identity-sensitive for automation and external modulation. The five Layers expose up to ${bank.numericSlotsPerLayer ?? 12} numeric slots each, plus host controls such as color opacity and visibility.`;
-        }
-      }
-
-      function renderColor(d) {
-        const c = d.colorsAndBlend || {};
-        $('#color-copy').textContent = `Up to ${c.maximumColorSlotsPerLayer ?? 4} manifest-defined colors per Layer. Edit them with the native picker or ${c.hexFormat || '#RRGGBB'} text; unused slots display UNUSED.`;
-        const root = $('#blend-pills');
-        root.innerHTML = '';
-        (c.blend?.visibleOptions || ['Normal', 'Add', 'Multiply', 'Screen']).forEach(x => root.appendChild(pill(x)));
-      }
-
-      function renderMidi(d) {
-        const root = $('#midi-source-pills');
-        root.innerHTML = '';
-        (d.midi?.sources || ['NONE', 'MIDI NOTE', 'MIDI CC']).forEach(x => root.appendChild(pill(x)));
-      }
-
-      function renderLibrary(d) {
-        const statusRoot = $('#library-status-pills');
-        statusRoot.innerHTML = '';
-        (d.library?.statuses || []).forEach(s => {
-          const row = document.createElement('div');
-          row.className = 'library-status-definition';
-          row.appendChild(pill(s.id));
-          const explanation = document.createElement('p');
-          explanation.textContent = s.meaning || '';
-          row.appendChild(explanation);
-          statusRoot.appendChild(row);
-        });
-      }
-
-      function renderIssues(d) {
-        const grid = $('#issues-grid');
-        grid.innerHTML = '';
-        (d.knownIssues || []).forEach(issue => {
-          const card = document.createElement('div');
-          card.className = 'card';
-          if (issue.id.startsWith('rc3-')) { card.lang='en'; card.setAttribute('data-no-translate',''); }
-          const h = document.createElement('h3');
-          h.textContent = friendlyStatus(issue.id);
-          const p = document.createElement('p');
-          p.textContent = issue.fact;
-          const status = document.createElement('div');
-          status.className = 'status-line';
-          const dot = document.createElement('span');
-          dot.className = 'state-dot progress';
-          const copy = document.createElement('span');
-          copy.className = 'status-copy';
-          copy.textContent = `${friendlyStatus(issue.implementationStatus)} · ${friendlyStatus(issue.runtimeValidation)}`;
-          status.append(dot, copy);
-          card.append(h, p, status);
-          grid.appendChild(card);
-        });
-
-        const list = $('#limitations-list');
-        list.innerHTML = '';
-        (d.limitations || []).forEach(lim => {
-          const li = document.createElement('li');
-          li.textContent = lim.fact;
-          list.appendChild(li);
-        });
-      }
-
       function render(d) {
-        if(d?.schemaVersion!==1 || d.device?.build!=='DEV2-2026-10-18')throw new Error('Unsupported LIVE documentation metadata.');
-        manifest = d;
-        document.body.dataset.docBuild=d.device.build;
-        renderMeta(d);
-        renderCore(d);
-        renderParameters(d);
-        renderColor(d);
-        renderMidi(d);
-        renderLibrary(d);
-        renderIssues(d);
+        if(d?.schemaVersion!==1 || d.device?.build!=='DEV3-2026-10-19')throw new Error('Unsupported Bridge documentation metadata.');
+        manifest=d;document.body.dataset.docBuild=d.device.build;renderMeta(d);
       }
-
       async function loadManifest() {
         if (location.protocol === 'file:' && fallbackManifest) { try { render(fallbackManifest); document.body.dataset.docManifest='mirror'; } catch(error) { document.body.dataset.docManifest='static'; $('#manifest-error').classList.add('visible'); } return; }
         try {
@@ -1444,8 +1304,8 @@ body.nav-docked .sticky-nav .nav-link{flex:0 0 auto!important;width:auto!importa
         clearTargetState();
 
         const sections = manualSections();
-        if (target.matches('details.manual-section')) {
-          sections.forEach(section => { section.open = section === target; });
+        if (target.closest('details.manual-section')) {
+          sections.forEach(section => { section.open = section === target.closest('details.manual-section'); });
           $$(`.nav-link[href="#${id}"]`).forEach(link => link.classList.add('active'));
         } else if (id === 'quick-start') {
           sections.forEach(section => { section.open = false; });
@@ -1463,7 +1323,7 @@ body.nav-docked .sticky-nav .nav-link{flex:0 0 auto!important;width:auto!importa
         });
       }
 
-      $$('.nav-link').forEach(link => {
+      $$('.nav-link, #core-controls a.inline-anchor').forEach(link => {
         link.addEventListener('click', (event) => {
           const id = link.getAttribute('href')?.replace(/^#/, '');
           if (!id) return;
@@ -1504,9 +1364,9 @@ body.nav-docked .sticky-nav .nav-link{flex:0 0 auto!important;width:auto!importa
         }, { once: true });
       }
 
-      renderMeta({device:{build:'DEV2-2026-10-18'}}); // Static support remains complete if metadata cannot load.
+      renderMeta({device:{publicVersion:'1.3',build:'DEV3-2026-10-19'}}); // Static support remains complete if metadata cannot load.
       loadManifest();
     })();
   </script>
-<script src="../assets/js/i18n.js?v=4d15a9dc46"></script></body>
+<script src="../assets/js/i18n.js?v=37e4d52e0d"></script></body>
 </html>

@@ -1,9 +1,9 @@
-/* v0.12 default; layout 3 preserves all old layout 2 session entries. */
+/* Canonical desktop composition; mirrored for direct disk use. */
 window.B4M4L_DEFAULT_LAYOUT = {
   "schema": "b4m4l.hero-layout",
   "schemaVersion": 1,
-  "siteVersion": "0.12",
-  "layoutVersion": 3,
+  "siteVersion": "0.13-rc.1",
+  "layoutVersion": 4,
   "container": {
     "id": "patch-canvas",
     "coordinateSpace": "normalized",
@@ -15,21 +15,21 @@ window.B4M4L_DEFAULT_LAYOUT = {
       "id": "wordmark",
       "x": 0.07102272727272728,
       "y": 0.03111111111111111,
-      "width": 0.7386363636363636,
-      "height": 0.28888888888888886
+      "width": 0.6278409090909091,
+      "height": 0.24555555555555553
     },
     {
       "id": "claim",
       "x": 0.17045454545454544,
       "y": 0.49444444444444446,
-      "width": 0.40482954545454547,
+      "width": 0.3693181818181818,
       "height": 0.2
     },
     {
       "id": "description",
       "x": 0.11079545454545454,
       "y": 0.8088888888888889,
-      "width": 0.4119318181818182,
+      "width": 0.390625,
       "height": 0.15555555555555556
     },
     {

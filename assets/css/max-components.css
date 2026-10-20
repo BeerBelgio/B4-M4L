@@ -9,7 +9,6 @@
 .site-home .patch-object.max-message{border-color:transparent;padding:0}
 .site-home .is-unlocked .patch-object.max-newobj{background:#505050}
 .site-home .is-unlocked .patch-object.max-message{background:#505050;border-color:#696969}
-.site-home .patch-object:has(.max-explore-link:hover),.site-home .patch-object:has(.max-explore-link:focus-visible){background:linear-gradient(#242424,#202020)}
 .max-newobj a:focus-visible,.max-message:focus-visible{outline:2px solid var(--b4-accent);outline-offset:4px}
 .max-port{--port-x:18px;position:absolute;z-index:4;left:var(--port-x);width:9px;height:5.5px;pointer-events:none;background:#bfc1c3;border:1px solid #535353;box-sizing:border-box;clip-path:polygon(0 0,100% 0,86% 100%,14% 100%)}
 .max-port.inlet{top:-2px}

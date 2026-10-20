@@ -64,6 +64,10 @@
         const dx=Math.max(12,(b.x-a.x)*.45);
         return `M ${a.x} ${a.y} C ${a.x+dx} ${a.y} ${b.x-dx} ${b.y} ${b.x} ${b.y}`;
       }
+      if(route==='home-special' && b.y>a.y+60){
+        const lane=a.y+Math.max(24,(b.y-a.y)*.45);
+        return rounded([a,{x:a.x,y:lane},{x:b.x,y:lane},b],38);
+      }
       if(route==='render')return rounded([a,{x:a.x,y:b.y-26},{x:b.x,y:b.y-26},b],16);
       if(route==='section'){
         const column=this.root.querySelector('.public-section'),lane=Math.max(5,this.left(column)-12-index*5);

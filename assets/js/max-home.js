@@ -12,7 +12,7 @@
   const media = matchMedia('(min-width: 1000px) and (pointer: fine)');
   const GAP = 18;
   const EDGE = 14;
-  let editable = false, locked = true, active = null, z = 2;
+  let editable = false, locked = false, active = null, z = 2;
   let lastWidth = 0, lastHeight = 0, announceTimer;
   const DEFAULT = window.B4M4L_DEFAULT_LAYOUT;
   const storageKey = 'b4m4l.hero.session.v1.' + (document.body.dataset.demoCatalogue ? 'demo' : 'main') + '.layout' + DEFAULT.layoutVersion;
@@ -34,7 +34,7 @@
     const content = el.querySelector('.object-content');
     const oldWidth = el.style.width, oldHeight = el.style.height, oldFlex = content.style.flex;
     el.style.width = width + 'px'; el.style.height = 'auto'; content.style.flex = '0 0 auto';
-    const h = content.scrollHeight + 36; // reserve the unlocked handle and native frame, even while locked
+    const h = content.scrollHeight + (el.dataset.node === 'wordmark' ? 30.6 : 36); // reserve the unlocked handle and native frame, even while locked
     el.style.width = oldWidth; el.style.height = oldHeight; content.style.flex = oldFlex;
     return Math.max(Number(el.dataset.minHeight), h);
   }
@@ -58,7 +58,7 @@
   }
   function currentConfig() {
     return {
-      schema: 'b4m4l.hero-layout', schemaVersion: 1, siteVersion: '0.12', layoutVersion: DEFAULT.layoutVersion,
+      schema: 'b4m4l.hero-layout', schemaVersion: 1, siteVersion: '0.13-rc.1', layoutVersion: DEFAULT.layoutVersion,
       container: { id: canvas.id, coordinateSpace: 'normalized', referenceWidth: canvas.clientWidth, referenceHeight: canvas.clientHeight },
       nodes: nodes.map(el => {
         const r = rects.get(el), round = n => Math.round(n * 1e8) / 1e8;
@@ -241,13 +241,5 @@
   window.visualViewport?.addEventListener('resize',reflow);
   document.fonts?.ready.then(() => { if (editable) restoreLayout(preferred || DEFAULT); else schedule(); });
   preferred = readSession();
-  // Development-only precision export; never promotes a session to the shared default.
-  window.B4M4LLayout = Object.freeze({ exportJSON() { return editable ? JSON.stringify(currentConfig(),null,2) : null; }, diagnostics() { return { storageAvailable, reasons:[...reasons] }; } });
-  if (new URLSearchParams(location.search).get('layout-tools') === '1') {
-    const panel=document.createElement('details'); panel.className='layout-dev-tools';
-    panel.innerHTML='<summary>Layout development tools</summary><p>Export the desktop composition for review. This does not change RESET.</p><button type="button">EXPORT CURRENT JSON</button><textarea aria-label="Current hero layout JSON" readonly rows="12"></textarea>';
-    controls.after(panel);
-    panel.querySelector('button').addEventListener('click',() => { panel.querySelector('textarea').value=window.B4M4LLayout.exportJSON() || 'Desktop layout required.'; });
-  }
   setMode();
 })();

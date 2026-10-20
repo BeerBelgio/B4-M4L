@@ -4,7 +4,7 @@
   if(!document.body.classList.contains('cot-page'))return;
   const note=document.querySelector('#cot-manifest-note');
   const render=data=>{
-    if(data?.schemaVersion!==1||data.device?.build!=='0.1.6.4')throw new Error('Unsupported COT documentation metadata.');
+    if(data?.schemaVersion!==1||data.device?.build!=='0.1.6.5')throw new Error('Unsupported COT documentation metadata.');
     document.querySelectorAll('[data-cot-build]').forEach(el=>{el.textContent='v'+data.device.build;});
     document.body.dataset.docBuild=data.device.build;
     document.body.dataset.docManifest='loaded';
