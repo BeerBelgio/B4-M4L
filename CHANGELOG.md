@@ -1,12 +1,26 @@
 # B4~M4L — Changelog
 
-## 0.13 — Release candidate (owner review)
+Changes to the **public documentation website** are recorded here. Device software versions and their development histories are managed independently.
 
-- Added project SEO metadata and a canonical sitemap for `https://beerbelgio.github.io/b4-m4l/`; all four public pages including Privacy are indexable. Sitemap generation is deterministic and has no runtime dependency.
-- Refined the interactive Max-style homepage, Explore states and desktop layout controls.
-- Updated the public guides for INDEX HTML BRIDGE and CONSEQUENCE OF TIME while retaining their testing status and excluding device downloads.
-- Prepared a standalone static PUBLIC package with local assets and font licences; streamlined the public Privacy notice and kept core GDPR disclosures.
-- Aligned visible INDEX HTML BRIDGE documentation version to 1.3 (testing), retaining the DEV3 machine identifier for compatibility until the device source is synchronized.
-- Corrected Bridge CORE quick navigation styling and its text-style RENDER link: selecting RENDER now opens its detailed section and scrolls to it, like the quick-navigation links.
+## 0.13 — Initial public release (2026-10-20)
 
-This candidate is prepared for owner publication. The proposed final release tag is `0.13`, without a `v` prefix; no tag has been created by this patch.
+The first public release of **B4~M4L**, BeerBelgio's documentation and support website for Max for Live devices.
+
+### What's included
+
+- A patch-inspired, interactive homepage with movable and resizable objects, animated connections and LOCK / EDIT / RESET controls on supported desktop browsers.
+- Dedicated pages for **INDEX HTML BRIDGE** and **CONSEQUENCE OF TIME**, with device overviews, illustrated guides, compatibility and status information, changelogs and support links.
+- Documentation in English and Italian, with automatic German, Spanish and French HELP translations.
+- Responsive layouts for desktop and smaller screens, local font assets and browser-side preferences.
+- Stable device HELP URLs designed for links from the devices themselves.
+- Site-specific canonical URLs, sharing metadata and an XML sitemap, coordinated with the BeerBelgio hub's indexing structure.
+- A public Privacy notice and a standalone GitHub Pages deployment without third-party runtime dependencies.
+
+### Device status at launch
+
+The website is publicly available, but **the devices documented here remain in testing and are not being distributed through this repository**.
+
+- **INDEX HTML BRIDGE:** 1.3 testing candidate (internal build identifier: DEV3-2026-10-19).
+- **CONSEQUENCE OF TIME:** 0.1.6.5 testing candidate.
+
+This release establishes the public website baseline. Later entries will describe changes made *after* 0.13.
