@@ -2,6 +2,11 @@
 
 Changes to the **public documentation website** are recorded here. Device software versions and their development histories are managed independently.
 
+## Unreleased
+
+### Performance
+- Converted Barlow Condensed web delivery from 18 original TTF faces to matching, validated WOFF2 counterparts (approximately 62.6% smaller source-font payload). Original TTF assets remain archived in the repository; no changes to typography, device content or JavaScript behavior.
+
 ## 0.13 — Initial public release (2026-10-20)
 
 The first public release of **B4~M4L**, BeerBelgio's documentation and support website for Max for Live devices.
