@@ -1,8 +1,8 @@
-/* Canonical desktop composition; mirrored for direct disk use. */
+/* Canonical desktop composition; geometry and layoutVersion are unchanged. */
 window.B4M4L_DEFAULT_LAYOUT = {
   "schema": "b4m4l.hero-layout",
   "schemaVersion": 1,
-  "siteVersion": "0.13-rc.1",
+  "siteVersion": "0.13.1",
   "layoutVersion": 4,
   "container": {
     "id": "patch-canvas",

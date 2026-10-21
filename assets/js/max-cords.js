@@ -60,7 +60,7 @@
       return (el.getBoundingClientRect().left-this.root.getBoundingClientRect().left)*this.root.clientWidth/this.root.getBoundingClientRect().width;
     }
     curve(a,b,route='',index=0) {
-      if(route==='flow'&&matchMedia('(min-width:621px)').matches){
+      if(route==='flow'&&(matchMedia('(min-width:621px)').matches||Math.abs(b.x-a.x)>Math.abs(b.y-a.y))){
         const dx=Math.max(12,(b.x-a.x)*.45);
         return `M ${a.x} ${a.y} C ${a.x+dx} ${a.y} ${b.x-dx} ${b.y} ${b.x} ${b.y}`;
       }

@@ -217,3 +217,48 @@ a.max-message:hover,a.max-message:focus-visible,.hero-menu a.max-message.active,
 
 /* Keep the wire plane above section backgrounds in WebKit, below all objects. */
 svg.max-cords{z-index:1;isolation:auto}
+
+/* 0.13.1: reserve the approved desktop composition before deferred JS runs.
+   Coordinates below mirror home-default.json; inline session geometry wins. */
+@media screen and (min-width:1000px) and (pointer:fine){
+ .max-home-system{width:min(2000px,calc(100vw - 32px));left:50%;transform:translateX(-50%)}
+ .max-home-system .patch-canvas{display:block;height:900px;padding:0}
+ .max-home-system .patch-object{position:absolute;container-type:inline-size}
+ .max-home-system .max-layout-controls,.max-home-system #devices{width:min(1150px,calc(100vw - 50px));margin-inline:auto}
+ .max-home-system .max-layout-controls[hidden]{display:flex;visibility:hidden}
+ .max-home-system:not(.is-layout-capable) .patch-object::before{content:"";flex:0 0 26px}
+ .max-home-system:not(.is-layout-capable) .patch-object[data-node=wordmark]::before{flex-basis:22.1px}
+ .max-home-system .max-home-claim{font-size:clamp(28px,9.4cqw,50px)}
+ .max-home-system .patch-object[data-node=wordmark]{border-width:3.4px}
+ .max-home-system .patch-object[data-node=wordmark] .object-content{padding:15.3px 18.7px}
+ .max-home-system .patch-object[data-node=wordmark]{left:7.1022727272727275%;top:28.0px;width:62.78409090909091%;height:220.99999999999997px}
+ .max-home-system .patch-object[data-node=claim]{left:17.045454545454543%;top:445.0px;width:36.93181818181818%;height:180.0px}
+ .max-home-system .patch-object[data-node=description]{left:11.079545454545455%;top:728.0px;width:39.0625%;height:140.0px}
+ .max-home-system .patch-object[data-node=browse]{left:76.70454545454545%;top:410.0px;width:17.045454545454543%;height:100.0px}
+}
+
+/* Upright accent retains its original weight, family and colour. */
+.max-device-title :is(h1,h2) em{font-style:normal}
+/* Only QUICK GUIDE follows the approved Explore inversion. */
+.max-device-overview a.max-quick-guide{background:#222!important;color:#ec6b2d!important}
+.max-device-overview a.max-quick-guide:is(:hover,:focus-visible,:active){background:#505050!important;color:#f1f1ee!important}
+/* Draw the +/- geometry around the circle centre, independent of font bearings. */
+.manual-section>summary .section-toggle{position:relative;font-size:0;flex-shrink:0}
+.manual-section>summary .section-toggle::before,.manual-section>summary .section-toggle::after{content:"";position:absolute;left:50%;top:50%;background:currentColor;transform:translate(-50%,-50%)}
+.manual-section>summary .section-toggle::before{width:12px;height:1.5px}
+.manual-section>summary .section-toggle::after{width:1.5px;height:12px}
+@media(max-width:620px){
+ .max-device-overview .help-entry{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:32px 22px;width:calc(100% - 28px);align-items:start}
+ .max-device-overview .help-entry .max-help-title{grid-column:1;grid-row:1;font-size:28px;padding:12px;margin:0}
+ .max-device-overview .help-entry .site-kicker{grid-column:2;grid-row:1;justify-self:start;margin:0;max-width:100%;white-space:normal;line-height:1.2;text-align:center;padding:10px}
+ .max-device-overview .help-entry .help-language-control{grid-column:2;grid-row:2;justify-self:start;margin:0;min-width:0;max-width:100%}
+ .max-device-overview .help-entry [data-port=help-title-out]{left:auto;right:-5px;top:calc(50% - 2.75px);bottom:auto;transform:rotate(90deg)}
+ .max-device-overview .help-entry [data-port=help-number-in]{left:-5px;right:auto;top:calc(50% - 2.75px);bottom:auto;transform:rotate(90deg)}
+}
+
+/* Device history is independent of current distribution status. */
+.device-history{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:24px}
+.device-history>li{border-top:1px solid var(--hair,#bbb);padding-top:18px}
+.device-history h3{font:800 clamp(20px,2.5vw,28px)/1.15 var(--b4-font);margin:0 0 8px}
+.device-history .history-date{font:600 13px/1.4 var(--b4-font);margin:0 0 12px}
+.device-history ul{padding-left:20px;margin:0;line-height:1.6}

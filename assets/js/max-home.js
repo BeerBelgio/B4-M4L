@@ -58,7 +58,7 @@
   }
   function currentConfig() {
     return {
-      schema: 'b4m4l.hero-layout', schemaVersion: 1, siteVersion: '0.13-rc.1', layoutVersion: DEFAULT.layoutVersion,
+      schema: 'b4m4l.hero-layout', schemaVersion: 1, siteVersion: '0.13.1', layoutVersion: DEFAULT.layoutVersion,
       container: { id: canvas.id, coordinateSpace: 'normalized', referenceWidth: canvas.clientWidth, referenceHeight: canvas.clientHeight },
       nodes: nodes.map(el => {
         const r = rects.get(el), round = n => Math.round(n * 1e8) / 1e8;
@@ -223,6 +223,11 @@
     root.dataset.layoutMode = editable ? 'desktop' : 'fixed';
     root.classList.toggle('is-layout-capable', editable);
     controls.hidden = !editable;
+    // Match reading/focus order to each presentation without duplicating the CTA.
+    const browse = nodes.find(el => el.dataset.node === 'browse');
+    const claim = nodes.find(el => el.dataset.node === 'claim');
+    if (editable) { if (canvas.lastElementChild !== browse) canvas.append(browse); }
+    else if (browse.nextElementSibling !== claim) canvas.insertBefore(browse, claim);
     nodes.forEach(el => { if (!editable) el.removeAttribute('style'); });
     updateLock(); restoreLayout(preferred || DEFAULT);
   }

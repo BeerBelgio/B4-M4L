@@ -29,10 +29,10 @@ function translateRoot(root){
 }
 function translateHelp(){
  // Only HELP content is translated. Homepage, device overview, requirements, changelog and privacy stay English.
- document.querySelectorAll('.hero,.quick-start,.manual').forEach(root=>{root.lang=locale;translateRoot(root)});
+ document.querySelectorAll('[data-help-content]').forEach(root=>{root.lang=locale;translateRoot(root)});
 }
 function links(){
- document.querySelectorAll('a[href]').forEach(a=>{
+ document.querySelectorAll('[data-help-content] a[href]').forEach(a=>{
   const value=a.getAttribute('href');
   if(!value||value.startsWith('mailto:')||value.startsWith('#')||value.startsWith('javascript:')||value.startsWith('http:')||value.startsWith('https:'))return;
   try{const url=new URL(value,location.href);if(url.protocol!=='file:'&&url.origin!==location.origin)return;
@@ -78,6 +78,6 @@ const observer=new MutationObserver(muts=>{
  if(pending||!muts.some(m=>m.type==='childList'&&m.addedNodes.length))return;
  pending=true;queueMicrotask(()=>{pending=false;translateHelp();links()});
 });
-render();observer.observe(document.body,{subtree:true,childList:true});
+render();document.querySelectorAll('[data-help-content]').forEach(root=>observer.observe(root,{subtree:true,childList:true}));
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',popupOnce,{once:true});else popupOnce();
 })();

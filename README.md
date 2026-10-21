@@ -8,6 +8,10 @@ B4~M4L is the documentation home for Max for Live devices developed by BeerBelgi
 
 The site is not a device host or a distribution platform: each device is developed independently, and downloads or purchases, when available, are handled through their respective external product pages.
 
+## Maintenance candidate 0.13.1
+
+This standalone maintenance candidate follows the published 0.13 release. It refines layout stability, responsive HELP and footer presentation, device-link accessibility and HELP-only translations. The existing WOFF2 delivery and original font licences are retained. It has not been deployed.
+
 ## Device documentation
 
 - **[INDEX HTML BRIDGE](https://beerbelgio.github.io/b4-m4l/index-html-bridge/#help)** — a performance-oriented connection between Ableton Live and INDEX HTML. Documentation currently covers the **1.3 testing candidate**.
@@ -19,7 +23,7 @@ The site is not a device host or a distribution platform: each device is develop
 
 On desktop, the homepage behaves like a small patch: objects can be moved and resized in EDIT mode, connected visually by animated patch cords. LOCK fixes the composition; RESET restores its default layout. Layout changes are stored for the current browser-tab session. Smaller screens use a fixed responsive presentation.
 
-Help content is available in English and Italian, with automatic German, Spanish and French translations provided for convenience and subject to editorial review.
+Only HELP content is translated; the general website and device presentation remain in English. HELP content is available in English and Italian, with automatic German, Spanish and French translations provided for convenience and subject to editorial review.
 
 ## Related projects
 
