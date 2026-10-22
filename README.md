@@ -8,9 +8,11 @@ B4~M4L is the documentation home for Max for Live devices developed by BeerBelgi
 
 The site is not a device host or a distribution platform: each device is developed independently, and downloads or purchases, when available, are handled through their respective external product pages.
 
-## Maintenance candidate 0.13.1
+## Current website — 0.13.1
 
-This standalone maintenance candidate follows the published 0.13 release. It refines layout stability, responsive HELP and footer presentation, device-link accessibility and HELP-only translations. The existing WOFF2 delivery and original font licences are retained. It has not been deployed.
+The website currently deployed on GitHub Pages includes the **0.13.1 maintenance update**: improved layout stability, responsive HELP and footer presentation, accessible device links, and translations limited to the HELP sections. Existing WOFF2 font delivery and font licences have been preserved.
+
+**Release status:** the 0.13.1 build is live for owner evaluation, including a successful mobile check; the most recent formally tagged GitHub Release remains **0.13** until the 0.13.1 release is explicitly approved.
 
 ## Device documentation
 
