@@ -2,7 +2,7 @@
 
 Changes to the **public documentation website** are recorded here. Device software versions and their development histories are managed independently.
 
-## 0.13.1 — Maintenance candidate (unreleased)
+## 0.13.1 — Maintenance update (deployed for evaluation; release pending)
 
 ### Accessibility and responsive UI
 - Limited translations and their downloads to device HELP content; homepage, Privacy and product presentation stay English.
@@ -17,7 +17,8 @@ Changes to the **public documentation website** are recorded here. Device softwa
 
 
 ### Performance
-- Converted Barlow Condensed web delivery from 18 original TTF faces to matching, validated WOFF2 counterparts (approximately 62.6% smaller source-font payload). Original TTF assets remain archived in the repository; no changes to typography, device content or JavaScript behavior.
+- Preserved the Barlow Condensed WOFF2 delivery implemented on `main` before this maintenance candidate. The existing TTF source files and font licences remain available; no font conversion was newly performed by 0.13.1.
+- Stabilized initial homepage geometry, avoiding unintended shifts without changing the approved desktop layout or editor behavior.
 
 ## 0.13 — Initial public release (2026-10-20)
 
