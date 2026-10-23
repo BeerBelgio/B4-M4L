@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "documentationVersion": "0.13.1",
+  "documentationVersion": "0.13.2",
   "device": {
     "name": "CONSEQUENCE OF TIME",
     "build": "0.1.6.5",
@@ -13,10 +13,28 @@
   "versionHistory": [
     {
       "version": "0.1.6.9",
-      "date": "2026-10-21",
-      "title": "Development experiment — validation incomplete",
+      "date": "2026-10-22",
+      "title": "Private packaging milestones",
       "changes": [
-        "Explored runtime packaging and component resolution. Validation is incomplete; this milestone does not extend the guide coverage beyond 0.1.6.5."
+        "Private development and testing only; not a public release. The illustrated guide remains on 0.1.6.5."
+      ],
+      "milestones": [
+        {
+          "date": "2026-10-22",
+          "title": "Scoped M5 packaging checks completed",
+          "changes": [
+            "Consolidated a complete-folder private testing candidate without changing the frozen musical engines or interface.",
+            "Scoped checks on M5 with Live 12.4.6 / bundled Max 9.1.5 covered loading, A/B Remote, C Mod, sidechain, cold recall, relocation, overlay and HELP launch. Independent Intel acceptance, redistribution clearance and guide alignment remain pending."
+          ]
+        },
+        {
+          "version": "0.1.6.9",
+          "date": "2026-10-21",
+          "title": "Development experiment — validation incomplete",
+          "changes": [
+            "Explored runtime packaging and component resolution. Validation is incomplete; this milestone does not extend the guide coverage beyond 0.1.6.5."
+          ]
+        }
       ]
     },
     {
@@ -150,5 +168,6 @@
         "Introduced native mapping panes, sidechain controls and independent A/B scopes; prepared Intel compatibility checks."
       ]
     }
-  ]
+  ],
+  "documentationNote": "The illustrated guide covers 0.1.6.5. A newer private 0.1.6.9 packaging candidate completed scoped Apple M5 checks on 22 October 2026; independent Intel testing, redistribution clearance and alignment of that candidate with this guide remain pending. Development progress does not make the device available for download."
 }

@@ -2,6 +2,14 @@
 
 Changes to the **public documentation website** are recorded here. Device software versions and their development histories are managed independently.
 
+## 0.13.2 — Documentation candidate (not deployed)
+
+- Adopted the approved product name Bridge across headings, accessible names, support text and page metadata while preserving the public slug, technical identifiers and existing artwork.
+- Aligned the Bridge 1.3 guide, manifest, JS mirror, validator and static fallback with the documented complete-folder testing package. Added the scoped Live/LFO UNMAP note in editorial EN/IT and automatic DE/ES/FR.
+- Grouped milestones under each device version, retaining dates and earlier development history. Added verified scoped M5 packaging milestones while keeping Intel, redistribution, HELP acceptance and public availability separate.
+- Kept the CONSEQUENCE OF TIME illustrated guide on 0.1.6.5 and explicitly distinguished newer private 0.1.6.9 testing.
+- Preserved the approved Max-style editor, responsive layout, local fonts and licences, artwork, Privacy content, canonical URLs and sitemap.
+
 ## 0.13.1 — Maintenance update (deployed for evaluation; release pending)
 
 ### Accessibility and responsive UI

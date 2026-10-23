@@ -8,16 +8,20 @@ B4~M4L is the documentation home for Max for Live devices developed by BeerBelgi
 
 The site is not a device host or a distribution platform: each device is developed independently, and downloads or purchases, when available, are handled through their respective external product pages.
 
-## Current website — 0.13.1
+## Local documentation candidate — 0.13.2
+
+This standalone candidate updates the Bridge product identity, documented packaging and troubleshooting, and verified development milestones. It is prepared for editorial and owner review; it has not been deployed or promoted to a public release.
+
+## Current published website — 0.13.1
 
 The website currently deployed on GitHub Pages includes the **0.13.1 maintenance update**: improved layout stability, responsive HELP and footer presentation, accessible device links, and translations limited to the HELP sections. Existing WOFF2 font delivery and font licences have been preserved.
 
-**Release status:** the 0.13.1 build is live for owner evaluation, including a successful mobile check; the most recent formally tagged GitHub Release remains **0.13** until the 0.13.1 release is explicitly approved.
+**Release status:** the 0.13.1 build is live for owner evaluation, including a successful mobile check; the most recent formally tagged GitHub Release remains **0.13** until a subsequent release is explicitly approved.
 
 ## Device documentation
 
-- **[INDEX HTML BRIDGE](https://beerbelgio.github.io/b4-m4l/index-html-bridge/#help)** — a performance-oriented connection between Ableton Live and INDEX HTML. Documentation currently covers the **1.3 testing candidate**.
-- **[CONSEQUENCE OF TIME](https://beerbelgio.github.io/b4-m4l/consequence-of-time/#help)** — an audio/time-responsive modulation device. Documentation currently covers the **0.1.6.5 testing candidate**.
+- **[Bridge](https://beerbelgio.github.io/b4-m4l/index-html-bridge/#help)** — connects Ableton Live to INDEX HTML, its first supported ecosystem. This candidate documents **1.3 testing**, including the complete-folder packaging checked on M5 on 22 October 2026. Intel acceptance, redistribution clearance and final device-side guide validation remain separate.
+- **[CONSEQUENCE OF TIME](https://beerbelgio.github.io/b4-m4l/consequence-of-time/#help)** — an audio/time-responsive modulation device. The illustrated guide covers **0.1.6.5**. The history separately records completed scoped M5 checks on a newer private 0.1.6.9 packaging candidate, without implying Intel acceptance or public availability.
 
 **Both devices are currently in testing; neither is offered for public download through this site.** Documentation and device release status are separate.
 

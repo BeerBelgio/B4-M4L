@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "documentationVersion": "0.13.1",
+  "documentationVersion": "0.13.2",
   "device": {
-    "name": "INDEX HTML BRIDGE",
-    "build": "DEV3-2026-10-19",
+    "name": "Bridge",
+    "build": "bridge-1.3-distribution-embedded-2026-10-22",
     "publicVersion": "1.3",
     "releaseStatus": "testing_not_distributed"
   },
@@ -14,20 +14,38 @@
   "versionHistory": [
     {
       "version": "1.3",
-      "date": "2026-10-21",
-      "title": "Testing preparation",
+      "date": "2026-10-22",
+      "title": "Testing milestones",
       "changes": [
-        "Improved isolation and cleanup of the live Chromium window, with a complete-folder testing package.",
-        "A Live/LFO Remote-unmapping limitation after Set recall remains documented as a known limitation, not a Bridge fix. Independent Intel acceptance is pending."
-      ]
-    },
-    {
-      "version": "1.3",
-      "date": "2026-10-19",
-      "title": "Interface and recall milestone",
-      "changes": [
-        "Refined the Core, Layer and Performance panels and HELP access.",
-        "Corrected synchronization of the selected editing Layer after Set recall; retained parameter identities and stored values."
+        "Bridge is the product name; INDEX HTML is its first supported ecosystem. These milestones describe development, not an available public release."
+      ],
+      "milestones": [
+        {
+          "date": "2026-10-22",
+          "title": "Complete-folder packaging and scoped M5 checks",
+          "changes": [
+            "Embedded the five existing native UI modules and consolidated the testing layout as Bridge.amxd plus Support, preserving controls and behaviour.",
+            "Scoped M5 checks covered loading and relocation, rendering, MIDI, mapping, automation, recall, browser lifecycle and HELP launch. Intel acceptance, redistribution clearance and final public-guide review remain pending."
+          ]
+        },
+        {
+          "version": "1.3",
+          "date": "2026-10-21",
+          "title": "Testing preparation",
+          "changes": [
+            "Improved isolation and cleanup of the live Chromium window, with a complete-folder testing package.",
+            "A Live/LFO Remote-unmapping limitation after Set recall remains documented as a known limitation, not a Bridge fix. Independent Intel acceptance is pending."
+          ]
+        },
+        {
+          "version": "1.3",
+          "date": "2026-10-19",
+          "title": "Interface and recall milestone",
+          "changes": [
+            "Refined the Core, Layer and Performance panels and HELP access.",
+            "Corrected synchronization of the selected editing Layer after Set recall; retained parameter identities and stored values."
+          ]
+        }
       ]
     },
     {
@@ -119,5 +137,6 @@
         "Preserved local development reference for the earlier architecture; no public release date is asserted."
       ]
     }
-  ]
+  ],
+  "documentationNote": "This guide describes Bridge 1.3, including the complete-folder testing package checked on Apple M5 on 22 October 2026. The existing 1.3 interface illustrations are retained. Independent Intel acceptance, redistribution clearance and device-side validation of this updated guide are still pending."
 }
