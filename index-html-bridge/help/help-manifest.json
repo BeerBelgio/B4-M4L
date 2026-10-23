@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "documentationVersion": "0.13.2",
+  "documentationVersion": "0.13.3",
   "device": {
     "name": "Bridge",
     "build": "bridge-1.3-distribution-embedded-2026-10-22",
