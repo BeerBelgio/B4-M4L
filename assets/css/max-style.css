@@ -248,7 +248,7 @@ svg.max-cords{z-index:1;isolation:auto}
 .manual-section>summary .section-toggle::before{width:12px;height:1.5px}
 .manual-section>summary .section-toggle::after{width:1.5px;height:12px}
 @media(max-width:620px){
- .max-device-overview .help-entry{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:32px 22px;width:calc(100% - 28px);align-items:start}
+ .max-device-overview .help-entry{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:14px 22px;width:calc(100% - 28px);align-items:start}
  .max-device-overview .help-entry .max-help-title{grid-column:1;grid-row:1;font-size:28px;padding:12px;margin:0}
  .max-device-overview .help-entry .site-kicker{grid-column:2;grid-row:1;justify-self:start;margin:0;max-width:100%;white-space:normal;line-height:1.2;text-align:center;padding:10px}
  .max-device-overview .help-entry .help-language-control{grid-column:2;grid-row:2;justify-self:start;margin:0;min-width:0;max-width:100%}
@@ -262,3 +262,12 @@ svg.max-cords{z-index:1;isolation:auto}
 .device-history h3{font:800 clamp(20px,2.5vw,28px)/1.15 var(--b4-font);margin:0 0 8px}
 .device-history .history-date{font:600 13px/1.4 var(--b4-font);margin:0 0 12px}
 .device-history ul{padding-left:20px;margin:0;line-height:1.6}
+
+/* 0.13.3: scoped editorial UX refinements. Cords still measure the original ports. */
+.max-device-title .bridge-hero-title em{color:var(--max-text)}
+.device-history-scroll{max-height:22rem;overflow-y:auto;overscroll-behavior-y:contain;scrollbar-gutter:stable;padding:0 10px 8px 4px;margin-top:18px}
+.device-history-scroll:focus-visible{outline:2px solid var(--b4-accent);outline-offset:4px}
+.device-history-scroll>.device-history{margin-top:0}
+.language-request-fallback{width:min(calc(100% - 48px),1096px);margin:0 auto 24px;font-size:15px;overflow-wrap:anywhere}
+.language-request-fallback[hidden]{display:none}
+@media(max-width:620px){.device-history-scroll{max-height:18rem}.language-request-fallback{width:calc(100% - 28px)}}

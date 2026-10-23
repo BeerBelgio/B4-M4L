@@ -8,15 +8,13 @@ B4~M4L is the documentation home for Max for Live devices developed by BeerBelgi
 
 The site is not a device host or a distribution platform: each device is developed independently, and downloads or purchases, when available, are handled through their respective external product pages.
 
-## Local documentation candidate — 0.13.2
+## UX maintenance candidate — 0.13.3
 
-This standalone candidate updates the Bridge product identity, documented packaging and troubleshooting, and verified development milestones. It is prepared for editorial and owner review; it has not been deployed or promoted to a public release.
+Proposed PATCH version, phase **CANDIDATE**, for review. This build refines the Bridge HTML title, HELP language action, mobile spacing, UNMAP note and compact version histories. It has not been deployed or formally released.
 
-## Current published website — 0.13.1
+## Published baseline — 0.13.2
 
-The website currently deployed on GitHub Pages includes the **0.13.1 maintenance update**: improved layout stability, responsive HELP and footer presentation, accessible device links, and translations limited to the HELP sections. Existing WOFF2 font delivery and font licences have been preserved.
-
-**Release status:** the 0.13.1 build is live for owner evaluation, including a successful mobile check; the most recent formally tagged GitHub Release remains **0.13** until a subsequent release is explicitly approved.
+On 23 October 2026, the four GitHub Pages HTML documents matched the 0.13.2 files on `main`. The latest formal GitHub Release remains **0.13**. Website publication and device release acceptance are separate.
 
 ## Device documentation
 

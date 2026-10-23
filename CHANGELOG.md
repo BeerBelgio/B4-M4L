@@ -2,7 +2,16 @@
 
 Changes to the **public documentation website** are recorded here. Device software versions and their development histories are managed independently.
 
-## 0.13.2 — Documentation candidate (not deployed)
+## 0.13.3 — proposed · CANDIDATE · 2026-10-23
+
+- Warm-white Bridge HTML hero title; original SVG artwork retained.
+- Shorter Live/LFO UNMAP testing note in all five HELP languages.
+- Closer mobile documentation/language controls and compact, keyboard-scrollable version histories with their existing newest-first order.
+- NEW LANGUAGE action reuses language feedback email, restores the selected locale and offers an accessible mailto fallback.
+- Redundant history introductions removed; guide coverage, testing and distribution boundaries retained elsewhere.
+
+
+## 0.13.2 — Documentation update (published on GitHub Pages; formal GitHub Release pending)
 
 - Adopted the approved product name Bridge across headings, accessible names, support text and page metadata while preserving the public slug, technical identifiers and existing artwork.
 - Aligned the Bridge 1.3 guide, manifest, JS mirror, validator and static fallback with the documented complete-folder testing package. Added the scoped Live/LFO UNMAP note in editorial EN/IT and automatic DE/ES/FR.

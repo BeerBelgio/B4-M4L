@@ -1,6 +1,6 @@
 window.B4M4L_COT_HELP_MANIFEST = {
   "schemaVersion": 1,
-  "documentationVersion": "0.13.2",
+  "documentationVersion": "0.13.3",
   "device": {
     "name": "CONSEQUENCE OF TIME",
     "build": "0.1.6.5",
