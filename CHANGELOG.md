@@ -2,13 +2,14 @@
 
 Changes to the **public documentation website** are recorded here. Device software versions and their development histories are managed independently.
 
-## 0.13.3 — proposed · CANDIDATE · 2026-10-23
+## 0.13.3 — FINAL website baseline · 2026-10-23
 
 - Warm-white Bridge HTML hero title; original SVG artwork retained.
 - Shorter Live/LFO UNMAP testing note in all five HELP languages.
 - Closer mobile documentation/language controls and compact, keyboard-scrollable version histories with their existing newest-first order.
 - NEW LANGUAGE action reuses language feedback email, restores the selected locale and offers an accessible mailto fallback.
 - Redundant history introductions removed; guide coverage, testing and distribution boundaries retained elsewhere.
+- Approved for website FINAL after the merged 0.13.3 Pages deployment and owner verification that the live Bridge `#help` includes the revised UNMAP note and NEW LANGUAGE action. Bridge H4 is satisfied for the identified embedded testing candidate's public documentation; device Intel, redistribution and device FINAL remain separate.
 
 
 ## 0.13.2 — Documentation update (published on GitHub Pages; formal GitHub Release pending)
